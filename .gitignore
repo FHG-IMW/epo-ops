@@ -9,6 +9,7 @@
 /test/tmp/
 /test/version_tmp/
 /test/epo_credentials.yml
+/test/vcr_cassettes/
 /tmp/
 
 ## Specific to RubyMotion:

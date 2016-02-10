@@ -1,4 +1,5 @@
 require 'epo/ops/version'
+require 'epo/ops/token_store'
 
 module Epo
   module Ops
@@ -22,7 +23,7 @@ module Epo
       def initialize
         @consumer_key = ''
         @consumer_secret = ''
-        @token_store = TokenStore.new
+        @token_store = Epo::Ops::TokenStore.new
       end
     end
   end

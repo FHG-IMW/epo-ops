@@ -6,7 +6,6 @@ module Epo
     class TokenStore
       class Redis < TokenStore
         def initialize(redis_host)
-          super
           raise "Please install gems 'redis' and 'connection_pool' to use this feature" unless defined?(::Redis) && defined?(ConnectionPool)
 
           @redis = ConnectionPool.new(size: 5, timeout: 5) { ::Redis.new(host: redis_host) }
@@ -24,7 +23,7 @@ module Epo
         private
 
         def generate_token
-          token = client.client_credentials.get_token
+          super
           Sidekiq.redis do |conn|
             conn.set("epo_token_#{id}", token.token, ex: token.expires_in, nx: true)
           end
