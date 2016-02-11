@@ -58,7 +58,7 @@ http_interactions:
   recorded_at: Wed, 10 Feb 2016 14:33:41 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/search?q=pd=20160203
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-100&q=pd=20160203
     body:
       encoding: US-ASCII
       string: ''
@@ -959,4 +959,3 @@ http_interactions:
         cmVnaXN0ZXItc2VhcmNoPgo8L29wczp3b3JsZC1wYXRlbnQtZGF0YT4K
     http_version:
   recorded_at: Wed, 10 Feb 2016 14:33:42 GMT
-recorded_with: VCR 2.9.3

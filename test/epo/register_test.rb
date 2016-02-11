@@ -3,7 +3,7 @@ require 'epo/ops/register'
 
 class Epo::RegisterTest < Minitest::Test
   def setup
-    VCR.insert_cassette('epo_register', allow_playback_repeats: true, record: :new_episodes)
+    VCR.insert_cassette('epo_register', allow_playback_repeats: true)
   end
 
   def teardown
@@ -11,7 +11,7 @@ class Epo::RegisterTest < Minitest::Test
   end
 
   def test_search_works
-    assert Epo::Ops::Register.search('foo')
-    # TODO: continue :)
+    query = Epo::Ops::SearchQueryBuilder.new.publication_date(2016, 2, 3).build
+    assert Epo::Ops::Register.search(query)
   end
 end

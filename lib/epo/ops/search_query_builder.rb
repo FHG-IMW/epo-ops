@@ -42,7 +42,7 @@ module Epo
       # If the given window is out of range, it will be moved preserving the
       # distance covered.
       # @see Epo::Ops::Limits
-      # @returns array with two elements: [range_start, range_end]
+      # @return array with two elements: [range_start, range_end]
       def validate_range(range_start, range_end)
         if range_start > range_end
           range_start, range_end = range_end, range_start

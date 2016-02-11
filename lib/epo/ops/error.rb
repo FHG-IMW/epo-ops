@@ -1,3 +1,5 @@
+require 'epo/ops/rate_limit'
+
 module Epo
   module Ops
     class Error < StandardError
@@ -32,20 +34,20 @@ module Epo
       GatewayTimeout = Class.new(ServerError)
 
       ERRORS = {
-        400 => WebServices::Epo::Error::BadRequest,
-        401 => WebServices::Epo::Error::Unauthorized,
-        403 => WebServices::Epo::Error::Forbidden,
-        404 => WebServices::Epo::Error::NotFound,
-        406 => WebServices::Epo::Error::NotAcceptable,
-        422 => WebServices::Epo::Error::UnprocessableEntity,
-        429 => WebServices::Epo::Error::TooManyRequests,
-        500 => WebServices::Epo::Error::InternalServerError,
-        502 => WebServices::Epo::Error::BadGateway,
-        503 => WebServices::Epo::Error::ServiceUnavailable,
-        504 => WebServices::Epo::Error::GatewayTimeout
+        400 => Epo::Ops::Error::BadRequest,
+        401 => Epo::Ops::Error::Unauthorized,
+        403 => Epo::Ops::Error::Forbidden,
+        404 => Epo::Ops::Error::NotFound,
+        406 => Epo::Ops::Error::NotAcceptable,
+        422 => Epo::Ops::Error::UnprocessableEntity,
+        429 => Epo::Ops::Error::TooManyRequests,
+        500 => Epo::Ops::Error::InternalServerError,
+        502 => Epo::Ops::Error::BadGateway,
+        503 => Epo::Ops::Error::ServiceUnavailable,
+        504 => Epo::Ops::Error::GatewayTimeout
       }.freeze
       FORBIDDEN_MESSAGES = {
-        'This request has been rejected due to the violation of Fair Use policy' => WebServices::Epo::Error::TooManyRequests
+        'This request has been rejected due to the violation of Fair Use policy' => Epo::Ops::Error::TooManyRequests
       }.freeze
 
       class << self
@@ -74,7 +76,7 @@ module Epo
       def initialize(message = '', rate_limit = {}, code = nil)
         super(message)
         @code = code
-        @rate_limit = WebServices::Epo::RateLimit.new(rate_limit)
+        @rate_limit = Epo::Ops::RateLimit.new(rate_limit)
       end
     end
   end
