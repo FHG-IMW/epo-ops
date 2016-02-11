@@ -7,9 +7,8 @@ module Epo
     # overwrite #token if you want to store it somewhere else.
     #
     class TokenStore
-
       def token
-        return generate_token if (!@token || @token.expired?)
+        return generate_token if !@token || @token.expired?
         @token
       end
 
