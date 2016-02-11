@@ -5,13 +5,12 @@ require 'webmock/minitest'
 require 'minitest/autorun'
 require 'vcr'
 
-# load OAuth credentials
-require 'yaml'
-config = YAML.load_file(File.join(__dir__, 'epo_credentials.yml'))
+# configure OAuth credentials
+# make sure not to upload your real credentials, and token. Check your newly created
+# VCR records.
 Epo::Ops.configure do |conf|
-  puts config
-  conf.consumer_key = config["consumer_key"]
-  conf.consumer_secret = config["consumer_secret"]
+  conf.consumer_key = 'Foo'
+  conf.consumer_secret = 'Bar'
 end
 
 # VCR
