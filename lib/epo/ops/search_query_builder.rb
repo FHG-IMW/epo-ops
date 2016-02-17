@@ -8,6 +8,7 @@ module Epo
     # Contextual Query Language) with the identifies specified by the EPO in
     # the OPS Documentation chapter 4.2 ( {https://www.epo.org/searching-for-patents/technical/espacenet/ops.html Link}
     # - use tab Downloads and see file 'OPS version 3.1 documentation').
+    # Dont use a builder twice ;)
     class SearchQueryBuilder
       def initialize
         @query = 'search?q='
