@@ -1,5 +1,7 @@
 require 'epo/ops/version'
 require 'epo/ops/token_store'
+require 'epo/ops/register'
+require 'epo/ops/search_query_builder'
 
 module Epo
   module Ops
@@ -24,6 +26,10 @@ module Epo
         @consumer_key = ''
         @consumer_secret = ''
         @token_store = Epo::Ops::TokenStore.new
+
+        OAuth2::Response.register_parser(:xml, ['application/xml']) do |body|
+          MultiXml.parse(body)
+        end
       end
     end
   end

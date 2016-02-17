@@ -76,7 +76,7 @@ module Epo
       def initialize(message = '', rate_limit = {}, code = nil)
         super(message)
         @code = code
-        @rate_limit = Epo::Ops::RateLimit.new(rate_limit)
+        @rate_limit = RateLimit.new(rate_limit)
       end
     end
   end

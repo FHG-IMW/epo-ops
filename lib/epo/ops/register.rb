@@ -7,9 +7,8 @@ module Epo
 
       # @param query A query built with {Epo::Ops::SearchQueryBuilder}
       # @return parsed response
-      # TODO parse response
       def self.search(query)
-        Epo::Ops::Client.request(:get, "/3.1/rest-services/register/#{query}")
+        Client.request(:get, "/3.1/rest-services/register/#{query}").parsed
       end
     end
   end

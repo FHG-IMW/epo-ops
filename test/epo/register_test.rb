@@ -12,6 +12,8 @@ class Epo::RegisterTest < Minitest::Test
 
   def test_search_works
     query = Epo::Ops::SearchQueryBuilder.new.publication_date(2016, 2, 3).build
-    assert Epo::Ops::Register.search(query)
+    response = Epo::Ops::Register.search(query)
+    assert response
+    assert_instance_of Hash, response
   end
 end

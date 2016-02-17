@@ -32,7 +32,7 @@ module Epo
       # builds the search query ready to put into the register API. The
       # parameters are validated with {#validate_range}.
       def build(range_start = 1, range_end = nil)
-        range_end ||= range_start + Epo::Ops::Limits.MAX_QUERY_INTERVAL - 1
+        range_end ||= range_start + Limits.MAX_QUERY_INTERVAL - 1
         validated_range = validate_range range_start, range_end
         @query << "&Range=#{validated_range[0]}-#{validated_range[1]}"
       end
@@ -46,19 +46,19 @@ module Epo
       def validate_range(range_start, range_end)
         if range_start > range_end
           range_start, range_end = range_end, range_start
-          Epo::Ops::Logger.log('range_start was bigger than range_end, swapped values')
-        elsif range_start == range_end || range_end - range_start > Epo::Ops::Limits.MAX_QUERY_INTERVAL - 1
-          range_end = range_start + Epo::Ops::Limits.MAX_QUERY_INTERVAL - 1
-          Epo::Ops::Logger.log("range invalid, set to: #{[range_start, range_end]}")
+          Logger.log('range_start was bigger than range_end, swapped values')
+        elsif range_start == range_end || range_end - range_start > Limits.MAX_QUERY_INTERVAL - 1
+          range_end = range_start + Limits.MAX_QUERY_INTERVAL - 1
+          Logger.log("range invalid, set to: #{[range_start, range_end]}")
         end
         if range_start < 1
           range_end = range_end - range_start + 1
           range_start = 1
-          Epo::Ops::Logger.log("range_start must be > 0, set to: #{[range_start, range_end]}")
-        elsif range_end > Epo::Ops::Limits.MAX_QUERY_RANGE
-          range_start = Epo::Ops::Limits.MAX_QUERY_RANGE - (range_end - range_start)
-          range_end = Epo::Ops::Limits.MAX_QUERY_RANGE
-          Epo::Ops::Logger.log("range_end was too big, set to: #{[range_start, range_end]}")
+          Logger.log("range_start must be > 0, set to: #{[range_start, range_end]}")
+        elsif range_end > Limits.MAX_QUERY_RANGE
+          range_start = Limits.MAX_QUERY_RANGE - (range_end - range_start)
+          range_end = Limits.MAX_QUERY_RANGE
+          Logger.log("range_end was too big, set to: #{[range_start, range_end]}")
         end
         [range_start, range_end]
       end
