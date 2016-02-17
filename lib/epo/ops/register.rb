@@ -1,6 +1,7 @@
 require 'epo/ops'
 require 'epo/ops/client'
 require 'epo/ops/util'
+require 'epo/ops/bibliographic_document'
 
 module Epo
   module Ops
@@ -18,7 +19,7 @@ module Epo
       # `reference_id` is matching
       def self.biblio(reference_id, type = 'application', format = 'epodoc')
         request = "#{register_api_string}#{type}/#{format}/#{reference_id}/biblio"
-        Client.request(:get, request).parsed
+        BibliographicDocument.new(Client.request(:get, request).parsed)
       end
 
       Reference = Struct.new(:country, :doc_number, :date) do

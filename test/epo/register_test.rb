@@ -24,4 +24,22 @@ class Epo::RegisterTest < Minitest::Test
     assert Epo::Ops::Register.biblio("EP1000000", type="publication")
     assert Epo::Ops::Register.biblio("EP99203729")
   end
+
+  def test_biblio_returns_parsed_document
+    doc = Epo::Ops::Register.biblio("EP99203729")
+    assert doc.title
+    refute_empty doc.classifications
+    refute_empty doc.agents
+    refute_empty doc.applicants
+    assert doc.status
+    assert doc.latest_update
+    assert_instance_of Hash, doc.priority_date
+    refute_empty doc.publication_dates
+    assert doc.effective_date
+    (doc.agents + doc.applicants).each do |addr|
+      assert addr.name
+      assert addr.address1
+      assert addr.last_occurred_on
+    end
+  end
 end
