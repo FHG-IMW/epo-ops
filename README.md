@@ -2,7 +2,8 @@
 [![Code Climate](https://codeclimate.com/github/FHG-IMW/epo-ops/badges/gpa.svg)](https://codeclimate.com/github/FHG-IMW/epo-ops)
 
 # epo-ops
-Ruby interface to the EPO Open Patent Services (OPS)
+Ruby interface to the EPO Open Patent Services (OPS).
+
 You can play around with the API [here](https://developers.epo.org/).
 Documentation of it can be found [here](https://www.epo.org/searching-for-patents/technical/espacenet/ops.html) under `Downloads`.
 
@@ -30,4 +31,4 @@ Use the `SearchQueryBuilder` to set up the queries. By default structs are retur
 The results have the method `#epodoc_reference` which perfectly fits into `#biblio`
 
 ### #biblio
-With `Epo::Ops::Register.biblio(reference\_id)` you can retrieve the bibliographic entry for the given patent (see OPS documentation). By default it searches the `/application/` endpoint, but you may set `publication` as the second parameter. Make sure the `reference\_id` matches the given type. The last optional parameter allows you to set another format the id, but the default `epodoc` is strongly advised. This format is also provided from search results with `#epodoc_reference`.
+With `Epo::Ops::Register.biblio(reference_id)` you can retrieve the bibliographic entry for the given patent (see OPS documentation). By default it searches the `/application/` endpoint, but you may set `publication` as the second parameter. Make sure the `reference_id` matches the given type. The last optional parameter allows you to set another format the id, but the default `epodoc` is strongly advised. This format is also provided from search results with `#epodoc_reference`.
