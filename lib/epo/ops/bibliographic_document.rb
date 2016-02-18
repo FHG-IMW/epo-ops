@@ -1,6 +1,5 @@
 module Epo
   module Ops
-
     # Parses and simplifies the elements the EPO OPS returns for bibliographic
     # documents. Parsing is done lazily.
     # Some elements are not yet fully parsed but hashes returned instead.
@@ -67,7 +66,15 @@ module Epo
       # string, string, string, string ,string, string(length:2), Date, string
       # I do not know yet what is stored in `cdsid`, but when it can be used to
       # identify agents or applicants it may get useful.
-      Address = Struct.new(:name, :address1, :address2, :address3, :address4, :address5, :country_code, :last_occurred_on, :cdsid) do
+      Address = Struct.new(:name,
+                           :address1,
+                           :address2,
+                           :address3,
+                           :address4,
+                           :address5,
+                           :country_code,
+                           :last_occurred_on,
+                           :cdsid) do
         def initialize(*)
           super
           self.address1 ||= ''
@@ -79,22 +86,31 @@ module Epo
 
         def equal_name_and_address?(other)
           name == other.name &&
-          address1 == other.address1 &&
-          address2 == other.address2 &&
-          address3 == other.address3 &&
-          address4 == other.address4 &&
-          address5 == other.address5
+            address1 == other.address1 &&
+            address2 == other.address2 &&
+            address3 == other.address3 &&
+            address4 == other.address4 &&
+            address5 == other.address5
         end
 
         def name_and_address_hash
-          {name: name, address1: address1, address2: address2, address3: address3, address4: address4, address5: address5}
+          {
+            name: name,
+            address1: address1,
+            address2: address2,
+            address3: address3,
+            address4: address4,
+            address5: address5
+          }
         end
       end
 
       private
 
       def parse_title
-        titles = Epo::Ops::Util.find_in_data(raw, path_to_bibliographic_data + ['invention_title'])
+        titles = Util.find_in_data(raw,
+                                   path_to_bibliographic_data +
+                                   ['invention_title'])
         titles.each do |the_title|
           return the_title['__content__'] if the_title['lang'] == 'en'
         end
@@ -104,11 +120,14 @@ module Epo
 
       def parse_application_nr
         path = %w(world_patent_data register_search query __content__)
-        Epo::Ops::Util.find_in_data(raw, path).first.partition('=').last
+        Util.find_in_data(raw, path).first.partition('=').last
       end
 
       def parse_priority_date(raw)
-        priority_claims = Epo::Ops::Util.find_in_data(raw, path_to_bibliographic_data + %w(priority_claims)).first
+        priority_claims = Util.find_in_data(raw,
+                                            path_to_bibliographic_data +
+                                            %w(priority_claims))
+                          .first
         if priority_claims.nil?
           priority_date = nil
         else
@@ -118,46 +137,67 @@ module Epo
       end
 
       def parse_publication_dates(raw)
-        Epo::Ops::Util.parse_hash_flat(
-          Epo::Ops::Util.find_in_data(raw,
-            path_to_bibliographic_data + %w(publication_reference)), "document_id")
+        Util.parse_hash_flat(
+          Util.find_in_data(raw,
+                            path_to_bibliographic_data +
+                            %w(publication_reference)), 'document_id')
       end
 
       def parse_effective_date(raw)
-        effective_date = Epo::Ops::Util.find_in_data(raw, path_to_bibliographic_data + %w(dates_rights_effective request_for_examination))
+        effective_date =
+          Util.find_in_data(raw,
+                            path_to_bibliographic_data +
+                            %w(dates_rights_effective request_for_examination))
         effective_date.first.nil? ? nil : effective_date.first['date']
       end
 
       def parse_latest_update(raw)
-        gazette_nums = Epo::Ops::Util.parse_hash_flat(raw, 'change_gazette_num')
-        nums = gazette_nums.map { |num| Epo::Ops::Util.parse_change_gazette_num(num) }.keep_if { |match| !match.nil? }
+        gazette_nums = Util.parse_hash_flat(raw, 'change_gazette_num')
+        nums = gazette_nums.map { |num| Util.parse_change_gazette_num(num) }.keep_if { |match| !match.nil? }
         nums.max
       end
 
       def parse_status(raw)
-        Epo::Ops::Util.find_in_data(raw, path_to_bibliographic_data + ['status']).first
+        Util.find_in_data(raw,
+                          path_to_bibliographic_data + ['status'])
+          .first
       end
 
       def parse_classification(raw)
-        Epo::Ops::Util.find_in_data(raw, path_to_bibliographic_data + %w(classifications_ipcr classification_ipcr text)).first.split(',').map(&:strip)
+        Util.find_in_data(raw,
+                          path_to_bibliographic_data +
+                          %w(classifications_ipcr classification_ipcr text))
+          .first.split(',').map(&:strip)
       end
 
       def parse_agents(raw)
-        entries = Epo::Ops::Util.find_in_data(raw, path_to_bibliographic_data + %w(parties agents))
+        entries = Util.find_in_data(raw,
+                                    path_to_bibliographic_data +
+                                    %w(parties agents))
         parse_address(entries, 'agent')
       end
 
       def parse_applicants(raw)
-        entries = Epo::Ops::Util.find_in_data(raw, path_to_bibliographic_data + %w(parties applicants))
+        entries = Util.find_in_data(raw,
+                                    path_to_bibliographic_data +
+                                    %w(parties applicants))
         parse_address(entries, 'applicant')
       end
 
-
       def parse_address(party_group_entries, group)
         party_group_entries.flat_map do |entry|
-          change_date = Epo::Ops::Util.parse_change_gazette_num(entry.fetch('change_gazette_num', '')) || latest_update
-          Epo::Ops::Util.find_in_data(entry, [group,"addressbook"]).map do |address|
-            Address.new(address['name'], address['address']['address_1'], address['address']['address_2'], address['address']['address_3'], address['address']['address_4'], address['address']['address_5'], address['address']['country'], change_date, address['cdsid'])
+          change_date = Util.parse_change_gazette_num(
+            entry.fetch('change_gazette_num', '')) || latest_update
+          Util.find_in_data(entry, [group, 'addressbook']).map do |address|
+            Address.new(address['name'],
+                        address['address']['address_1'],
+                        address['address']['address_2'],
+                        address['address']['address_3'],
+                        address['address']['address_4'],
+                        address['address']['address_5'],
+                        address['address']['country'],
+                        change_date,
+                        address['cdsid'])
           end
         end
       end

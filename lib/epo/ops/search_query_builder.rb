@@ -32,10 +32,12 @@ module Epo
 
       # builds the search query ready to put into the register API. The
       # parameters are validated with {#validate_range}.
-      def build(range_start = 1, range_end = nil)
+      # This does not change the query, several calls will allow you to
+      # create the same queries for different ranges.
+      def build(range_start= 1, range_end= nil)
         range_end ||= range_start + Limits.MAX_QUERY_INTERVAL - 1
         validated_range = validate_range range_start, range_end
-        @query << "&Range=#{validated_range[0]}-#{validated_range[1]}"
+        @query + "&Range=#{validated_range[0]}-#{validated_range[1]}"
       end
 
       # Fixes the range given so that they meed the EPO APIs rules. The range
