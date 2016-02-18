@@ -26,5 +26,8 @@ end
    This method currently returns all queries necessary to find all patents with `Epo::Ops::Register.search`
 
 ### #search
-Use the `SearchQueryBuilder` to set up the queries. By default structs are returned that should make it easier to work with the results, but with the `raw`-flat set to true you may also retrieve the resulting hash and parse it yourself.
-The results have the method `#epodoc_reference` which perfeclty fits into `#biblio`
+Use the `SearchQueryBuilder` to set up the queries. By default structs are returned that should make it easier to work with the results, but with the `raw`-flag set to true you may also retrieve the resulting hash and parse it yourself.
+The results have the method `#epodoc_reference` which perfectly fits into `#biblio`
+
+### #biblio
+With `Epo::Ops::Register.biblio(reference\_id)` you can retrieve the bibliographic entry for the given patent (see OPS documentation). By default it searches the `/application/` endpoint, but you may set `publication` as the second parameter. Make sure the `reference\_id` matches the given type. The last optional parameter allows you to set another format the id, but the default `epodoc` is strongly advised. This format is also provided from search results with `#epodoc_reference`.
