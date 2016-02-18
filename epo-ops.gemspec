@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Epo::Ops::VERSION
   spec.authors       = ['Max Kießling', 'Robert Terbach', 'Michael Prilop']
 
-  spec.summary       = 'Query the European Patent Office API'
+  spec.summary       = 'Ruby interface to the European Patent Office API (OPS)'
   spec.description   = 'This gem allows simple access to the European Patent'\
     ' Offices (EPO) Open Patent Services (OPS) using their XML-API'
   spec.homepage      = 'https://github.com/FHG-IMW/epo-ops'
