@@ -1,0 +1,208 @@
+---
+world_patent_data:
+  meta:
+    name: elapsed-time
+    value: '17'
+  register_search:
+    query:
+      __content__: application=EP14154144
+      syntax: CQL
+    range:
+      end: '1'
+      begin: '1'
+    register_documents:
+      register_document:
+        bibliographic_data:
+          publication_reference:
+            document_id:
+              country: EP
+              doc_number: '2730274'
+              kind: A2
+              date: '20140514'
+              lang: en
+            change_gazette_num: 2014/20
+          classifications_ipcr:
+            classification_ipcr:
+              text: A61K8/35, A61K8/368, A61K8/42, A61K8/67, A61K8/73, A61Q5/06, A61Q19/00,
+                A61K9/14
+              id: CLASSIFICATION_245424
+            change_gazette_num: 2014/21
+          application_reference:
+            document_id:
+              country: EP
+              doc_number: '14154144'
+              date: '20111219'
+            change_gazette_num: 2014/22
+          language_of_filing: en
+          priority_claims:
+            priority_claim:
+            - country: US
+              doc_number: 201061425343P
+              date: '20101221'
+              kind: national
+              sequence: '1'
+            - country: EP
+              doc_number: '20110160691'
+              date: '20110331'
+              kind: national
+              sequence: '2'
+            change_gazette_num: 2014/23
+          parties:
+            applicants:
+              applicant:
+                addressbook:
+                  name: Akzo Nobel Chemicals International B.V.
+                  address:
+                    address_1: Stationsstraat 77
+                    address_2: 3811 MH  Amersfoort
+                    country: NL
+                nationality:
+                  country: 
+                residence:
+                  country: 
+                app_type: applicant
+                designation: all
+                sequence: '1'
+              change_gazette_num: 2014/24
+            inventors:
+              inventor:
+              - addressbook:
+                  name: Thiewes, Sarah
+                  address:
+                    address_1: 8 DeMarco Ct.
+                    address_2: Hammonton, NJ New Jersey 08037
+                    country: US
+                sequence: '01'
+              - addressbook:
+                  name: Tirol, Gloria Cansanay
+                  address:
+                    address_1: 65 Stanford Drive
+                    address_2: Kendall Park, NJ New Jersey 08824
+                    country: US
+                sequence: '02'
+              change_gazette_num: 2014/25
+            agents:
+              agent:
+                addressbook:
+                  name: Akzo Nobel IP Department
+                  address:
+                    address_1: Velperweg 76
+                    address_2: 6824 BM Arnhem
+                    country: NL
+                rep_type: agent
+                sequence: '1'
+              change_gazette_num: 2014/26
+          designation_of_states:
+            designation_pct:
+              regional:
+                region:
+                  country: EP
+                country:
+                - AL
+                - AT
+                - BE
+                - BG
+                - CH
+                - CY
+                - CZ
+                - DE
+                - DK
+                - EE
+                - ES
+                - FI
+                - FR
+                - GB
+                - GR
+                - HR
+                - HU
+                - IE
+                - IS
+                - IT
+                - LI
+                - LT
+                - LU
+                - LV
+                - MC
+                - MK
+                - MT
+                - NL
+                - 'NO'
+                - PL
+                - PT
+                - RO
+                - RS
+                - SE
+                - SI
+                - SK
+                - SM
+                - TR
+            change_gazette_num: 2015/27
+          invention_title:
+          - __content__: Instantpulver für wässrige kosmetische und pharmazeutische
+              Anwendungen
+            lang: de
+            change_gazette_num: 2014/28
+          - __content__: Poudres instantanées pour applications cosmétiques et pharmaceutiques
+              aqueuses
+            lang: fr
+            change_gazette_num: 2014/29
+          - __content__: Instant powders for aqueous cosmetic and pharmaceutical applications
+            lang: en
+            change_gazette_num: 2014/30
+          dates_rights_effective:
+            request_for_examination:
+              date: '20140206'
+              change_gazette_num: quatsch
+          references_cited:
+            citation:
+            - patcit:
+                document_id:
+                  country: US
+                  doc_number: '5571552'
+                url: http://v3.espacenet.com/textdoc?DB=EPODOC&IDX=US5571552&CY=US
+              category: 
+              id: cit_2125439
+              cited_phase: description
+              office: EP
+            - nplcit:
+                text: '- R. L. WHISTLER: ''Starch; Chemistry and Technology'', 1984,
+                  ACADEMIC PRESS, INC. pages 670 - 673'
+              category: 
+              id: cit_2125440
+              cited_phase: description
+              office: EP
+            - nplcit:
+                text: '- O.B. WURZBURG: ''Modified Starches: Properties and Uses'',
+                  1986, CRC PRESS'
+              category: 
+              id: cit_2125441
+              cited_phase: description
+              office: EP
+          related_documents:
+            division:
+              relation:
+                parent_doc:
+                  document_id:
+                  - country: EP
+                    doc_number: '20110797015'
+                    kind: D
+                    document_id_type: application number
+                  - country: EP
+                    doc_number: '2654689'
+                    kind: D
+                    document_id_type: publication number
+                child_doc:
+                  document_id:
+                    country: 
+                    doc_number: 
+          country: EP
+          id: EP14154144P
+          lang: en
+          status: EXAMINATION REQUESTED
+        date_produced: '20140521'
+        dtd_version: '1.0'
+        lang: en
+        produced_by: RO
+        status: EXAMINATION REQUESTED
+      produced_by: RO
+    total_result_count: '1'

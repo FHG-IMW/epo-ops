@@ -1,69 +1,44 @@
 require 'test_helper'
 
 module Epo
-  class RateLimitTest < Minitest::Test
+  class ErrorTest < Minitest::Test
 
-    # #limit_reached
+    # .from_response
 
-    def test_limit_reached_is_true_if_header_x_rejection_reason_is_set
-      limit = Epo::Ops::RateLimit.new({"x-rejection-reason" => "empty"})
-      assert limit.limit_reached?
+    Response = Struct.new(:status, :parsed, :headers)
+
+    def test_return_an_error_that_matches_the_responses_status_code
+      response = Response.new(500, {}, {})
+
+      assert_instance_of Epo::Ops::Error::InternalServerError, Epo::Ops::Error.from_response(response)
     end
 
-    def test_limit_reached_is_false_if_header_x_rejection_reason_is_set
-      limit = Epo::Ops::RateLimit.new({})
-      refute limit.limit_reached?
+    # .parse_error
+
+    def test_returnthe_error_message_if_it_is_given
+      assert_equal "An error", Epo::Ops::Error.send(:parse_error, {"error" => {"message" => "An error"}})
     end
 
-    # #rejection_reason
+    # .initialize
 
-    def test_return_the_right_rejection_reason
-      limit = Epo::Ops::RateLimit.new({"x-rejection-reason" => "RegisteredQuotaPerWeek"})
-      assert_equal :weekly_quota, limit.rejection_reason
-
-      limit = Epo::Ops::RateLimit.new({"x-rejection-reason" => "IndividualQuotaPerHour"})
-      assert_equal :hourly_quota, limit.rejection_reason
+    def test_set_message_status_code_and_rate_limit
+      response = Response.new(401, {"error" => {"message" => "An error"}}, {"rate_limit" => "stub"} )
+      error = Epo::Ops::Error.from_response(response)
+      assert_equal "An error", error.message
+      assert_equal 401, error.code
     end
 
-    # #horly_quota
-
-    def test_return_the_hourly_quota_if_it_is_set
-      limit = Epo::Ops::RateLimit.new({"x-individualquotaperhour-used" => "12345"})
-      assert_equal 12345, limit.hourly_quota
+    def test_rate_limit_exceeded
+      VCR.insert_cassette('epo_rate_limit_exceeded')
+      query = Epo::Ops::SearchQueryBuilder.new.publication_date(2014, 01, 15).build(1,2)
+      begin
+        Epo::Ops::Register.search(query)
+      rescue Epo::Ops::Error::TooManyRequests => error
+        rate_limit = error.rate_limit
+        assert_equal :hourly_quota , rate_limit.rejection_reason
+      end
+      VCR.eject_cassette
     end
 
-    def test_return_nil_if_the_hourly_quota_isnt_set
-      limit = Epo::Ops::RateLimit.new({})
-      assert_equal nil, limit.hourly_quota
-    end
-
-    # #weekly_quota
-
-    def test_return_the_weekly_quota_if_it_is_set
-      limit = Epo::Ops::RateLimit.new({"x-registeredquotaperweek-used" => "12345"})
-      assert_equal 12345, limit.weekly_quota
-    end
-
-    def test_return_nil_if_the_weekly_quota_isnt_set
-      limit = Epo::Ops::RateLimit.new({})
-      assert_equal nil, limit.weekly_quota
-    end
-
-    # #reset_at
-
-    def test_return_the_next_monday_if_rejection_reason_is_the_weekly_quota
-      limit = Epo::Ops::RateLimit.new({"x-rejection-reason" => "RegisteredQuotaPerWeek"})
-      assert_equal limit.reset_at, Time.now.to_i  + 604_800
-    end
-
-    def test_return_10_minutes_from_now_if_ejection_reason_is_the_hourly_quota
-      limit = Epo::Ops::RateLimit.new({"x-rejection-reason" => "IndividualQuotaPerHour"})
-      assert_equal limit.reset_at, Time.now.to_i + 600
-    end
-
-    def test_return_1_minute_from_now_if_the_reason_is_unknown
-      limit = Epo::Ops::RateLimit.new({"x-rejection-reason" => "Foobar"})
-      assert_equal limit.reset_at, Time.now.to_i + 60
-    end
   end
 end

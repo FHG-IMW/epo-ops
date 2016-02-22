@@ -7,9 +7,9 @@ module Epo
 
       attr_reader :attr
 
-      def initialize(rate_limit)
-        raise "Rate Limit data should be a Hash but is #{rate_limit.inspect} (#{rate_limit.class.name})" unless rate_limit.is_a?(Hash)
-        @attr = rate_limit
+      def initialize(http_header)
+        raise "Rate Limit data should be a Hash but is #{http_header.inspect} (#{http_header.class.name})" unless http_header.is_a?(Hash)
+        @attr = http_header
       end
 
       def limit_reached?

@@ -1,0 +1,113 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20140115
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Tue, 18 Nov 2014 12:40:44 GMT
+      Content-Type:
+      - text/xml
+      X-Epo-Client-Ip:
+      - 153.96.27.3
+      X-Epo-Forwarded:
+      - "[10.133.2.249, 153.96.27.3]"
+      X-Rejection-Reason:
+      - IndividualQuotaPerHour
+      Content-Length:
+      - '207'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<error><code>403</code><message>This request has been rejected due
+        to the violation of Fair Use policy</message><moreInfo>http://www.epo.org/searching/free/espacenet/fair-use.html</moreInfo>\n\t\t\t\t</error>\n\t\t\t"
+    http_version: 
+  recorded_at: Tue, 18 Nov 2014 12:40:44 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-100&q=pd=20140115%20and%20pr=EP%20and%20pn=EP
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Tue, 18 Nov 2014 12:40:44 GMT
+      Content-Type:
+      - text/xml
+      X-Epo-Client-Ip:
+      - 153.96.27.3
+      X-Epo-Forwarded:
+      - "[10.133.2.249, 153.96.27.3]"
+      X-Rejection-Reason:
+      - AnonymousQuotaPerMinute
+      Content-Length:
+      - '207'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<error><code>403</code><message>This request has been rejected due
+        to the violation of Fair Use policy</message><moreInfo>http://www.epo.org/searching/free/espacenet/fair-use.html</moreInfo>\n\t\t\t\t</error>\n\t\t\t"
+    http_version:
+  recorded_at: Tue, 18 Nov 2014 12:40:44 GMT
+- request:
+    method: post
+    uri: https://Foo:Bar@ops.epo.org/3.1/auth/accesstoken
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '519'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "issued_at" : "1455114821621",
+          "application_name" : "application-name",
+          "scope" : "core",
+          "status" : "approved",
+          "api_product_list" : "[ops31-prod]",
+          "expires_in" : "1199",
+          "developer.email" : "my@email.com",
+          "token_type" : "BearerToken",
+          "client_id" : "Foo",
+          "access_token" : "THIS_IS_THE_TOKEN",
+          "organization_name" : "epo",
+          "refresh_token_expires_in" : "0",
+          "refresh_count" : "0"
+        }
+    http_version:
+  recorded_at: Tue, 13 Jan 2015 12:23:42 GMT
+recorded_with: VCR 2.9.3
