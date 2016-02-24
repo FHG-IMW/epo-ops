@@ -28,6 +28,8 @@ module Epo
 
     def test_biblio_returns_parsed_document
       doc = Epo::Ops::Register.biblio('EP99203729')
+      assert_instance_of Epo::Ops::BibliographicDocument, doc
+      assert_instance_of Hash, doc.raw
       assert doc.title
       refute_empty doc.classifications
       refute_empty doc.agents

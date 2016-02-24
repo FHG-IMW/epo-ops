@@ -22,7 +22,7 @@ module Epo
       end
 
       def url
-        @url ||= "https://ops.epo.org/rest-services/register/application/epodoc/#{application_nr}"
+        @url ||= "https://ops.epo.org/3.1/rest-services/register/application/epodoc/#{application_nr}"
       end
 
       # @return the english title of the patent
