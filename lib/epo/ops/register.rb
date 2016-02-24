@@ -28,21 +28,6 @@ module Epo
       # @see Limits
       class Bulk
 
-        # TODO test
-        # All patent references on a given date
-        #
-        # @note This request may take some time as many requests (~40-50)
-        #   are being made.
-        #   Also be aware that no handling for rate limits is built in.
-        #
-        # @return [Array] of {SearchEntry}
-        def self.all_patent_references(date)
-          queries = all_queries(date)
-          queries.flat_map do |query|
-            Register.search(query)
-          end
-        end
-
         # Build the queries to search for all patents on a given date.
         #
         # The offset of EPOs register search may at max be 2000, if more patents
