@@ -48,7 +48,6 @@ module Epo
           address4 == other.address4 &&
           address5 == other.address5
       end
-
     end
   end
 end

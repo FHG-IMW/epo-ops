@@ -8,7 +8,6 @@ module Epo
     # Not all information available is parsed (e.g. inventors), if you need
     # more fields, add them here.
     class BibliographicDocument
-
       # @return [Hash] a nested Hash, which is a parsed XML response of the
       #   `/biblio` endpoint of the EPO APIs.
       # @see Client
@@ -109,7 +108,7 @@ module Epo
         priority_claims = Util.find_in_data(raw,
                                             path_to_bibliographic_data +
                                             %w(priority_claims))
-                          .first
+                              .first
         if priority_claims.nil?
           priority_date = nil
         else
@@ -142,14 +141,14 @@ module Epo
       def parse_status(raw)
         Util.find_in_data(raw,
                           path_to_bibliographic_data + ['status'])
-          .first
+            .first
       end
 
       def parse_classification(raw)
         Util.find_in_data(raw,
                           path_to_bibliographic_data +
                           %w(classifications_ipcr classification_ipcr text))
-          .first.split(',').map(&:strip)
+            .first.split(',').map(&:strip)
       end
 
       def parse_agents(raw)

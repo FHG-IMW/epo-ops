@@ -2,7 +2,6 @@ require 'test_helper'
 
 module Epo
   class ErrorTest < Minitest::Test
-
     # .from_response
 
     Response = Struct.new(:status, :parsed, :headers)
@@ -16,29 +15,28 @@ module Epo
     # .parse_error
 
     def test_returnthe_error_message_if_it_is_given
-      assert_equal "An error", Epo::Ops::Error.send(:parse_error, {"error" => {"message" => "An error"}})
+      assert_equal 'An error', Epo::Ops::Error.send(:parse_error, 'error' => { 'message' => 'An error' })
     end
 
     # .initialize
 
     def test_set_message_status_code_and_rate_limit
-      response = Response.new(401, {"error" => {"message" => "An error"}}, {"rate_limit" => "stub"} )
+      response = Response.new(401, { 'error' => { 'message' => 'An error' } }, 'rate_limit' => 'stub')
       error = Epo::Ops::Error.from_response(response)
-      assert_equal "An error", error.message
+      assert_equal 'An error', error.message
       assert_equal 401, error.code
     end
 
     def test_rate_limit_exceeded
       VCR.insert_cassette('epo_rate_limit_exceeded')
-      query = Epo::Ops::SearchQueryBuilder.new.publication_date(2014, 01, 15).build(1,2)
+      query = Epo::Ops::SearchQueryBuilder.new.publication_date(2014, 01, 15).build(1, 2)
       begin
         Epo::Ops::Register.search(query)
       rescue Epo::Ops::Error::TooManyRequests => error
         rate_limit = error.rate_limit
-        assert_equal :hourly_quota , rate_limit.rejection_reason
+        assert_equal :hourly_quota, rate_limit.rejection_reason
       end
       VCR.eject_cassette
     end
-
   end
 end

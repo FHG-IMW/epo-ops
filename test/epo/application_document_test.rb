@@ -4,7 +4,6 @@ require 'yaml'
 module Epo
   module Ops
     class BibliographicDocumentTest < Minitest::Test
-
       def setup
         single_classification_raw = YAML.load File.read('test/test_data/epo_singleclassification_text.yaml')
         multi_classification_raw = YAML.load File.read('test/test_data/epo_multiclassification_text.yaml')
@@ -58,9 +57,9 @@ module Epo
         assert_equal 'Akzo Nobel Chemicals International B.V.', applicant.name
         assert_equal 'Stationsstraat 77', applicant.address1
         assert_equal '3811 MH  Amersfoort', applicant.address2
-        assert_equal "", applicant.address3
-        assert_equal "", applicant.address4
-        assert_equal "", applicant.address5
+        assert_equal '', applicant.address3
+        assert_equal '', applicant.address4
+        assert_equal '', applicant.address5
       end
 
       def test_all_5_address_fields_should_be_readable

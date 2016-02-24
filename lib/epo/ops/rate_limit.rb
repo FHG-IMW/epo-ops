@@ -13,7 +13,7 @@ module Epo
       end
 
       def limit_reached?
-        @attr.has_key?('x-rejection-reason')
+        @attr.key?('x-rejection-reason')
       end
 
       def rejection_reason

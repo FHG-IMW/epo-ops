@@ -34,7 +34,7 @@ module Epo
       # parameters are validated with {#validate_range}.
       # This does not change the query, several calls will allow you to
       # create the same queries for different ranges.
-      def build(range_start= 1, range_end= nil)
+      def build(range_start = 1, range_end = nil)
         range_end ||= range_start + Limits.MAX_QUERY_INTERVAL - 1
         validated_range = validate_range range_start, range_end
         @query + "&Range=#{validated_range[0]}-#{validated_range[1]}"

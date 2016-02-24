@@ -6,8 +6,6 @@ require 'epo/ops/logger'
 
 module Epo
   module Ops
-
-
     # Access to the {http://ops.epo.org/3.1/rest-services/register register}
     # endpoint of the EPO OPS API.
     #
@@ -20,14 +18,12 @@ module Epo
     # @see Limits
     # @see SearchQueryBuilder
     class Register
-
       # Helper class that assists in building the queries necessary to search
       # for more patents than possible with one query respecting the given
       # limits.
       #
       # @see Limits
       class Bulk
-
         # Build the queries to search for all patents on a given date.
         #
         # The offset of EPOs register search may at max be 2000, if more patents
@@ -46,14 +42,14 @@ module Epo
           if overall_count > Limits.MAX_QUERY_RANGE
             patent_count_by_ipc_classes(date).flat_map do |ipc_class, count|
               builder = SearchQueryBuilder.new
-                        .publication_date(date.year, date.month, date.day)
-                        .and
-                        .ipc_class(ipc_class)
+                                          .publication_date(date.year, date.month, date.day)
+                                          .and
+                                          .ipc_class(ipc_class)
               split_by_size_limits(builder, count)
             end
           else
             builder = SearchQueryBuilder.new
-                      .publication_date(date.year, date.month, date.day)
+                                        .publication_date(date.year, date.month, date.day)
             split_by_size_limits(builder, overall_count)
           end
         end
@@ -89,7 +85,7 @@ module Epo
         # that date
         #
         # @return [Integer] number of patents on that date.
-        def self.published_patents_count(date, ipc_class= nil)
+        def self.published_patents_count(date, ipc_class = nil)
           query = SearchQueryBuilder.new
           query.publication_date(date.year, date.month, date.day)
           query.and.ipc_class(ipc_class) if ipc_class
@@ -104,7 +100,7 @@ module Epo
       # @param raw if `true` the result will be the raw response as a nested hash.
       # if false(default) the result will be parsed further, returning a list of [SearchEntry]
       # @return [Array] containing {SearchEntry}
-      def self.search(query, raw= false)
+      def self.search(query, raw = false)
         hash = Client.request(:get, register_api_string + query).parsed
         return parse_search_results(hash) unless raw
         hash
@@ -117,7 +113,7 @@ module Epo
       # @param raw flag if the result should be returned as a raw Hash or
       #   parsed as {BibliographicDocument}
       # @return [BibliographicDocument, Hash]
-      def self.biblio(reference_id, type = 'application', format = 'epodoc', raw=false)
+      def self.biblio(reference_id, type = 'application', format = 'epodoc', raw = false)
         request = "#{register_api_string}#{type}/#{format}/#{reference_id}/biblio"
         result = Client.request(:get, request).parsed
         raw ? result : BibliographicDocument.new(result)

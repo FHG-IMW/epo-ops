@@ -1,6 +1,5 @@
 module Epo
   module Ops
-
     # The register search is limited by some parameters. With one
     # query one may only request as many as
     # {Epo::Ops::Limits.MAX_QUERY_INTERVAL} references at once.
@@ -10,7 +9,6 @@ module Epo
     # references you must split by other parameters.
     # @see Register
     class Limits
-
       # @return [Integer] The range in which you can search is limited, say you
       #   cannot request all patents of a given class at once, you probably must
       #   split your requests by additional conditions.
