@@ -5,16 +5,21 @@ require 'epo/ops/search_query_builder'
 
 module Epo
   module Ops
-    # Usage
-    # Epo:Ops.configure do |conf|
-    # conf.consumer_key = "foo"
-    # conf.consumer_secret = "bar"
-    # conf.token_store = ... (optional, uses [TokenStore] by default)
-    # end
+    # Configure your OAuth credentials to use with this gem.
+    # @example
+    #   Epo:Ops.configure do |conf|
+    #     conf.consumer_key = "foo"
+    #     conf.consumer_secret = "bar"
+    #   end
+    # Optional parameter:
+    # conf.token_store (defaults to {Epo::Ops::TokenStore})
+    # @yieldparam [Configuration] configuration that is yielded.
     def self.configure
       yield(config)
     end
 
+    # The {Configuration} used. You may want to call {#configure} first.
+    # @return [Configuration] the configuration used.
     def self.config
       @configuration ||= Configuration.new
     end

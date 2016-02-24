@@ -6,6 +6,10 @@ module Epo
     # Not all information available is parsed (e.g. inventors), if you need
     # more fields, add them here.
     class BibliographicDocument
+
+      # @return [Hash] a nested Hash, which is a parsed XML response of the
+      #   `/biblio` endpoint of the EPO APIs.
+      # @see Client
       attr_reader :raw
 
       def initialize(raw)
@@ -13,10 +17,16 @@ module Epo
       end
 
       def application_nr
-        @application_nr || parse_application_nr
+        @application_nr ||= parse_application_nr
+      end
+
+      def url
+        @url ||= "https://ops.epo.org/rest-services/register/application/epodoc/#{application_nr}"
       end
 
       # @return the english title of the patent
+      # @note Titles are usually available at least in english, french and german.
+      #   Other languages are also possible.
       def title
         @title ||= parse_title
       end
@@ -27,10 +37,22 @@ module Epo
         @classifications ||= parse_classification raw
       end
 
+      # @return Array of Structs with the following fields: name,
+      #   address(1-5), country_code, last_occurred_on, cdsid.
+      #
+      # address1 and address2 should always contain values, the rest
+      # may be empty strings.  Agents and applicants are subject to
+      # change at EPO, often their names or addresses are updated,
+      # sometimes other people/companies appear or disappear. In the
+      # raw data most entries have an attribute `change_gazette_num`,
+      # which is a commercial date (year + week) describing when this
+      # entry was changed. Unfortunately new entries often do not have
+      # this attribute though. `last_occurred_on` should parse the date.      #
       def agents
         @agents ||= parse_agents raw
       end
 
+      # (see #agents)
       def applicants
         @applicants ||= parse_applicants raw
       end
@@ -41,49 +63,74 @@ module Epo
         @status ||= parse_status raw
       end
 
-      # @return the latest date found in the document. The fields
-      #   `change_gazette_num` are considered for this and parsed.
+      # Many fields of the XML the EPO provides have a field
+      # `change_gazette_num`.  It is a commercial date (year + week)
+      # that describes in which week the element has been
+      # changed. This method parses them and returns the most recent
+      # date found.
+      # @return [Date] the latest date found in the document.
       def latest_update
         @latest ||= parse_latest_update raw
       end
 
-      # @return a hash which descibes the files priority with the fields:
+      # The priority date describes the first document that was filed at any
+      # patent office in the world regarding this patent.
+      # @return [Hash] a hash which descibes the filed priority with the fields:
       #   `country` `doc_number`, `date`, `kind`, and `sequence`
       def priority_date
         @priority_date ||= parse_priority_date raw
       end
 
-      # @return List of hashes containing information about publications made,
-      #   entries exist for multiple types of publications, e.g. A1, B1.
-      def publication_dates
-        @publication_dates ||= parse_publication_dates raw
+      # @return [Array] List of hashes containing information about publications
+      #   made, entries exist for multiple types of publications, e.g. A1, B1.
+      def publication_references
+        @publication_dates ||= parse_publication_references raw
       end
 
       def effective_date
         @effective_date ||= parse_effective_date raw
       end
 
-      # string, string, string, string ,string, string(length:2), Date, string
-      # I do not know yet what is stored in `cdsid`, but when it can be used to
-      # identify agents or applicants it may get useful.
-      Address = Struct.new(:name,
-                           :address1,
+      # Used to represent persons or companies (or both) in patents. Used for
+      # both, agents and applicants. Most of the time, when `name` is a person
+      # name, `address1` is a company name. Be aware that the addresses are in
+      # their respective local format.
+      # @attr [String] name the name of an entity (one or more persons or
+      #   companies)
+      # @attr [String] address1 first address line. May also be a company name
+      # @attr [String] address2 second address line
+      # @attr [String] address3 third address line, may be empty
+      # @attr [String] address4 fourth address line, may be empty
+      # @attr [String] address5 fifth address line, may be empty
+      # @attr [String] country_code two letter country code of the address
+      # @attr [Date] last_occurred_on TODO
+      # @attr [String] cdsid some kind of id the EPO provides, not sure yet if
+      #   usable as reference.
+      class Address
+        attr_reader :name, :address1,
                            :address2,
                            :address3,
                            :address4,
                            :address5,
                            :country_code,
                            :last_occurred_on,
-                           :cdsid) do
-        def initialize(*)
-          super
-          self.address1 ||= ''
-          self.address2 ||= ''
-          self.address3 ||= ''
-          self.address4 ||= ''
-          self.address5 ||= ''
+                           :cdsid
+        def initialize(name, address1, address2, address3, address4,
+                       address5, country_code, last_occurred_on,
+                       cdsid)
+          @address1 = address1
+          @address2 = address2
+          @address3 = address3 || ''
+          @address4 = address4 || ''
+          @address5 = address5 || ''
+          @name = name
+          @country_code = country_code || ''
+          @last_occurred_on = last_occurred_on || ''
+          @cdsid = cdsid || ''
         end
 
+        # Compare addresses by the name and address fields.
+        # @return [Boolean]
         def equal_name_and_address?(other)
           name == other.name &&
             address1 == other.address1 &&
@@ -93,16 +140,6 @@ module Epo
             address5 == other.address5
         end
 
-        def name_and_address_hash
-          {
-            name: name,
-            address1: address1,
-            address2: address2,
-            address3: address3,
-            address4: address4,
-            address5: address5
-          }
-        end
       end
 
       private
@@ -136,7 +173,7 @@ module Epo
         priority_date
       end
 
-      def parse_publication_dates(raw)
+      def parse_publication_references(raw)
         Util.parse_hash_flat(
           Util.find_in_data(raw,
                             path_to_bibliographic_data +

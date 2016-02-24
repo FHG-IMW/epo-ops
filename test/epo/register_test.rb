@@ -35,7 +35,7 @@ module Epo
       assert doc.status
       assert doc.latest_update
       assert_instance_of Hash, doc.priority_date
-      refute_empty doc.publication_dates
+      refute_empty doc.publication_references
       assert doc.effective_date
       (doc.agents + doc.applicants).each do |addr|
         assert addr.name
