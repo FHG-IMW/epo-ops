@@ -18,7 +18,7 @@ module Epo
       yield(config)
     end
 
-    # The {Configuration} used. You may want to call {#configure} first.
+    # The {Configuration} used. You may want to call {Epo::Ops#configure} first.
     # @return [Configuration] the configuration used.
     def self.config
       @configuration ||= Configuration.new

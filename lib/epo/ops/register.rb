@@ -6,34 +6,74 @@ require 'epo/ops/logger'
 
 module Epo
   module Ops
+
+
+    # Access to the {http://ops.epo.org/3.1/rest-services/register register}
+    # endpoint of the EPO OPS API.
+    #
+    # By now you can search and retrieve patents by using the type `application`
+    # in the `epodoc` format.
+    #
+    # Search queries are limited by size, not following these limits
+    # will result in errors.
+    #
+    # @see Limits
+    # @see SearchQueryBuilder
     class Register
-      # class to bulk retrieve information from the register
+
+      # Helper class that assists in building the queries necessary to search
+      # for more patents than possible with one query respecting the given
+      # limits.
+      #
+      # @see Limits
       class Bulk
+
+        # TODO test
+        # All patent references on a given date
+        #
+        # @note This request may take some time as many requests (~40-50)
+        #   are being made.
+        #   Also be aware that no handling for rate limits is built in.
+        #
+        # @return [Array] of {SearchEntry}
+        def self.all_patent_references(date)
+          queries = all_queries(date)
+          queries.flat_map do |query|
+            Register.search(query)
+          end
+        end
+
+        # Build the queries to search for all patents on a given date.
+        #
         # The offset of EPOs register search may at max be 2000, if more patents
         # are published on one day the queries must be split; here across the
         # first level of ipc classification.
         # At time of this writing they are mostly below 1000, there should be
         # plenty of space for now.
-        # In case the limits change, they can be found in [Epo::Ops::Limits]
+        #
+        # In case the limits change, they can be found in {Epo::Ops::Limits}
         # Should there be more than 2000 patents in one class, a message will
         # be logged, please file an Issue if that happens.
+        #
+        # @return [Array] containing all queries to put into {Register.search}.
         def self.all_queries(date)
           overall_count = published_patents_count(date)
           if overall_count > Limits.MAX_QUERY_RANGE
             patent_count_by_ipc_classes(date).flat_map do |ipc_class, count|
               builder = SearchQueryBuilder.new
-                                                    .publication_date(date.year, date.month, date.day)
-                                                    .and
-                                                    .ipc_class(ipc_class)
+                        .publication_date(date.year, date.month, date.day)
+                        .and
+                        .ipc_class(ipc_class)
               split_by_size_limits(builder, count)
             end
           else
             builder = SearchQueryBuilder.new
-                                                  .publication_date(date.year, date.month, date.day)
+                      .publication_date(date.year, date.month, date.day)
             split_by_size_limits(builder, overall_count)
           end
         end
 
+        # @return [Hash] For all top level IPC classes (A-H) => count
         def self.patent_count_by_ipc_classes(date)
           ipc_classes = %w(A B C D E F G H)
           ipc_classes.inject({}) do |mem, ipcc|
@@ -45,6 +85,14 @@ module Epo
           end
         end
 
+        # Splits the queries build by `query_builder` by the allowed intervals.
+        #
+        # @param query_builder [SearchQueryBuilder] with all settings made, but
+        #   not built yet.
+        # @param patent_count [Integer] number of overall results expected.
+        #   See {.published_patents_count}
+        #
+        # @return [Array] of Strings, each a query to put into {Register.search}
         def self.split_by_size_limits(query_builder, patent_count)
           max_interval = Limits.MAX_QUERY_INTERVAL
           (1..patent_count).step(max_interval).map do |start|
@@ -52,7 +100,10 @@ module Epo
           end
         end
 
-        # make a minimum request to find out how many patents are published on that date
+        # makes a minimum request to find out how many patents are published on
+        # that date
+        #
+        # @return [Integer] number of patents on that date.
         def self.published_patents_count(date, ipc_class= nil)
           query = SearchQueryBuilder.new
           query.publication_date(date.year, date.month, date.day)
@@ -67,7 +118,7 @@ module Epo
       # @param query A query built with {Epo::Ops::SearchQueryBuilder}
       # @param raw if `true` the result will be the raw response as a nested hash.
       # if false(default) the result will be parsed further, returning a list of [SearchEntry]
-      # @return parsed response
+      # @return [Array] containing {SearchEntry}
       def self.search(query, raw= false)
         hash = Client.request(:get, register_api_string + query).parsed
         return parse_search_results(hash) unless raw
@@ -75,12 +126,16 @@ module Epo
       end
 
       # @param format epodoc is a format defined by the EPO for a
-      # document id. see their documentation.
+      #   document id. see their documentation.
       # @param type may be `application` or `publication` make sure that the
-      # `reference_id` is matching
-      def self.biblio(reference_id, type = 'application', format = 'epodoc')
+      #   `reference_id` is matching
+      # @param raw flag if the result should be returned as a raw Hash or
+      #   parsed as {BibliographicDocument}
+      # @return [BibliographicDocument, Hash]
+      def self.biblio(reference_id, type = 'application', format = 'epodoc', raw=false)
         request = "#{register_api_string}#{type}/#{format}/#{reference_id}/biblio"
-        BibliographicDocument.new(Client.request(:get, request).parsed)
+        result = Client.request(:get, request).parsed
+        raw ? result : BibliographicDocument.new(result)
       end
 
       Reference = Struct.new(:country, :doc_number, :date) do
@@ -90,6 +145,8 @@ module Epo
       end
 
       SearchEntry = Struct.new(:publication_reference, :application_reference, :ipc_classes)
+
+      private
 
       def self.parse_search_results(result)
         path = %w(world_patent_data register_search register_documents register_document bibliographic_data)

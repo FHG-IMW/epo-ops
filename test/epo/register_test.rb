@@ -91,5 +91,9 @@ module Epo
 
     end
 
+    def test_bulk_retrieve_all_patents
+      # maybe mock the result to reuse the existing queries for minimum results.
+    end
+
   end
 end
