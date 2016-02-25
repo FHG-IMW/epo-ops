@@ -24,6 +24,25 @@ module Epo
       #
       # @see Limits
       class Bulk
+        # Helper method returning all unique register references on a given
+        # date. This is the same as executing all queries from {.all_queries}
+        # and making the results unique.
+        #
+        # @note Patents may have more than one IPC class, they would appear
+        #   more than once, this method filters these by `doc_number`
+        def self.all_register_references(date)
+          begin
+            queries = Bulk.all_queries(date)
+            search_entries = queries.flat_map do |query|
+              Register.search(query)
+            end
+          rescue ::Epo::Ops::Error::NotFound
+            return []
+          end
+          search_entries.map(&:application_reference)
+            .uniq(&:doc_number)
+        end
+
         # Build the queries to search for all patents on a given date.
         #
         # The offset of EPOs register search may at max be 2000, if more patents
@@ -37,19 +56,23 @@ module Epo
         # be logged, please file an Issue if that happens.
         #
         # @return [Array] containing all queries to put into {Register.search}.
+        # @note The queries are split by IPC-classes if necessary; Patents may
+        #   have more than one, you might get multiple references to the same
+        #   patent.
+        # @see .all_register_references
         def self.all_queries(date)
           overall_count = published_patents_count(date)
           if overall_count > Limits.MAX_QUERY_RANGE
             patent_count_by_ipc_classes(date).flat_map do |ipc_class, count|
               builder = SearchQueryBuilder.new
-                                          .publication_date(date.year, date.month, date.day)
-                                          .and
-                                          .ipc_class(ipc_class)
+                        .publication_date(date.year, date.month, date.day)
+                        .and
+                        .ipc_class(ipc_class)
               split_by_size_limits(builder, count)
             end
           else
             builder = SearchQueryBuilder.new
-                                        .publication_date(date.year, date.month, date.day)
+                      .publication_date(date.year, date.month, date.day)
             split_by_size_limits(builder, overall_count)
           end
         end

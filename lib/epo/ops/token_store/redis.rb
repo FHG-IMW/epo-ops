@@ -6,7 +6,7 @@ module Epo
     class TokenStore
       class Redis < TokenStore
         def initialize(redis_host)
-          raise "Please install gems 'redis' and 'connection_pool' to use this feature" unless defined?(::Redis) && defined?(ConnectionPool)
+          fail "Please install gems 'redis' and 'connection_pool' to use this feature" unless defined?(::Redis) && defined?(ConnectionPool)
 
           @redis = ConnectionPool.new(size: 5, timeout: 5) { ::Redis.new(host: redis_host) }
         end

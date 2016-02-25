@@ -8,11 +8,11 @@ require 'vcr'
 # configure OAuth credentials
 # make sure not to upload your real credentials, and token. Check your newly created
 # VCR records.
-Epo::Ops.configure do |conf|
-  conf.consumer_key = 'Foo'
-  conf.consumer_secret = 'Bar'
-end
 
+Epo::Ops.configure do |config|
+  config.consumer_key = 'Foo'
+  config.consumer_secret =  'Bar'
+end
 # VCR
 VCR.configure do |c|
   c.cassette_library_dir = 'test/vcr_cassettes'

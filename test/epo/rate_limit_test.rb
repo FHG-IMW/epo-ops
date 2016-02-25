@@ -17,10 +17,10 @@ module Epo
     # #rejection_reason
 
     def test_return_the_right_rejection_reason
-      limit = Epo::Ops::RateLimit.new({ 'x-rejection-reason' => 'RegisteredQuotaPerWeek' })
+      limit = Epo::Ops::RateLimit.new('x-rejection-reason' => 'RegisteredQuotaPerWeek')
       assert_equal :weekly_quota, limit.rejection_reason
 
-      limit = Epo::Ops::RateLimit.new({ 'x-rejection-reason' => 'IndividualQuotaPerHour' })
+      limit = Epo::Ops::RateLimit.new('x-rejection-reason' => 'IndividualQuotaPerHour')
       assert_equal :hourly_quota, limit.rejection_reason
     end
 
@@ -51,12 +51,12 @@ module Epo
     # #reset_at
 
     def test_return_the_next_monday_if_rejection_reason_is_the_weekly_quota
-      limit = Epo::Ops::RateLimit.new({ 'x-rejection-reason' => 'RegisteredQuotaPerWeek' })
+      limit = Epo::Ops::RateLimit.new('x-rejection-reason' => 'RegisteredQuotaPerWeek')
       assert_equal limit.reset_at, Time.now.to_i + 604_800
     end
 
     def test_return_10_minutes_from_now_if_ejection_reason_is_the_hourly_quota
-      limit = Epo::Ops::RateLimit.new({ 'x-rejection-reason' => 'IndividualQuotaPerHour' })
+      limit = Epo::Ops::RateLimit.new('x-rejection-reason' => 'IndividualQuotaPerHour')
       assert_equal limit.reset_at, Time.now.to_i + 600
     end
 
