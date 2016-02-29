@@ -94,6 +94,10 @@ module Epo
         agent = result.first
         assert agent.cdsid
       end
+
+      def test_url
+        assert_equal 'https://ops.epo.org/3.1/rest-services/register/application/epodoc/EP14154144', @single_class.url
+      end
     end
   end
 end

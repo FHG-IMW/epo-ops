@@ -51,6 +51,8 @@ module Epo
       }.freeze
 
       class << self
+        # Parses an error from the given response
+        # @return [Error]
         def from_response(response)
           code = response.status
           message = parse_error(response.parsed)

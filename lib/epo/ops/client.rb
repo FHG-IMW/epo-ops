@@ -4,6 +4,7 @@ require 'epo/ops/error'
 module Epo
   module Ops
     class Client
+      # @return [OAuth2::Response]
       def self.request(verb, url, options = {})
         token = Epo::Ops.config.token_store.token
         response = token.request(verb, URI.encode(url), options)

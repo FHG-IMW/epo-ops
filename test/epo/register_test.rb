@@ -42,7 +42,7 @@ module Epo
       (doc.agents + doc.applicants).each do |addr|
         assert addr.name
         assert addr.address1
-        assert addr.last_occurred_on
+        assert addr.occurred_on
       end
     end
 
@@ -90,6 +90,13 @@ module Epo
                     'search?q=pd=20160203 and ic=H&Range=501-600',
                     'search?q=pd=20160203 and ic=H&Range=601-700',
                     'search?q=pd=20160203 and ic=H&Range=701-742'], queries
+    end
+
+    def test_queries_are_split
+      Epo::Ops::Register::Bulk.stub :published_patents_count, 1000 do
+        qrys = Epo::Ops::Register::Bulk.all_queries(Date.new(2015, 02, 02))
+        assert_equal 10, qrys.length
+      end
     end
   end
 end

@@ -62,7 +62,7 @@ module Epo
         # @see .all_register_references
         def self.all_queries(date)
           overall_count = published_patents_count(date)
-          if overall_count > Limits.MAX_QUERY_RANGE
+          if overall_count > Limits::MAX_QUERY_RANGE
             patent_count_by_ipc_classes(date).flat_map do |ipc_class, count|
               builder = SearchQueryBuilder.new
                         .publication_date(date.year, date.month, date.day)
@@ -82,8 +82,8 @@ module Epo
           ipc_classes = %w(A B C D E F G H)
           ipc_classes.inject({}) do |mem, ipcc|
             mem[ipcc] = published_patents_count(date, ipcc)
-            if mem[ipcc] > Limits.MAX_QUERY_RANGE
-              Logger.log("IPC class #{ipcc} has more than #{Epo::Ops::Limits.MAX_QUERY_RANGE} on #{date}. They can not all be retrieved. Please file this as an issue!")
+            if mem[ipcc] > Limits::MAX_QUERY_RANGE
+              Logger.log("IPC class #{ipcc} has more than #{Epo::Ops::Limits::MAX_QUERY_RANGE} on #{date}. They can not all be retrieved. Please file this as an issue!")
             end
             mem
           end
@@ -98,7 +98,7 @@ module Epo
         #
         # @return [Array] of Strings, each a query to put into {Register.search}
         def self.split_by_size_limits(query_builder, patent_count)
-          max_interval = Limits.MAX_QUERY_INTERVAL
+          max_interval = Limits::MAX_QUERY_INTERVAL
           (1..patent_count).step(max_interval).map do |start|
             query_builder.build(start, [start + max_interval - 1, patent_count].min)
           end

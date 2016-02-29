@@ -17,23 +17,28 @@ module Epo
         @raw = raw
       end
 
+      # A number by which a patent is uniquely identifiable and querieable.
+      # The first two letters are the country code of the processing patent
+      # office, for european patents this is EP.
+      # @return [String] application number.
       def application_nr
         @application_nr ||= parse_application_nr
       end
 
+      # @return [String] The URL at which you can query the original document.
       def url
         @url ||= "https://ops.epo.org/3.1/rest-services/register/application/epodoc/#{application_nr}"
       end
 
-      # @return the english title of the patent
-      # @note Titles are usually available at least in english, french and german.
+      # @return [String] the english title of the patent @note Titles are
+      #   usually available at least in english, french and german.
       #   Other languages are also possible.
       def title
         @title ||= parse_title
       end
 
-      # @return a list of the IPC-Classifications, as strings. Format is set by
-      #   EPO, should be similar to: E06B7/23
+      # @return [Array] a list of the IPC-Classifications, as strings.
+      #   Format is set by EPO, should be similar to: E06B7/23
       def classifications
         @classifications ||= parse_classification raw
       end
@@ -42,7 +47,7 @@ module Epo
       # their names or addresses are updated, sometimes other
       # people/companies appear or disappear.
       #
-      # @return Array of {Address}
+      # @return [Array] Array of {Address}
       def agents
         @agents ||= parse_agents raw
       end
@@ -52,7 +57,7 @@ module Epo
         @applicants ||= parse_applicants raw
       end
 
-      # @return the string representation of the current patent status as
+      # @return [String] the string representation of the current patent status as
       #   described by the EPO
       def status
         @status ||= parse_status raw
