@@ -4,7 +4,7 @@ require 'epo/ops/register'
 module Epo
   class RegisterTest < Minitest::Test
     def setup
-      VCR.insert_cassette('epo_register', allow_playback_repeats: true, record: :new_episodes)
+      VCR.insert_cassette('epo_register', allow_playback_repeats: true)
     end
 
     def teardown
@@ -12,13 +12,18 @@ module Epo
     end
 
     def test_search_works
-      query = Epo::Ops::SearchQueryBuilder.new.publication_date(2016, 2, 3).build
-      response = Epo::Ops::Register.search(query)
+      query = Epo::Ops::SearchQueryBuilder.build(nil, Date.new(2016, 2, 3), 1, 100)
+      response = Epo::Ops::Register.raw_search(query)
       assert response
       assert_instance_of Array, response
       response.each do |res|
         assert_instance_of Epo::Ops::Register::SearchEntry, res
       end
+    end
+
+    def test_published_patent_counts
+      cts = Epo::Ops::Register.published_patents_counts(nil, Date.new(2016, 2, 3))
+      assert_equal 2859, cts
     end
 
     def test_retrieving_of_bibliographic_entries_works
@@ -46,57 +51,25 @@ module Epo
       end
     end
 
-    def test_all_queries_on_returns_proper_list_of_queries
-      queries = Epo::Ops::Register::Bulk.all_queries(Date.new(2016, 02, 03))
-      assert_equal 41, queries.length
-      assert_equal ['search?q=pd=20160203 and ic=A&Range=1-100',
-                    'search?q=pd=20160203 and ic=A&Range=101-200',
-                    'search?q=pd=20160203 and ic=A&Range=201-300',
-                    'search?q=pd=20160203 and ic=A&Range=301-400',
-                    'search?q=pd=20160203 and ic=A&Range=401-500',
-                    'search?q=pd=20160203 and ic=A&Range=501-531',
-                    'search?q=pd=20160203 and ic=B&Range=1-100',
-                    'search?q=pd=20160203 and ic=B&Range=101-200',
-                    'search?q=pd=20160203 and ic=B&Range=201-300',
-                    'search?q=pd=20160203 and ic=B&Range=301-400',
-                    'search?q=pd=20160203 and ic=B&Range=401-500',
-                    'search?q=pd=20160203 and ic=B&Range=501-600',
-                    'search?q=pd=20160203 and ic=B&Range=601-650',
-                    'search?q=pd=20160203 and ic=C&Range=1-100',
-                    'search?q=pd=20160203 and ic=C&Range=101-200',
-                    'search?q=pd=20160203 and ic=C&Range=201-300',
-                    'search?q=pd=20160203 and ic=C&Range=301-400',
-                    'search?q=pd=20160203 and ic=C&Range=401-500',
-                    'search?q=pd=20160203 and ic=C&Range=501-556',
-                    'search?q=pd=20160203 and ic=D&Range=1-50',
-                    'search?q=pd=20160203 and ic=E&Range=1-100',
-                    'search?q=pd=20160203 and ic=E&Range=101-102',
-                    'search?q=pd=20160203 and ic=F&Range=1-100',
-                    'search?q=pd=20160203 and ic=F&Range=101-200',
-                    'search?q=pd=20160203 and ic=F&Range=201-300',
-                    'search?q=pd=20160203 and ic=F&Range=301-389',
-                    'search?q=pd=20160203 and ic=G&Range=1-100',
-                    'search?q=pd=20160203 and ic=G&Range=101-200',
-                    'search?q=pd=20160203 and ic=G&Range=201-300',
-                    'search?q=pd=20160203 and ic=G&Range=301-400',
-                    'search?q=pd=20160203 and ic=G&Range=401-500',
-                    'search?q=pd=20160203 and ic=G&Range=501-600',
-                    'search?q=pd=20160203 and ic=G&Range=601-658',
-                    'search?q=pd=20160203 and ic=H&Range=1-100',
-                    'search?q=pd=20160203 and ic=H&Range=101-200',
-                    'search?q=pd=20160203 and ic=H&Range=201-300',
-                    'search?q=pd=20160203 and ic=H&Range=301-400',
-                    'search?q=pd=20160203 and ic=H&Range=401-500',
-                    'search?q=pd=20160203 and ic=H&Range=501-600',
-                    'search?q=pd=20160203 and ic=H&Range=601-700',
-                    'search?q=pd=20160203 and ic=H&Range=701-742'], queries
+    def test_queries_are_split
+      qrys =Epo::Ops::Register.split_by_size_limits("A", Date.new(2015, 2, 2), 356)
+      assert_equal ['q=pd=20150202 and ic=A&Range=1-100',
+                    'q=pd=20150202 and ic=A&Range=101-200',
+                    'q=pd=20150202 and ic=A&Range=201-300',
+                    'q=pd=20150202 and ic=A&Range=301-356'], qrys
     end
 
-    def test_queries_are_split
-      Epo::Ops::Register::Bulk.stub :published_patents_count, 1000 do
-        qrys = Epo::Ops::Register::Bulk.all_queries(Date.new(2015, 02, 02))
-        assert_equal 10, qrys.length
-      end
+    def test_patent_counts_per_ipc_class
+      counts = Epo::Ops::Register.patent_counts_per_ipc_class(Date.new(2016, 2, 3))
+      actual = { 'A' => 531,
+                    'B' => 650,
+                    'C' => 556,
+                    'D' => 50,
+                    'E' => 102,
+                    'F' => 389,
+                    'G' => 658,
+                    'H' => 742 }
+      assert_equal actual, counts
     end
   end
 end

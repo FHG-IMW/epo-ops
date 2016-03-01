@@ -29,9 +29,9 @@ module Epo
 
     def test_rate_limit_exceeded
       VCR.insert_cassette('epo_rate_limit_exceeded')
-      query = Epo::Ops::SearchQueryBuilder.new.publication_date(2014, 01, 15).build(1, 2)
+      query = Epo::Ops::SearchQueryBuilder.build(nil, Date.new(2014, 01, 15), 1, 2)
       begin
-        Epo::Ops::Register.search(query)
+        Epo::Ops::Register.raw_search(query)
       rescue Epo::Ops::Error::TooManyRequests => error
         rate_limit = error.rate_limit
         assert_equal :hourly_quota, rate_limit.rejection_reason

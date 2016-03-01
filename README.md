@@ -20,6 +20,24 @@ Epo::Ops.configure do |conf|
 end
 ```
 
+## Quickstart
+### Search for patents
+
+```ruby
+builder = Epo::Ops::SearchQueryBuilder.new
+builder.publication_date(2016, 02, 03).and.ipc_class("B")
+query = builder.build()
+Epo::Ops::Register.search(query)
+```
+
+was mann lieber will:
+
+```ruby
+refs = Epo::Ops::Register::Bulk.all_register_references(Date.new(2016, 2, 3))
+
+```
+
+
 ## What works up to now
 * Search the EPO OPS register with `Epo::Ops::Register.search(query)`; use `Epo::Ops::SearchQueryBuilder` to build an appropriate request.
 * Get bibliographic info from the register, both for application and publication references (which you may retrieve with the search).
