@@ -50,7 +50,8 @@ excess the API limits.
 
 ## Custom Retrieval
 
-### #raw_search This allows you to build your own CQL query, as
+### #raw_search
+This allows you to build your own CQL query, as
 described in the official documentation. With the second parameter set
 to true you can get the raw result as a nested Hash, if you want to
 parse it yourself.
