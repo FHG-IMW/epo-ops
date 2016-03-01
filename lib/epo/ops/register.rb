@@ -13,16 +13,20 @@ module Epo
     # in the `epodoc` format.
     #
     # Search queries are limited by size, not following these limits
-    # will result in errors.
+    # will result in errors. You should probably use {.search} which handles the
+    # limits itself.
+    #
+    # For more fine grained control use {.raw_search} and {.raw_biblio}
     #
     # @see Limits
     # @see SearchQueryBuilder
     class Register
-
+      # A helper method which creates queries that take API limits into account.
       # @param patent_count [Integer] number of overall results expected.
       #   See {.published_patents_count}
       #
       # @return [Array] of Strings, each a query to put into {Register.raw_search}
+      # @see Epo::Ops::Limits
       def self.split_by_size_limits(ipc_class, date, patent_count)
         max_interval = Limits::MAX_QUERY_INTERVAL
         (1..patent_count).step(max_interval).map do |start|
@@ -31,6 +35,9 @@ module Epo
         end
       end
 
+      # Makes the requests to find how many patents are in each top
+      # level ipc class on a given date.
+      #
       # @param date [Date] date on which patents should be counted
       # @return [Hash] Hash ipc_class => count (ipc_class A-H)
       def self.patent_counts_per_ipc_class(date)
@@ -43,7 +50,7 @@ module Epo
       # @param date [Date]
       # @param ipc_class [String] up to now should only be between A-H
       # @return [Integer] number of patents with given parameters
-      def self.published_patents_counts(ipc_class=nil, date=nil)
+      def self.published_patents_counts(ipc_class = nil, date = nil)
         query = Epo::Ops::SearchQueryBuilder.build(ipc_class, date, 1, 2)
         minimum_result_set = Register.raw_search(query, true)
         return 0 if minimum_result_set.empty?
@@ -57,7 +64,7 @@ module Epo
       # @return [Array] Array of {SearchEntry}
       def self.search(ipc_class = nil, date = nil)
         counts_per_ipc_class = if ipc_class
-                                 {ipc_class => published_patents_counts(ipc_class, date)}
+                                 { ipc_class => published_patents_counts(ipc_class, date) }
                                else
                                  patent_counts_per_ipc_class(date)
                                end
@@ -69,8 +76,9 @@ module Epo
       end
 
       # @param query A query built with {Epo::Ops::SearchQueryBuilder}
-      # @param raw if `true` the result will be the raw response as a nested hash.
-      # if false(default) the result will be parsed further, returning a list of [SearchEntry]
+      # @param raw if `true` the result will be the raw response as a nested
+      #   hash. if false(default) the result will be parsed further, returning a
+      #   list of [SearchEntry]
       # @return [Array] containing {SearchEntry}
       def self.raw_search(query, raw = false)
         hash = Client.request(:get, register_api_string + 'search?' + query).parsed
@@ -78,14 +86,23 @@ module Epo
         hash
       end
 
-      # @param format epodoc is a format defined by the EPO for a
+      # @param search_entry [SearchEntry] a search entry which should be
+      #   retrieved.
+      # @return [BibliographicDocument] a parsed document.
+      def self.biblio(search_entry)
+        raw_biblio(search_entry.application_reference.epodoc_reference)
+      end
+
+      # @param reference_id [String] identifier for document. Format similar to
+      #   EP1000000
+      # @param format [String] epodoc is a format defined by the EPO for a
       #   document id. see their documentation.
-      # @param type may be `application` or `publication` make sure that the
-      #   `reference_id` is matching
-      # @param raw flag if the result should be returned as a raw Hash or
-      #   parsed as {BibliographicDocument}
+      # @param type [String] may be `application` or `publication` make sure
+      #   that the `reference_id` is matching
+      # @param raw [Boolean] flag if the result should be returned as a raw Hash
+      #   or parsed as {BibliographicDocument}
       # @return [BibliographicDocument, Hash]
-      def self.biblio(reference_id, type = 'application', format = 'epodoc', raw = false)
+      def self.raw_biblio(reference_id, type = 'application', format = 'epodoc', raw = false)
         request = "#{register_api_string}#{type}/#{format}/#{reference_id}/biblio"
         result = Client.request(:get, request).parsed
         raw ? result : BibliographicDocument.new(result)

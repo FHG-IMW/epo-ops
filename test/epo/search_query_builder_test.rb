@@ -22,7 +22,7 @@ class Epo::SearchQueryBuilderTest < Minitest::Test
   def test_build_parameters
     query = Epo::Ops::SearchQueryBuilder.build(nil, Date.new(2016, 2, 10), 1, 100)
     assert_equal 'q=pd=20160210&Range=1-100', query
-    query = Epo::Ops::SearchQueryBuilder.build("A", Date.new(2016, 2, 10), 4, 300)
+    query = Epo::Ops::SearchQueryBuilder.build('A', Date.new(2016, 2, 10), 4, 300)
     assert_equal 'q=pd=20160210 and ic=A&Range=4-103', query
   end
 end

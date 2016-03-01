@@ -5,13 +5,13 @@ module Epo
   module Ops
     # This Builder helps creating a search query using
     # {https://www.loc.gov/standards/sru/cql/ CQL} (Common Query Language or
-    # Contextual Query Language) with the identifies specified by the EPO in
-    # the OPS Documentation chapter 4.2 ( {https://www.epo.org/searching-for-patents/technical/espacenet/ops.html Link}
+    # Contextual Query Language) with the identifiers specified by the EPO in
+    # the OPS Documentation chapter 4.2 ({https://www.epo.org/searching-for-patents/technical/espacenet/ops.html Link})
     # - use tab Downloads and see file 'OPS version 3.1 documentation').
     class SearchQueryBuilder
-
       # Build the query with the given parameters. Invalid ranges are fixed
       # automatically and you will be notified about the changes
+      # @return [String]
       def self.build(ipc_class, date, range_start = 1, range_end = nil)
         validated_range = validate_range range_start, range_end
         "q=#{build_params(ipc_class, date)}&Range=#{validated_range[0]}-#{validated_range[1]}"
@@ -20,23 +20,19 @@ module Epo
       private
 
       def self.build_params(ipc_class, date)
-        [build_date(date), build_class(ipc_class)].compact.join(" and ")
+        [build_date(date), build_class(ipc_class)].compact.join(' and ')
       end
 
       def self.build_date(date)
         if date
-          "pd=#{('%04d' % date.year)}#{('%02d' % date.month)}#{('%02d' % date.day)}"
-        else
-          nil
+          "pd=#{('%04d' % date.year)}"\
+          "#{('%02d' % date.month)}"\
+          "#{('%02d' % date.day)}"
         end
       end
 
       def self.build_class(ipc_class)
-        if ipc_class
-          "ic=#{ipc_class}"
-        else
-          nil
-        end
+        "ic=#{ipc_class}" if ipc_class
       end
 
       # Fixes the range given so that they meed the EPO APIs rules. The range

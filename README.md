@@ -4,15 +4,19 @@
 # epo-ops
 Ruby interface to the EPO Open Patent Services (OPS).
 
-You can play around with the API [here](https://developers.epo.org/).
-Documentation of it can be found [here](https://www.epo.org/searching-for-patents/technical/espacenet/ops.html) under `Downloads`.
+[Documentation can be found here](http://www.rubydoc.info/gems/epo-ops/)
+
+The EPO provides [playground](https://developers.epo.org/), where you can try
+out the methods. As well as [Documentation](https://www.epo.org/searching-for-patents/technical/espacenet/ops.html)
+of the different endpoints and detailed usage.
 
 # Usage
 
 ## Authentification
-In order to use this gem you need to register at the EPO for OAuth
-[here](https://developers.epo.org/user/register).
+In order to use this gem you need to register at the [EPO for
+OAuth](https://developers.epo.org/user/register).
 Use your credentials by configuring
+
 ```ruby
 Epo::Ops.configure do |conf|
   conf.consumer_key = "YOUR_KEY"
@@ -21,32 +25,45 @@ end
 ```
 
 ## Quickstart
-### Search for patents
+### Search for Patents
+
+Get references to all Patents on a given date and IPC-class:
 
 ```ruby
-builder = Epo::Ops::SearchQueryBuilder.new
-builder.publication_date(2016, 02, 03).and.ipc_class("B")
-query = builder.build()
-Epo::Ops::Register.search(query)
+Epo::Ops::Register.search("A", Date.new(2016,2 ,3))
+# or for all ipc classes
+Epo::Ops::Register.search(nil, Date.new(2016,2 ,3))
 ```
 
-was mann lieber will:
+You can now retrieve the bibliographic entries of all these:
 
 ```ruby
-refs = Epo::Ops::Register::Bulk.all_register_references(Date.new(2016, 2, 3))
+references = Epo::Ops::Register.search(nil, Date.new(2016,2 ,3))
+references.map { |ref| Epo::Ops::Register.biblio(ref) }
+```
+This will return an object that helps parsing the result. See the documentation
+for more information
 
+Note that both operations take a considerable amount of time. Also you may not
+want to develop and test with many of these requests, as they can quite quickly
+excess the API limits.
+
+## Custom Retrieval
+
+### #raw_search This allows you to build your own CQL query, as
+described in the official documentation. With the second parameter set
+to true you can get the raw result as a nested Hash, if you want to
+parse it yourself.
+
+```ruby
+Epo::Ops::Register.raw_search("q=pd=20160203 and ic=D&Range=1-100", true)
 ```
 
+### #raw_biblio
+If you do not want to retrieve via the `application` endpoint (say you want
+`publication`) this method gives you more fine-grained control. Make sure the
+`reference_id` you use matches the type.
 
-## What works up to now
-* Search the EPO OPS register with `Epo::Ops::Register.search(query)`; use `Epo::Ops::SearchQueryBuilder` to build an appropriate request.
-* Get bibliographic info from the register, both for application and publication references (which you may retrieve with the search).
-* Bulk searching for all patents on a given date wih `Epo::Ops::Register::Bulk.all_queries(date)`. Note that patents are usually published on Wednesdays, if you find some on another weekday, please let us know.
-   This method currently returns all queries necessary to find all patents with `Epo::Ops::Register.search`
-
-### #search
-Use the `SearchQueryBuilder` to set up the queries. By default structs are returned that should make it easier to work with the results, but with the `raw`-flag set to true you may also retrieve the resulting hash and parse it yourself.
-The results have the method `#epodoc_reference` which perfectly fits into `#biblio`
-
-### #biblio
-With `Epo::Ops::Register.biblio(reference_id)` you can retrieve the bibliographic entry for the given patent (see OPS documentation). By default it searches the `/application/` endpoint, but you may set `publication` as the second parameter. Make sure the `reference_id` matches the given type. The last optional parameter allows you to set another format the id, but the default `epodoc` is strongly advised. This format is also provided from search results with `#epodoc_reference`.
+```ruby
+Epo::Ops::Register.raw_biblio('EP1000000', 'publication')
+```
