@@ -8,22 +8,29 @@ module Epo
     #
     class TokenStore
       def token
-        return generate_token if !@token || @token.expired?
+        @token = generate_token if !@token || @token.expired?
+
         @token
+      end
+
+      def reset
+        @token = nil
       end
 
       protected
 
       def generate_token
         client = OAuth2::Client.new(
-          Epo::Ops.config.consumer_key,
-          Epo::Ops.config.consumer_secret,
-          site: 'https://ops.epo.org/',
-          token_url: '/3.1/auth/accesstoken',
-          raise_errors: false
+            Epo::Ops.config.consumer_key,
+            Epo::Ops.config.consumer_secret,
+            site: 'https://ops.epo.org/',
+            token_url: '/3.1/auth/accesstoken',
+            raise_errors: false
         )
-        @token = client.client_credentials.get_token
+
+        client.client_credentials.get_token
       end
     end
   end
 end
+
