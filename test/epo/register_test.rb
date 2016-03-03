@@ -11,11 +11,19 @@ module Epo
       VCR.eject_cassette
     end
 
-    def test_search_works
+    def test_raw_search_works
       query = Epo::Ops::SearchQueryBuilder.build(nil, Date.new(2016, 2, 3), 1, 100)
       response = Epo::Ops::Register.raw_search(query)
       assert response
       assert_instance_of Array, response
+      response.each do |res|
+        assert_instance_of Epo::Ops::Register::SearchEntry, res
+      end
+    end
+
+    def test_raw_search_with_ipc_class
+      query = Epo::Ops::SearchQueryBuilder.build('A', Date.new(2016, 2, 3), 1, 2)
+      response = Epo::Ops::Register.raw_search(query)
       response.each do |res|
         assert_instance_of Epo::Ops::Register::SearchEntry, res
       end
@@ -75,11 +83,11 @@ module Epo
     end
 
     def test_queries_are_split
-      qrys = Epo::Ops::Register.split_by_size_limits('A', Date.new(2015, 2, 2), 356)
+      qrys = Epo::Ops::Register.split_by_size_limits('A', Date.new(2015, 2, 2), 301)
       assert_equal ['q=pd=20150202 and ic=A&Range=1-100',
                     'q=pd=20150202 and ic=A&Range=101-200',
                     'q=pd=20150202 and ic=A&Range=201-300',
-                    'q=pd=20150202 and ic=A&Range=301-356'], qrys
+                    'q=pd=20150202 and ic=A&Range=301-301'], qrys
     end
 
     def test_patent_counts_per_ipc_class
@@ -94,6 +102,8 @@ module Epo
                  'H' => 742 }
       assert_equal actual, counts
     end
+
+    # .search
 
     def test_404_leads_to_empty_result
       exception = ->(_a, _b) { fail Epo::Ops::Error::NotFound }
