@@ -84,6 +84,8 @@ module Epo
         hash = Client.request(:get, register_api_string + 'search?' + query).parsed
         return parse_search_results(hash) unless raw
         hash
+      rescue Epo::Ops::Error::NotFound
+        []
       end
 
       # @param search_entry [SearchEntry] a search entry which should be

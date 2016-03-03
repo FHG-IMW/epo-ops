@@ -94,5 +94,12 @@ module Epo
                  'H' => 742 }
       assert_equal actual, counts
     end
+
+    def test_404_leads_to_empty_result
+      exception = ->(_a, _b) { fail Epo::Ops::Error::NotFound }
+      Epo::Ops::Client.stub :request, exception do
+        assert_equal [], Epo::Ops::Register.search(nil, Date.new(2016, 03, 01))
+      end
+    end
   end
 end

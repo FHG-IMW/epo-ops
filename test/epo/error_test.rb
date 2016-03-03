@@ -14,7 +14,7 @@ module Epo
 
     # .parse_error
 
-    def test_returnthe_error_message_if_it_is_given
+    def test_return_the_error_message_if_it_is_given
       assert_equal 'An error', Epo::Ops::Error.send(:parse_error, 'error' => { 'message' => 'An error' })
     end
 
