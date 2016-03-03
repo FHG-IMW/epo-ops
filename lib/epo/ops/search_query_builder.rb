@@ -45,7 +45,7 @@ module Epo
         if range_start > range_end
           range_start, range_end = range_end, range_start
           Logger.log('range_start was bigger than range_end, swapped values')
-        elsif range_start == range_end || range_end - range_start > Limits::MAX_QUERY_INTERVAL - 1
+        elsif range_end - range_start > Limits::MAX_QUERY_INTERVAL - 1
           range_end = range_start + Limits::MAX_QUERY_INTERVAL - 1
           Logger.log("range invalid, set to: #{[range_start, range_end]}")
         end

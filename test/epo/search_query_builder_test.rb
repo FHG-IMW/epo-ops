@@ -12,6 +12,7 @@ class Epo::SearchQueryBuilderTest < Minitest::Test
     assert_equal [1901, 2000], builder.send(:validate_range, 2020, 2200)
     assert_equal [1, 100], builder.send(:validate_range, -2000, 2000)
     assert_equal [1, 100], builder.send(:validate_range, 100, 1)
+    assert_equal [101, 101], builder.send(:validate_range, 101, 101)
   end
 
   def test_build_query

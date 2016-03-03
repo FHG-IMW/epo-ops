@@ -8,7 +8,7 @@ Ruby interface to the EPO Open Patent Services (OPS).
 
 The EPO provides [playground](https://developers.epo.org/), where you can try
 out the methods. As well as [Documentation](https://www.epo.org/searching-for-patents/technical/espacenet/ops.html)
-of the different endpoints and detailed usage.
+of the different endpoints and detailed usage (see the 'Downloads' section).
 
 # Usage
 
