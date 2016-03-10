@@ -1,6 +1,5 @@
 require 'httparty'
 require 'yaml'
-require 'core_ext'
 require 'epo/ops/ipc_class_util'
 
 module Epo
@@ -49,7 +48,7 @@ module Epo
       def self.process_file(file)
         # Process every line (There is a line for every class entry, name and description are separated by a \t)
         file.each_line.inject(Hash.new { |h, k| h[k] = [] }) do |mem, line|
-          next if line.blank?
+          next if line.to_s.strip.empty?
           ipc_class_generic, description = line.split("\t")
 
           # Some entries in the files have the same ipc class, the first line is
@@ -68,7 +67,7 @@ module Epo
         # configure proxy
         proxy_addr = nil
         proxy_port = nil
-        unless ENV['http_proxy'].blank?
+        unless ENV['http_proxy'].to_s.strip.empty?
           proxy_addr, proxy_port = ENV['http_proxy'].gsub('http://', '').gsub('/', '').split(':')
         end
         { addr: proxy_addr, port: proxy_port }
