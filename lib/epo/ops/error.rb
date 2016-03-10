@@ -61,8 +61,8 @@ module Epo
 
           if code == 403 && FORBIDDEN_MESSAGES[message]
             FORBIDDEN_MESSAGES[message].new(message, response.headers, code)
-          elsif code == 400 && response.headers["www-authenticate"] && response.headers["www-authenticate"].include?("Access Token expired")
-            Error::AccessTokenExpired.new("Access Token expired",response.headers, code)
+          elsif code == 400 && response.headers['www-authenticate'] && response.headers['www-authenticate'].include?('Access Token expired')
+            Error::AccessTokenExpired.new('Access Token expired', response.headers, code)
           else
             ERRORS[code].new(message, response.headers, code)
           end

@@ -2,7 +2,6 @@ require 'test_helper'
 
 module Epo
   class TokeStoreTest < Minitest::Test
-
     def test_token_generates_a_new_one_when_there_is_none
       token = mock
       token_store = Epo::Ops::TokenStore.new
@@ -17,7 +16,7 @@ module Epo
       token.stubs(:expired?).returns(false)
 
       token_store = Epo::Ops::TokenStore.new
-      token_store.instance_variable_set("@token",token)
+      token_store.instance_variable_set('@token', token)
 
       assert_equal token, token_store.token
     end
@@ -27,7 +26,7 @@ module Epo
       token.stubs(:expired?).returns(true)
 
       token_store = Epo::Ops::TokenStore.new
-      token_store.instance_variable_set("@token",token)
+      token_store.instance_variable_set('@token', token)
 
       token_store.expects(:generate_token).returns(token)
 
@@ -35,14 +34,14 @@ module Epo
     end
 
     def test_rest_resets_the_access_token
-      token = mock()
+      token = mock
 
       token_store = Epo::Ops::TokenStore.new
-      token_store.instance_variable_set("@token",token)
+      token_store.instance_variable_set('@token', token)
 
       token_store.reset
 
-      assert_nil token_store.instance_variable_get("@token")
+      assert_nil token_store.instance_variable_get('@token')
     end
   end
 end

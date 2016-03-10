@@ -1,0 +1,4149 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://Foo:Bar@ops.epo.org/3.1/auth/accesstoken
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 10 Mar 2016 11:21:12 GMT
+      Server:
+      - Apigee Router
+      Content-Length:
+      - '492'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "issued_at" : "1457608872145",
+          "scope" : "core",
+          "status" : "approved",
+          "api_product_list" : "[ops31-prod]",
+          "expires_in" : "1199",
+          "token_type" : "BearerToken",
+          "client_id" : "Foo",
+          "access_token" : "THIS_IS_THE_TOKEN",
+          "organization_name" : "epo",
+          "refresh_token_expires_in" : "0",
+          "refresh_count" : "0"
+        }
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:11 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:12 GMT
+      Etag:
+      - '"02f02abb59072dbccd9140049fa15d0e6"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17008274'
+      X-Registeredquotaperweek-Used:
+      - '502112806'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3626'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="12"/>
+            <ops:register-search total-result-count="8965">
+                <ops:query syntax="CQL">pd=20160120</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2975140</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>C22B1/24;; C22B1/242;; C22B7/04</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15474002</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Ecofirm s.r.o.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974604</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A23D9/02;; C11C3/10;; C11C3/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15461538</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Skotan S.A.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:12 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:12 GMT
+      Etag:
+      - '"0e2c8631d55a3bfb442c774e6ccd54f9f"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17011892'
+      X-Registeredquotaperweek-Used:
+      - '502116424'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3618'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="69"/>
+            <ops:register-search total-result-count="2812">
+                <ops:query syntax="CQL">pd=20160120 and ic=A</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974604</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A23D9/02;; C11C3/10;; C11C3/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15461538</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Skotan S.A.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974709</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61H1/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15460003</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Bio.Morph Sp. z o.o.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:12 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:13 GMT
+      Etag:
+      - '"08ad0376413a03dd5bfe09bdb1d46b265"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17015588'
+      X-Registeredquotaperweek-Used:
+      - '502120120'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3696'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="32"/>
+            <ops:register-search total-result-count="201">
+                <ops:query syntax="CQL">pd=20160120 and ic=A01</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974581</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A01B3/42;; A01B3/421;; A01B3/46</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15401074</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Amazonen-Werke H. Dreyer GmbH &amp; Co. KG</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974580</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A01B3/42;; A01B3/421;; A01B3/46</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15401073</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Amazonen-Werke H. Dreyer GmbH &amp; Co. KG</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:12 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A21
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:13 GMT
+      Etag:
+      - '"000acea098579a747ecb40072991e95f4"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17019308'
+      X-Registeredquotaperweek-Used:
+      - '502123840'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3720'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="12"/>
+            <ops:register-search total-result-count="8">
+                <ops:query syntax="CQL">pd=20160120 and ic=A21</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974600</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A21B7/00;; A21D8/00;; A21D10/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15002220</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Tsann Kuen (Zhangzhou) Enterprise Co., Ltd.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2967084</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A21C9/04;; A21C9/06;; A21D6/00;; A21D10/00;; A21D13/00;; A21D2/16</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>14779662</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Intercontinental Great Brands LLC</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:13 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A22
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:13 GMT
+      Etag:
+      - '"00d6886ccaa031e8f26fa2ab519b8523c"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17022973'
+      X-Registeredquotaperweek-Used:
+      - '502127505'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3665'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="14"/>
+            <ops:register-search total-result-count="6">
+                <ops:query syntax="CQL">pd=20160120 and ic=A22</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974601</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A22C21/00;; A46B13/00;; B08B1/02;; B08B1/04</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15172378</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Meyn Food Processing Technology B.V.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974602</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A22C25/16;; B65G47/71</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>14177098</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Marel Iceland EHF</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:13 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A23
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:13 GMT
+      Etag:
+      - '"05179038ce2334ae45f0b9d1390cbb67f"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17026653'
+      X-Registeredquotaperweek-Used:
+      - '502131185'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3680'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="18"/>
+            <ops:register-search total-result-count="41">
+                <ops:query syntax="CQL">pd=20160120 and ic=A23</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974604</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A23D9/02;; C11C3/10;; C11C3/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15461538</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Skotan S.A.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974633</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A47J31/18;; A47J31/36;; A47J31/40;; A23F5/26</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15182395</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Arzum Elektrikli Ev Aletleri San. Ve Tic. A.S.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:13 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A24
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:14 GMT
+      Etag:
+      - '"04763c43f16d8ac5fc98f48de21443da9"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17030308'
+      X-Registeredquotaperweek-Used:
+      - '502134840'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3655'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="13"/>
+            <ops:register-search total-result-count="42">
+                <ops:query syntax="CQL">pd=20160120 and ic=A24</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2967156</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A24F47/00;; H05B6/10</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15727324</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Philip Morris Products S.A.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2967155</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A24F47/00;; A24B3/14;; A24B13/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15724269</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Philip Morris Products S.A.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:14 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A41
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:14 GMT
+      Etag:
+      - '"09c4608041ade7a166d90f01ee2c6b65c"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17033905'
+      X-Registeredquotaperweek-Used:
+      - '502138437'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3597'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="11"/>
+            <ops:register-search total-result-count="29">
+                <ops:query syntax="CQL">pd=20160120 and ic=A41</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974609</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A41D19/015</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15176585</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Dainese S.p.A.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974608</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A41D19/015</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15176583</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Dainese S.p.A.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:14 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A42
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:14 GMT
+      Etag:
+      - '"0edba00bc7542cf2a6bc8a11bc71d6d02"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17037494'
+      X-Registeredquotaperweek-Used:
+      - '502142026'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3589'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="11"/>
+            <ops:register-search total-result-count="4">
+                <ops:query syntax="CQL">pd=20160120 and ic=A42</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974612</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A42B3/12</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15001744</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Salomon S.A.S.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2967180</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A42B3/04</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>14712499</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Exelis Inc.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:14 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A43
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:15 GMT
+      Etag:
+      - '"0b463093873e1336035f1fd59e40609b7"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17041122'
+      X-Registeredquotaperweek-Used:
+      - '502145654'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3628'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="13"/>
+            <ops:register-search total-result-count="24">
+                <ops:query syntax="CQL">pd=20160120 and ic=A43</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974613</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A43B5/00;; A43B3/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15176451</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Taylor Made Golf Company, Inc.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974615</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A43B23/02;; A43B23/17</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15175831</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>adidas AG</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:14 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A44
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:15 GMT
+      Etag:
+      - '"091debe31879d7d3e4fabddbed9a3c7ea"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17044740'
+      X-Registeredquotaperweek-Used:
+      - '502149272'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3618'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="12"/>
+            <ops:register-search total-result-count="6">
+                <ops:query syntax="CQL">pd=20160120 and ic=A44</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974616</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A44B19/06</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15161734</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Chung, Roger C. Y.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2971198</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>C22C5/04;; A44C27/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15709087</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>C. Hafner GmbH + Co. KG</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:15 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A45
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:15 GMT
+      Etag:
+      - '"02d1db919cd15fd9f08b0dc9c42975328"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17048380'
+      X-Registeredquotaperweek-Used:
+      - '502152912'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3640'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxv
+        bmU9InllcyI/Pjw/eG1sLXN0eWxlc2hlZXQgdHlwZT0ndGV4dC94c2wnIGhy
+        ZWY9Jy8zLjAvc3R5bGUvcnBsdXMueHNsJyA/Pgo8b3BzOndvcmxkLXBhdGVu
+        dC1kYXRhIHhtbG5zOm9wcz0iaHR0cDovL29wcy5lcG8ub3JnIiB4bWxuczpy
+        ZWc9Imh0dHA6Ly93d3cuZXBvLm9yZy9yZWdpc3RlciIgeG1sbnM6eGxpbms9
+        Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOmNwYz0iaHR0
+        cDovL3d3dy5lcG8ub3JnL2NwY2V4cG9ydCIgeG1sbnM6Y3BjZGVmPSJodHRw
+        Oi8vd3d3LmVwby5vcmcvY3BjZGVmaW5pdGlvbiI+CiAgICA8b3BzOm1ldGEg
+        bmFtZT0iZWxhcHNlZC10aW1lIiB2YWx1ZT0iMTIiLz4KICAgIDxvcHM6cmVn
+        aXN0ZXItc2VhcmNoIHRvdGFsLXJlc3VsdC1jb3VudD0iMTgiPgogICAgICAg
+        IDxvcHM6cXVlcnkgc3ludGF4PSJDUUwiPnBkPTIwMTYwMTIwIGFuZCBpYz1B
+        NDU8L29wczpxdWVyeT4KICAgICAgICA8b3BzOnJhbmdlIGJlZ2luPSIxIiBl
+        bmQ9IjIiLz4KICAgICAgICA8cmVnOnJlZ2lzdGVyLWRvY3VtZW50cyBwcm9k
+        dWNlZC1ieT0iUk8iPgogICAgICAgICAgICA8cmVnOnJlZ2lzdGVyLWRvY3Vt
+        ZW50PgogICAgICAgICAgICAgICAgPHJlZzpiaWJsaW9ncmFwaGljLWRhdGE+
+        CiAgICAgICAgICAgICAgICAgICAgPHJlZzpwdWJsaWNhdGlvbi1yZWZlcmVu
+        Y2U+CiAgICAgICAgICAgICAgICAgICAgICAgIDxyZWc6ZG9jdW1lbnQtaWQ+
+        CiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8cmVnOmNvdW50cnk+RVA8
+        L3JlZzpjb3VudHJ5PgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPHJl
+        Zzpkb2MtbnVtYmVyPjI5NzQ2MTA8L3JlZzpkb2MtbnVtYmVyPgogICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgPHJlZzpkYXRlPjIwMTYwMTIwPC9yZWc6
+        ZGF0ZT4KICAgICAgICAgICAgICAgICAgICAgICAgPC9yZWc6ZG9jdW1lbnQt
+        aWQ+CiAgICAgICAgICAgICAgICAgICAgPC9yZWc6cHVibGljYXRpb24tcmVm
+        ZXJlbmNlPgogICAgICAgICAgICAgICAgICAgIDxyZWc6Y2xhc3NpZmljYXRp
+        b25zLWlwY3I+CiAgICAgICAgICAgICAgICAgICAgICAgIDxyZWc6Y2xhc3Np
+        ZmljYXRpb24taXBjciBzZXF1ZW5jZT0iQ0xBU1NJRklDQVRJT05fMSI+CiAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICA8cmVnOnRleHQ+QTQxRDMxLzAw
+        OzsgQTQxRDEvMDQ7OyBBNDVGNS8wMjs7IEY0MUgxLzAwPC9yZWc6dGV4dD4K
+        ICAgICAgICAgICAgICAgICAgICAgICAgPC9yZWc6Y2xhc3NpZmljYXRpb24t
+        aXBjcj4KICAgICAgICAgICAgICAgICAgICA8L3JlZzpjbGFzc2lmaWNhdGlv
+        bnMtaXBjcj4KICAgICAgICAgICAgICAgICAgICA8cmVnOmFwcGxpY2F0aW9u
+        LXJlZmVyZW5jZT4KICAgICAgICAgICAgICAgICAgICAgICAgPHJlZzpkb2N1
+        bWVudC1pZD4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxyZWc6Y291
+        bnRyeT5FUDwvcmVnOmNvdW50cnk+CiAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICA8cmVnOmRvYy1udW1iZXI+MTUxNzYzNzE8L3JlZzpkb2MtbnVtYmVy
+        PgogICAgICAgICAgICAgICAgICAgICAgICA8L3JlZzpkb2N1bWVudC1pZD4K
+        ICAgICAgICAgICAgICAgICAgICA8L3JlZzphcHBsaWNhdGlvbi1yZWZlcmVu
+        Y2U+CiAgICAgICAgICAgICAgICAgICAgPHJlZzpwYXJ0aWVzPgogICAgICAg
+        ICAgICAgICAgICAgICAgICA8cmVnOmFwcGxpY2FudHM+CiAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICA8cmVnOmFwcGxpY2FudCBhcHAtdHlwZT0iYXBw
+        bGljYW50Ij4KPHJlZzphZGRyZXNzYm9vaz4KICAgIDxyZWc6bmFtZT5DaXNh
+        ciwgWmRlbmVrPC9yZWc6bmFtZT4KPC9yZWc6YWRkcmVzc2Jvb2s+CiAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICA8L3JlZzphcHBsaWNhbnQ+CiAgICAg
+        ICAgICAgICAgICAgICAgICAgIDwvcmVnOmFwcGxpY2FudHM+CiAgICAgICAg
+        ICAgICAgICAgICAgPC9yZWc6cGFydGllcz4KICAgICAgICAgICAgICAgIDwv
+        cmVnOmJpYmxpb2dyYXBoaWMtZGF0YT4KICAgICAgICAgICAgPC9yZWc6cmVn
+        aXN0ZXItZG9jdW1lbnQ+CiAgICAgICAgICAgIDxyZWc6cmVnaXN0ZXItZG9j
+        dW1lbnQ+CiAgICAgICAgICAgICAgICA8cmVnOmJpYmxpb2dyYXBoaWMtZGF0
+        YT4KICAgICAgICAgICAgICAgICAgICA8cmVnOnB1YmxpY2F0aW9uLXJlZmVy
+        ZW5jZT4KICAgICAgICAgICAgICAgICAgICAgICAgPHJlZzpkb2N1bWVudC1p
+        ZD4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxyZWc6Y291bnRyeT5F
+        UDwvcmVnOmNvdW50cnk+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8
+        cmVnOmRvYy1udW1iZXI+Mjk3NDYxODwvcmVnOmRvYy1udW1iZXI+CiAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICA8cmVnOmRhdGU+MjAxNjAxMjA8L3Jl
+        ZzpkYXRlPgogICAgICAgICAgICAgICAgICAgICAgICA8L3JlZzpkb2N1bWVu
+        dC1pZD4KICAgICAgICAgICAgICAgICAgICA8L3JlZzpwdWJsaWNhdGlvbi1y
+        ZWZlcmVuY2U+CiAgICAgICAgICAgICAgICAgICAgPHJlZzpjbGFzc2lmaWNh
+        dGlvbnMtaXBjcj4KICAgICAgICAgICAgICAgICAgICAgICAgPHJlZzpjbGFz
+        c2lmaWNhdGlvbi1pcGNyIHNlcXVlbmNlPSJDTEFTU0lGSUNBVElPTl8xIj4K
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxyZWc6dGV4dD5BNDVENDAv
+        MjY7OyBBNDVEMzQvMDQ8L3JlZzp0ZXh0PgogICAgICAgICAgICAgICAgICAg
+        ICAgICA8L3JlZzpjbGFzc2lmaWNhdGlvbi1pcGNyPgogICAgICAgICAgICAg
+        ICAgICAgIDwvcmVnOmNsYXNzaWZpY2F0aW9ucy1pcGNyPgogICAgICAgICAg
+        ICAgICAgICAgIDxyZWc6YXBwbGljYXRpb24tcmVmZXJlbmNlPgogICAgICAg
+        ICAgICAgICAgICAgICAgICA8cmVnOmRvY3VtZW50LWlkPgogICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgPHJlZzpjb3VudHJ5PkVQPC9yZWc6Y291bnRy
+        eT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxyZWc6ZG9jLW51bWJl
+        cj4xNTE3NjA1OTwvcmVnOmRvYy1udW1iZXI+CiAgICAgICAgICAgICAgICAg
+        ICAgICAgIDwvcmVnOmRvY3VtZW50LWlkPgogICAgICAgICAgICAgICAgICAg
+        IDwvcmVnOmFwcGxpY2F0aW9uLXJlZmVyZW5jZT4KICAgICAgICAgICAgICAg
+        ICAgICA8cmVnOnBhcnRpZXM+CiAgICAgICAgICAgICAgICAgICAgICAgIDxy
+        ZWc6YXBwbGljYW50cz4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxy
+        ZWc6YXBwbGljYW50IGFwcC10eXBlPSJhcHBsaWNhbnQiPgo8cmVnOmFkZHJl
+        c3Nib29rPgogICAgPHJlZzpuYW1lPkFsYsOpYSBTZXJ2aWNlczwvcmVnOm5h
+        bWU+CjwvcmVnOmFkZHJlc3Nib29rPgogICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgPC9yZWc6YXBwbGljYW50PgogICAgICAgICAgICAgICAgICAgICAg
+        ICA8L3JlZzphcHBsaWNhbnRzPgogICAgICAgICAgICAgICAgICAgIDwvcmVn
+        OnBhcnRpZXM+CiAgICAgICAgICAgICAgICA8L3JlZzpiaWJsaW9ncmFwaGlj
+        LWRhdGE+CiAgICAgICAgICAgIDwvcmVnOnJlZ2lzdGVyLWRvY3VtZW50Pgog
+        ICAgICAgIDwvcmVnOnJlZ2lzdGVyLWRvY3VtZW50cz4KICAgIDwvb3BzOnJl
+        Z2lzdGVyLXNlYXJjaD4KPC9vcHM6d29ybGQtcGF0ZW50LWRhdGE+Cg==
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:15 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A46
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:16 GMT
+      Etag:
+      - '"0b29359bbc59a682887d4a843146c1951"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17052071'
+      X-Registeredquotaperweek-Used:
+      - '502156603'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3691'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="23"/>
+            <ops:register-search total-result-count="5">
+                <ops:query syntax="CQL">pd=20160120 and ic=A46</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974619</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A46B3/00;; B29C45/14;; B29C45/16;; A46B9/02;; A46D3/00;; A46B15/00;; A46B5/02;; A46B1/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15179848</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Trisa Holding AG</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974640</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A47L9/04;; A46B17/06</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15175038</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Miele &amp; Cie. KG</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:15 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A47
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:16 GMT
+      Etag:
+      - '"03594cb72cbea5f425ab19b8fba2286de"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17055764'
+      X-Registeredquotaperweek-Used:
+      - '502160296'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3693'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="15"/>
+            <ops:register-search total-result-count="117">
+                <ops:query syntax="CQL">pd=20160120 and ic=A47</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974633</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A47J31/18;; A47J31/36;; A47J31/40;; A23F5/26</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15182395</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Arzum Elektrikli Ev Aletleri San. Ve Tic. A.S.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974632</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A47J31/06;; B65D85/804</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15180266</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Unilever PLC _;;_ Unilever N.V.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:16 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A61
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:16 GMT
+      Etag:
+      - '"0afac14f67f7bcc7dc56654905330d1d2"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17059372'
+      X-Registeredquotaperweek-Used:
+      - '502163904'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3608'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="52"/>
+            <ops:register-search total-result-count="2321">
+                <ops:query syntax="CQL">pd=20160120 and ic=A61</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974709</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61H1/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15460003</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Bio.Morph Sp. z o.o.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974688</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61C8/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15382371</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Ridao Dalmau, Marcela</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:16 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A61B
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:16 GMT
+      Etag:
+      - '"05eb8ee27dc97025da5efd678d33c29e3"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17063048'
+      X-Registeredquotaperweek-Used:
+      - '502167580'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3676'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="36"/>
+            <ops:register-search total-result-count="620">
+                <ops:query syntax="CQL">pd=20160120 and ic=A61B</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974664</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61B8/00;; G01S7/52</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15183958</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Samsung Electronics Co., Ltd _;;_ Samsung Medison Co., Ltd.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974657</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61B5/15;; B25G1/10</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15182981</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Becton Dickinson and Company</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:16 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A61C
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:17 GMT
+      Etag:
+      - '"08717e538f7ae0dd9ed0c7b72726469cb"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17066710'
+      X-Registeredquotaperweek-Used:
+      - '502171242'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3662'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="15"/>
+            <ops:register-search total-result-count="38">
+                <ops:query syntax="CQL">pd=20160120 and ic=A61C</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974688</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61C8/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15382371</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Ridao Dalmau, Marcela</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974689</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61C13/00;; A61C13/12;; F27B17/02;; F27D5/00;; A61C13/20;; B22F3/10</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15002103</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>STEGER, Heinrich</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:17 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A61D
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:17 GMT
+      Etag:
+      - '"0ad08445ba5fb1722a533938c7b88809e"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17070408'
+      X-Registeredquotaperweek-Used:
+      - '502174940'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3698'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="12"/>
+            <ops:register-search total-result-count="4">
+                <ops:query syntax="CQL">pd=20160120 and ic=A61D</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2967284</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61B1/012;; A61B1/015;; A61B1/06;; A61B17/22;; A61B18/24;; A61D1/02</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>14780119</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>The Spectranetics Corporation</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2967785</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61D1/02;; C08G73/02;; C08L79/02</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>14721133</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Tyco Fire Products LP</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:17 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A61F
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:17 GMT
+      Etag:
+      - '"050f63290660a67fd249b7adef18daf37"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17074016'
+      X-Registeredquotaperweek-Used:
+      - '502178548'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3608'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="16"/>
+            <ops:register-search total-result-count="340">
+                <ops:query syntax="CQL">pd=20160120 and ic=A61F</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974694</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61F2/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15180850</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Coloplast A/S</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974698</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61F2/30;; A61F2/46</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15180642</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>DePuy Mitek, Inc.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:17 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A61G
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:18 GMT
+      Etag:
+      - '"0d09ae9a142907bb7557c55eb5a620cb4"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17077685'
+      X-Registeredquotaperweek-Used:
+      - '502182217'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3669'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="19"/>
+            <ops:register-search total-result-count="21">
+                <ops:query syntax="CQL">pd=20160120 and ic=A61G</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974704</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61G3/02;; A61G3/06;; A61G1/02;; A61G1/048;; A61G3/08;; A61G1/056</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15177152</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Groupe GIFA</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974707</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61G7/05</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15175936</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Joh. Stiegelmeyer GmbH &amp; Co. KG</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:17 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A61H
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:18 GMT
+      Etag:
+      - '"05f331663a14672129bffb60b6a717ff9"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17081296'
+      X-Registeredquotaperweek-Used:
+      - '502185828'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3611'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="20"/>
+            <ops:register-search total-result-count="19">
+                <ops:query syntax="CQL">pd=20160120 and ic=A61H</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974709</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61H1/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15460003</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Bio.Morph Sp. z o.o.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974710</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61H19/00;; A61H23/02</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15177225</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Obotics Inc.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:18 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A61J
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:18 GMT
+      Etag:
+      - '"0fef5385394f9d3bad67d81a37a3e7914"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17084999'
+      X-Registeredquotaperweek-Used:
+      - '502189531'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3703'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="13"/>
+            <ops:register-search total-result-count="30">
+                <ops:query syntax="CQL">pd=20160120 and ic=A61J</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2968060</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61J1/05;; G01N33/483;; G01N33/50</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>14779994</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Bayer HealthCare LLC</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2968073</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61J7/00;; A61M5/19;; A61J9/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>14720755</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Rush University Medical Center _;;_ NorthShore University HealthSystem</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:18 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A61K
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:19 GMT
+      Etag:
+      - '"0085daf8b7a1f50d4cdd9f1d3eeff5d1a"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17088727'
+      X-Registeredquotaperweek-Used:
+      - '502193259'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3728'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="27"/>
+            <ops:register-search total-result-count="974">
+                <ops:query syntax="CQL">pd=20160120 and ic=A61K</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974742</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61K39/395;; A61K47/48;; A61P37/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15183030</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>UCB Biopharma SPRL</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2975127</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>C12N15/31;; C07K14/22;; C07K16/12;; A61K39/095;; A61K39/40;; A61K48/00;; G01N33/53;; G01N33/569</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15182862</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>GlaxoSmithKline Biologicals SA</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:18 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A61L
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:19 GMT
+      Etag:
+      - '"021834737ef292f7ca0bef8fe7d97a03e"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17092367'
+      X-Registeredquotaperweek-Used:
+      - '502196899'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3640'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="24"/>
+            <ops:register-search total-result-count="113">
+                <ops:query syntax="CQL">pd=20160120 and ic=A61L</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974748</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61L2/20;; A61L2/22;; A61L9/12;; A61L9/14</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15177034</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>PharmaBio Corporation</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974750</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61L9/22</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15176824</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>LG Electronics Inc.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:19 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A61M
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:19 GMT
+      Etag:
+      - '"09a56ffef2e2b3fb365e83af0b824f20b"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17095979'
+      X-Registeredquotaperweek-Used:
+      - '502200511'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3612'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="33"/>
+            <ops:register-search total-result-count="322">
+                <ops:query syntax="CQL">pd=20160120 and ic=A61M</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974756</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61M1/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15181867</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Renishaw (Ireland) Limited</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974755</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61M1/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15180495</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>KCI Licensing, Inc.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:19 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A61N
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:19 GMT
+      Etag:
+      - '"0413b8d8cd06fc3b1514a9a5ff4123d9b"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17100003'
+      X-Registeredquotaperweek-Used:
+      - '502204535'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '4024'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="25"/>
+            <ops:register-search total-result-count="106">
+                <ops:query syntax="CQL">pd=20160120 and ic=A61N</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974770</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61N1/372;; A61N1/36;; A61N1/05;; A61B5/00;; A61B5/11</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15181249</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>The Johns Hopkins University</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974673</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61B17/04;; A61B5/00;; H01L21/20;; H01L27/06;; A61B17/06;; A61B1/00;; A61N1/05;; G01L1/00;; G01N21/17;; A61B17/00;; H05K3/28;; H05K1/18;; A61N5/06;; H01L23/498;; H01L25/075;; H01L27/32;; H05K1/02;; H05K1/11;; A61B5/05;; B82Y15/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15179455</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>The Board of Trustees of the University of Illinois _;;_ Trustees of Tufts College _;;_ The Trustees of The University of Pennsylvania _;;_ Northwestern University</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:19 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A61P
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:20 GMT
+      Etag:
+      - '"01b368538489f91352b67bd3df424f423"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17103708'
+      X-Registeredquotaperweek-Used:
+      - '502208240'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3705'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="25"/>
+            <ops:register-search total-result-count="470">
+                <ops:query syntax="CQL">pd=20160120 and ic=A61P</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974742</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61K39/395;; A61K47/48;; A61P37/00</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15183030</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>UCB Biopharma SPRL</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974724</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61K31/40;; A61P25/24;; C07D405/04;; C07D207/06;; C07D207/08;; C07D207/12</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15182162</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Sunovion Pharmaceuticals Inc.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:19 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A61Q
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:20 GMT
+      Etag:
+      - '"0c6ea4f318b98b84ec4f51c8a745b8aaf"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17107416'
+      X-Registeredquotaperweek-Used:
+      - '502211948'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3708'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="23"/>
+            <ops:register-search total-result-count="58">
+                <ops:query syntax="CQL">pd=20160120 and ic=A61Q</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974712</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A61K8/34;; A61Q5/08</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15171788</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>The Procter &amp; Gamble Company</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2973604</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>G21F9/00;; B09B3/00;; A61Q5/02</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>14779248</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Battelle Energy Alliance, Llc _;;_ Crosby, Daniel _;;_ Norton, Christopher J.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:20 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A62
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:20 GMT
+      Etag:
+      - '"0eb93f6a2c21adea3876f445554f056f1"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17111046'
+      X-Registeredquotaperweek-Used:
+      - '502215578'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3630'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="15"/>
+            <ops:register-search total-result-count="34">
+                <ops:query syntax="CQL">pd=20160120 and ic=A62</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974775</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A63B29/02;; A62B1/14;; A62B35/04</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15171739</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Zedel</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974773</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A62B33/00;; A63B29/02</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15002135</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Amer Sports Canada Inc.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:20 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A63
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:21 GMT
+      Etag:
+      - '"08f1dd1557d0e465fc5d0798498b6275a"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Vary:
+      - Accept
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17114712'
+      X-Registeredquotaperweek-Used:
+      - '502219244'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '3666'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?><?xml-stylesheet type='text/xsl' href='/3.0/style/rplus.xsl' ?>
+        <ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns:reg="http://www.epo.org/register" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cpc="http://www.epo.org/cpcexport" xmlns:cpcdef="http://www.epo.org/cpcdefinition">
+            <ops:meta name="elapsed-time" value="66"/>
+            <ops:register-search total-result-count="43">
+                <ops:query syntax="CQL">pd=20160120 and ic=A63</ops:query>
+                <ops:range begin="1" end="2"/>
+                <reg:register-documents produced-by="RO">
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974776</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A63B37/00;; A63B45/00;; G06F17/50;; G06T17/20;; A63B37/02</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15181743</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Dunlop Sports Co., Ltd.</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                    <reg:register-document>
+                        <reg:bibliographic-data>
+                            <reg:publication-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>2974775</reg:doc-number>
+                                    <reg:date>20160120</reg:date>
+                                </reg:document-id>
+                            </reg:publication-reference>
+                            <reg:classifications-ipcr>
+                                <reg:classification-ipcr sequence="CLASSIFICATION_1">
+                                    <reg:text>A63B29/02;; A62B1/14;; A62B35/04</reg:text>
+                                </reg:classification-ipcr>
+                            </reg:classifications-ipcr>
+                            <reg:application-reference>
+                                <reg:document-id>
+                                    <reg:country>EP</reg:country>
+                                    <reg:doc-number>15171739</reg:doc-number>
+                                </reg:document-id>
+                            </reg:application-reference>
+                            <reg:parties>
+                                <reg:applicants>
+                                    <reg:applicant app-type="applicant">
+        <reg:addressbook>
+            <reg:name>Zedel</reg:name>
+        </reg:addressbook>
+                                    </reg:applicant>
+                                </reg:applicants>
+                            </reg:parties>
+                        </reg:bibliographic-data>
+                    </reg:register-document>
+                </reg:register-documents>
+            </ops:register-search>
+        </ops:world-patent-data>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:20 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120%20and%20ic=A99
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer THIS_IS_THE_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Language:
+      - en
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 10 Mar 2016 11:21:21 GMT
+      Server:
+      - Apache
+      X-Api:
+      - ops-v3.1
+      X-Epo-Client-Ip:
+      - 153.96.27.10
+      X-Epo-Forwarded:
+      - "[153.96.27.10]"
+      X-Individualquotaperhour-Used:
+      - '17114891'
+      X-Registeredquotaperweek-Used:
+      - '502219423'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+      Content-Length:
+      - '179'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+        <fault xmlns="http://ops.epo.org">
+            <code>SERVER.EntityNotFound</code>
+            <message>No results found</message>
+        </fault>
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 11:21:21 GMT
+recorded_with: VCR 2.9.3

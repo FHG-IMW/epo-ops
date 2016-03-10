@@ -2,6 +2,9 @@ require 'epo/ops/version'
 require 'epo/ops/token_store'
 require 'epo/ops/register'
 require 'epo/ops/search_query_builder'
+require 'epo/ops/ipc_class_hierarchy_loader'
+require 'epo/ops/ipc_class_util'
+require 'core_ext'
 
 module Epo
   module Ops

@@ -29,7 +29,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'redis'
   spec.add_development_dependency 'connection_pool'
 
-
-
   spec.add_dependency 'oauth2', '~> 1.1'
+  spec.add_dependency 'httparty', '~> 0.13'
 end

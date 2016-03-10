@@ -3,9 +3,10 @@ SimpleCov.start
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'epo/ops'
+require 'core_ext'
 
 require 'webmock/minitest'
-require "minitest/unit"
+require 'minitest/unit'
 require 'minitest/autorun'
 require 'vcr'
 require 'mocha/mini_test'
@@ -16,7 +17,7 @@ require 'mocha/mini_test'
 
 Epo::Ops.configure do |config|
   config.consumer_key = 'Foo'
-  config.consumer_secret =  'Bar'
+  config.consumer_secret = 'Bar'
 end
 # VCR
 VCR.configure do |c|

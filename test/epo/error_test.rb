@@ -14,18 +14,18 @@ module Epo
 
     def test_raise_an_AccessTokenExpired_error_if_special_header_is_set
       token_expired_header = {
-          "access-control-allow-headers" => "Authorization",
-          "access-control-allow-methods" => "POST",
-          "access-control-allow-origin" => "*",
-          "connection" => "Close",
-          "content-length" => "130",
-          "content-type" => "application/xml",
-          "date" => "Thu, 25 Feb 2016 12:10:08 GMT",
-          "server" => "Apigee Router",
-          "www-authenticate" => "Bearer realm=\"null\",error='invalid_token\",error_description='keymanagement.service.access_token_expired: Access Token expired\""
+        'access-control-allow-headers' => 'Authorization',
+        'access-control-allow-methods' => 'POST',
+        'access-control-allow-origin' => '*',
+        'connection' => 'Close',
+        'content-length' => '130',
+        'content-type' => 'application/xml',
+        'date' => 'Thu, 25 Feb 2016 12:10:08 GMT',
+        'server' => 'Apigee Router',
+        'www-authenticate' => "Bearer realm=\"null\",error='invalid_token\",error_description='keymanagement.service.access_token_expired: Access Token expired\""
       }
 
-      response = mock("response")
+      response = mock('response')
       response.expects(:status).returns(400)
       response.expects(:parsed).returns({})
       response.expects(:headers).times(3).returns(token_expired_header)

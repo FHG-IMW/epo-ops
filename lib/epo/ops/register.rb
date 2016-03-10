@@ -3,6 +3,7 @@ require 'epo/ops/client'
 require 'epo/ops/util'
 require 'epo/ops/bibliographic_document'
 require 'epo/ops/logger'
+require 'epo/ops/ipc_class_util'
 
 module Epo
   module Ops
@@ -51,7 +52,7 @@ module Epo
       # @param ipc_class [String] up to now should only be between A-H
       # @return [Integer] number of patents with given parameters
       def self.published_patents_counts(ipc_class = nil, date = nil)
-        query = Epo::Ops::SearchQueryBuilder.build(ipc_class, date, 1, 2)
+        query = SearchQueryBuilder.build(ipc_class, date, 1, 2)
         minimum_result_set = Register.raw_search(query, true)
         return 0 if minimum_result_set.empty?
         minimum_result_set['world_patent_data']['register_search']['total_result_count'].to_i
@@ -63,16 +64,18 @@ module Epo
       #   exceed your API limits
       # @return [Array] Array of {SearchEntry}
       def self.search(ipc_class = nil, date = nil)
-        counts_per_ipc_class = if ipc_class
-                                 { ipc_class => published_patents_counts(ipc_class, date) }
-                               else
-                                 patent_counts_per_ipc_class(date)
-                               end
-        queries = counts_per_ipc_class.flat_map do |ipc_c, count|
-          split_by_size_limits(ipc_c, date, count)
-        end
+        queries = all_queries(ipc_class, date)
         search_entries = queries.flat_map { |query| raw_search(query) }
         search_entries.uniq { |se| se.application_reference.epodoc_reference }
+      end
+
+      def self.all_queries(ipc_class = nil, date = nil)
+        count = published_patents_counts(ipc_class, date)
+        if count > Limits::MAX_QUERY_RANGE
+          IpcClassUtil.children(ipc_class).flat_map { |ic| all_queries(ic, date) }
+        else
+          split_by_size_limits(ipc_class, date, count)
+        end
       end
 
       # @param query A query built with {Epo::Ops::SearchQueryBuilder}
