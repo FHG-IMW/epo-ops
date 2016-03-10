@@ -5,13 +5,11 @@ require 'epo/ops/ipc_class_util'
 
 module Epo
   module Ops
-
     # Creates a Hash that helps using the ipc class hierarchy. The hash is
     # either parsed from a given file directly, or created from data from the
     # WIPO.
     # Usually this should only used internally.
     class IpcClassHierarchyLoader
-
       # Checks if the given file exists then loads it, otherwise creates it with
       # data from the WIPO
       def self.load(filename)

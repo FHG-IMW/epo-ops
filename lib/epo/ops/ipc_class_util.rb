@@ -2,7 +2,6 @@ require 'epo/ops/ipc_class_hierarchy_loader'
 
 module Epo
   module Ops
-
     # Utility functions to work on Strings representing ipc classes.
     class IpcClassUtil
       @@map = IpcClassHierarchyLoader.load('data/ipc_classes.yml')
