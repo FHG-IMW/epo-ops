@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.wipo.int/ipc/itos4ipc/ITSupport_and_download_area/20160101/IPC_scheme_title_list/EN_ipc_section_A_title_list_20160101.txt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 08 Mar 2016 13:54:21 GMT
+      Server:
+      - Apache
+      Last-Modified:
+      - Thu, 05 Nov 2015 14:21:00 GMT
+      Etag:
+      - '"d25b8e-a0880-523cbd60c0b00"'
+      Accept-Ranges:
+      - bytes
+      Content-Length:
+      - '657536'
+      Content-Type:
+      - text/plain; charset=UTF-8
+      Age:
+      - '6731'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        A	SECTION A HUMAN NECESSITIES
+        A01	AGRICULTURE; FORESTRY; ANIMAL HUSBANDRY; HUNTING; TRAPPING; FISHING
+        A01B	SOIL WORKING IN AGRICULTURE OR FORESTRY; PARTS, DETAILS, OR ACCESSORIES OF AGRICULTURAL MACHINES OR IMPLEMENTS, IN GENERAL (making or covering furrows or holes for sowing, planting or manuring A01C0005000000; machines for harvesting root crops A01D; mowers convertible to soil working apparatus or capable of soil working A01D0042040000; mowers combined with soil working implements A01D0043120000; soil working for engineering purposes E01, E02, E21)
+        A01B0001000000	Hand tools (edge trimmers for lawns A01G0003060000)
+        A01B0001020000	Spades; Shovels
+        A01B0001040000	with teeth
+        A01B0001060000	Hoes; Hand cultivators
+        A01B0001080000	with a single blade
+        A01B0001100000	with two or more blades
+        A01B0001120000	with blades provided with teeth
+        A01B0001140000	with teeth only
+        A01B0001160000	Tools for uprooting weeds
+        A01B0001180000	Tong-like tools
+        A01B0001200000	Combinations of different kinds of hand tools
+        A01B0001220000	Attaching the blades or the like to handles (handles for tools, or their attachment, in general B25G); Interchangeable or adjustable blades
+        A01B0001240000	for treating meadows or lawns
+        A01B0003000000	Ploughs
+        A01B0003000000	Ploughs with fixed plough-shares
+        A01B0003020000	Man-driven ploughs
+        A01B0003040000	Animal-drawn ploughs
+        A01B0003060000	without alternating possibility, i.e. incapable of making an adjacent furrow on return journey
+        A01B0003080000	Swing ploughs
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 15:57:14 GMT
+recorded_with: VCR 2.9.3

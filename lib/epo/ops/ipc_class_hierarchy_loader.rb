@@ -1,37 +1,18 @@
 require 'httparty'
-require 'yaml'
 require 'epo/ops/ipc_class_util'
 
 module Epo
   module Ops
-    # Creates a Hash that helps using the ipc class hierarchy. The hash is
-    # either parsed from a given file directly, or created from data from the
-    # WIPO.
     # Usually this should only used internally.
+    # Loads the Hierarchy from the WIPO.
+    # This is used to update IpcHierarchy manually.
     class IpcClassHierarchyLoader
-      # Checks if the given file exists then loads it, otherwise creates it with
-      # data from the WIPO
-      def self.load(filename)
-        if File.exist? filename
-          map = load_file(filename)
-        else
-          map = load_url
-          dump_file(map, filename)
-        end
-        map
+      # loads data from the WIPO
+      def self.load
+        load_url
       end
 
       private
-
-      def self.load_file(filename)
-        Psych.load_file(filename)
-      end
-
-      def self.dump_file(content, filename)
-        File.open(filename, 'w') do |file|
-          file.write(Psych.dump(content))
-        end
-      end
 
       def self.load_url
         url = 'http://www.wipo.int/ipc/itos4ipc/ITSupport_and_download_area/20160101/IPC_scheme_title_list/EN_ipc_section_#letter_title_list_20160101.txt'

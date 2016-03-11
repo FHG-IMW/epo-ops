@@ -1,10 +1,9 @@
-require 'epo/ops/ipc_class_hierarchy_loader'
+require 'epo/ops/ipc_class_hierarchy'
 
 module Epo
   module Ops
     # Utility functions to work on Strings representing ipc classes.
     class IpcClassUtil
-      @@map = IpcClassHierarchyLoader.load('data/ipc_classes.yml')
 
       # @return [Array] \['A', 'B', …, 'H'\]
       def self.main_classes
@@ -36,7 +35,7 @@ module Epo
 
       # @param [String] ipc_class an ipc_class
       # @return [Array] List of all ipc classes one level more specific.
-      # @example
+      # @examples
       #   children('A')   #=> ['A01', 'A21', 'A22', 'A23', ...]
       #   children('A62') #=> ['A62B', 'A62C', 'A62D'],
       # @raise [InvalidIpcClassError] if parameter is not a valid ipc class in
@@ -49,8 +48,9 @@ module Epo
         return main_classes if ipc_class.nil?
         valid = valid_for_search?(ipc_class)
         fail InvalidIpcClassError, ipc_class unless valid
-        fail LevelNotSupportedError, ipc_class unless @@map.key? ipc_class
-        @@map[ipc_class]
+        map = IpcClassHierarchy::Hierarchy
+        fail LevelNotSupportedError, ipc_class unless map.key? ipc_class
+        map[ipc_class]
       end
 
       # An ipc class in invalid format was given, or none at all.
