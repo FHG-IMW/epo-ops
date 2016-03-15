@@ -12,7 +12,7 @@ of the different endpoints and detailed usage (see the 'Downloads' section).
 
 # Usage
 
-## Authentification
+## Authentication
 In order to use this gem you need to register at the [EPO for
 OAuth](https://developers.epo.org/user/register).
 Use your credentials by configuring
@@ -46,7 +46,8 @@ for more information
 
 Note that both operations take a considerable amount of time. Also you may not
 want to develop and test with many of these requests, as they can quite quickly
-excess the API limits.
+excess the API limits. Also note that this methods use the `application`
+endpoint.
 
 ## Custom Retrieval
 

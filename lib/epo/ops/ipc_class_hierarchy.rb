@@ -1,5 +1,9 @@
 module Epo
   module Ops
+    # The hierarchy is a flat Hash, that helps finding all known ipc subclasses
+    # of a given class. It was parsed from the WIPO. It does not support all
+    # levels, as it would (currently unnecessarily) blow up this hash. It only
+    # finds the first two sub class levels, e.g. A45F.
     class IpcClassHierarchy
       Hierarchy = { 'A' => %w(A01 A21 A22 A23 A24 A41 A42 A43 A44 A45 A46 A47 A61 A62 A63 A99),
                     'A01' => %w(A01B A01C A01D A01F A01G A01H A01J A01K A01L A01M A01N A01P),

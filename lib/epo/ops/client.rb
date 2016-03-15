@@ -3,6 +3,8 @@ require 'epo/ops/error'
 
 module Epo
   module Ops
+
+    # This is a wrapper for OAuth
     class Client
       # @return [OAuth2::Response]
       def self.request(verb, url, options = {})

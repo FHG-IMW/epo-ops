@@ -5,9 +5,13 @@ module Epo
   module Ops
     # Usually this should only used internally.
     # Loads the Hierarchy from the WIPO.
-    # This is used to update IpcHierarchy manually.
+    # This is used to update IpcClassHierarchy manually.
+    # At the beginning of the year the WIPO publishes a new list of IPC classes.
+    # The IpcClassHierarchy should then be updated. Make sure that the url is
+    # correct!
     class IpcClassHierarchyLoader
       # loads data from the WIPO
+      # @return [Hash]
       def self.load
         load_url
       end

@@ -69,6 +69,10 @@ module Epo
         search_entries.uniq { |se| se.application_reference.epodoc_reference }
       end
 
+      # @return [Array] Array of Strings containing queries applicable to
+      #   {Register.raw_search}.
+      # builds all queries necessary to find all patent references on a given
+      # date.
       def self.all_queries(ipc_class = nil, date = nil)
         count = published_patents_counts(ipc_class, date)
         if count > Limits::MAX_QUERY_RANGE
