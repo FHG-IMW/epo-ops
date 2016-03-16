@@ -32,6 +32,8 @@ end
 
 patent = Epo::Ops::Register.raw_biblio('EP1000000', 'publication')
 ```
+The temporary access token is kept in memory for subsequent retrievals. To share this between several processes the
+token storage strategy may be changed as shown in `epo/ops/token_store` for redis.
 
 ## Advanced Usage
 ### Search for all Patents on a given Date
