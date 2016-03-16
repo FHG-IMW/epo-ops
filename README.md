@@ -4,30 +4,42 @@
 # epo-ops
 Ruby interface to the EPO Open Patent Services (OPS).
 
-[Documentation can be found here](http://www.rubydoc.info/gems/epo-ops/)
+[Full documentation can be found here](http://www.rubydoc.info/gems/epo-ops/)
 
-The EPO provides [playground](https://developers.epo.org/), where you can try
-out the methods. As well as [Documentation](https://www.epo.org/searching-for-patents/technical/espacenet/ops.html)
-of the different endpoints and detailed usage (see the 'Downloads' section).
+
 
 # Usage
 
-## Authentication
+## Quickstart
 In order to use this gem you need to register at the [EPO for
 OAuth](https://developers.epo.org/user/register).
-Use your credentials by configuring
+
+Then simply install this gem and start a ruby console.
+```
+$ gem install epo-ops
+$ irb
+```
+
+require the gem and use your OPS credentials to retrieve for example a single patent.
 
 ```ruby
+require 'epo/ops'
+
 Epo::Ops.configure do |conf|
   conf.consumer_key = "YOUR_KEY"
   conf.consumer_secret = "YOUR_SECRET"
 end
+
+patent = Epo::Ops::Register.raw_biblio('EP1000000', 'publication')
 ```
 
-## Quickstart
-### Search for Patents
+## Advanced Usage
+### Search for all Patents on a given Date
 
-Get references to all Patents on a given date and IPC-class:
+Get references to all Patents on a given date and IPC-class is not as easy as it seems. The OPS-API will not return
+more than 2000 patents for a given search and suprisingly it does not support the usual offset+limit approach. Therefor
+if on a given date more than 2000 patents are available the search has to be partitioned to retrieve them all. This
+gem does this automatically by using the different IPC-classes (and subclasses if necessary).
 
 ```ruby
 Epo::Ops::Register.search("A", Date.new(2016,2 ,3))
@@ -69,3 +81,9 @@ If you do not want to retrieve via the `application` endpoint (say you want
 ```ruby
 Epo::Ops::Register.raw_biblio('EP1000000', 'publication')
 ```
+
+# Further Reading
+
+The EPO provides [a developer playground](https://developers.epo.org/), where you can test-drive the OPS-API.
+They also provide extensive [documentation](https://www.epo.org/searching-for-patents/technical/espacenet/ops.html)
+of the different endpoints and how to use them (see the 'Downloads' section).
