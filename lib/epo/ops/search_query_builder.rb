@@ -44,19 +44,19 @@ module Epo
       def self.validate_range(range_start, range_end)
         if range_start > range_end
           range_start, range_end = range_end, range_start
-          Logger.log('range_start was bigger than range_end, swapped values')
+          Logger.debug('range_start was bigger than range_end, swapped values')
         elsif range_end - range_start > Limits::MAX_QUERY_INTERVAL - 1
           range_end = range_start + Limits::MAX_QUERY_INTERVAL - 1
-          Logger.log("range invalid, set to: #{[range_start, range_end]}")
+          Logger.debug("range invalid, set to: #{[range_start, range_end]}")
         end
         if range_start < 1
           range_end = range_end - range_start + 1
           range_start = 1
-          Logger.log("range_start must be > 0, set to: #{[range_start, range_end]}")
+          Logger.debug("range_start must be > 0, set to: #{[range_start, range_end]}")
         elsif range_end > Limits::MAX_QUERY_RANGE
           range_start = Limits::MAX_QUERY_RANGE - (range_end - range_start)
           range_end = Limits::MAX_QUERY_RANGE
-          Logger.log("range_end was too big, set to: #{[range_start, range_end]}")
+          Logger.debug("range_end was too big, set to: #{[range_start, range_end]}")
         end
         [range_start, range_end]
       end

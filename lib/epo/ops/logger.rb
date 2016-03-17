@@ -6,6 +6,12 @@ module Epo
       def self.log(output)
         puts output
       end
+
+      # Debug logging only
+      def self.debug(output)
+        log(output) if ENV['DEBUG']
+      end
+
     end
   end
 end
