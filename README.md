@@ -25,12 +25,12 @@ require the gem and use your OPS credentials to retrieve for example a single pa
 ```ruby
 require 'epo/ops'
 
-Epo::Ops.configure do |conf|
+EpoOps.configure do |conf|
   conf.consumer_key = "YOUR_KEY"
   conf.consumer_secret = "YOUR_SECRET"
 end
 
-patent = Epo::Ops::Register.raw_biblio('EP1000000', 'publication')
+patent = EpoOps::Register.raw_biblio('EP1000000', 'publication')
 ```
 The temporary access token is kept in memory for subsequent retrievals. To share this between several processes the
 token storage strategy may be changed as shown in `epo/ops/token_store` for redis.
@@ -44,16 +44,16 @@ if on a given date more than 2000 patents are available the search has to be par
 gem does this automatically by using the different IPC-classes (and subclasses if necessary).
 
 ```ruby
-Epo::Ops::Register.search("A", Date.new(2016,2 ,3))
+EpoOps::Register.search("A", Date.new(2016,2 ,3))
 # or for all ipc classes
-Epo::Ops::Register.search(nil, Date.new(2016,2 ,3))
+EpoOps::Register.search(nil, Date.new(2016,2 ,3))
 ```
 
 You can now retrieve the bibliographic entries of all these:
 
 ```ruby
-references = Epo::Ops::Register.search(nil, Date.new(2016,2 ,3))
-references.map { |ref| Epo::Ops::Register.biblio(ref) }
+references = EpoOps::Register.search(nil, Date.new(2016,2 ,3))
+references.map { |ref| EpoOps::Register.biblio(ref) }
 ```
 This will return an object that helps parsing the result. See the documentation
 for more information
@@ -72,7 +72,7 @@ to true you can get the raw result as a nested Hash, if you want to
 parse it yourself.
 
 ```ruby
-Epo::Ops::Register.raw_search("q=pd=20160203 and ic=D&Range=1-100", true)
+EpoOps::Register.raw_search("q=pd=20160203 and ic=D&Range=1-100", true)
 ```
 
 ### #raw_biblio
@@ -81,7 +81,7 @@ If you do not want to retrieve via the `application` endpoint (say you want
 `reference_id` you use matches the type.
 
 ```ruby
-Epo::Ops::Register.raw_biblio('EP1000000', 'publication')
+EpoOps::Register.raw_biblio('EP1000000', 'publication')
 ```
 
 # Further Reading
