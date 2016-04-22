@@ -40,7 +40,7 @@ module EpoOps
         else
           []
         end
-      end
+      end.reject(&:nil?)
     end
 
     def self.parse_change_gazette_num(num)

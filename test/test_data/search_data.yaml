@@ -1,0 +1,61 @@
+---
+world_patent_data:
+  xmlns:ops: http://ops.epo.org
+  xmlns:reg: http://www.epo.org/register
+  xmlns:xlink: http://www.w3.org/1999/xlink
+  xmlns:cpc: http://www.epo.org/cpcexport
+  xmlns:cpcdef: http://www.epo.org/cpcdefinition
+  meta:
+    name: elapsed-time
+    value: '12'
+  register_search:
+    total_result_count: '8965'
+    query:
+      syntax: CQL
+      __content__: pd=20160120
+    range:
+      begin: '1'
+      end: '2'
+    register_documents:
+      produced_by: RO
+      register_document:
+      - bibliographic_data:
+          publication_reference:
+            document_id:
+              country: EP
+              doc_number: '2975140'
+              date: '20160120'
+          classifications_ipcr:
+            classification_ipcr:
+              sequence: CLASSIFICATION_1
+              text: C22B1/24;; C22B1/242;; C22B7/04
+          application_reference:
+            document_id:
+              country: EP
+              doc_number: '15474002'
+          parties:
+            applicants:
+              applicant:
+                app_type: applicant
+                addressbook:
+                  name: Ecofirm s.r.o.
+      - bibliographic_data:
+          publication_reference:
+            document_id:
+              country: EP
+              doc_number: '2974604'
+              date: '20160120'
+          classifications_ipcr:
+            classification_ipcr:
+              sequence: CLASSIFICATION_1
+              text: A23D9/02;; C11C3/10;; C11C3/00
+          application_reference:
+            document_id:
+              country: EP
+              doc_number: '15461538'
+          parties:
+            applicants:
+              applicant:
+                app_type: applicant
+                addressbook:
+                  name: Skotan S.A.

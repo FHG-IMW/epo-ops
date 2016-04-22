@@ -6,6 +6,7 @@ require 'epo_ops/ipc_class_hierarchy_loader'
 require 'epo_ops/ipc_class_util'
 require 'epo_ops/patent_application'
 require 'epo_ops/factories'
+require 'epo_ops/register_search_result'
 
 module EpoOps
   # Configure your OAuth credentials to use with this gem.
