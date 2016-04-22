@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Epo::SearchQueryBuilderTest < Minitest::Test
+class EpoOps::SearchQueryBuilderTest < Minitest::Test
   def test_range_validation
     builder = EpoOps::SearchQueryBuilder
     assert_equal [1, 100], builder.send(:validate_range, 1, 100)

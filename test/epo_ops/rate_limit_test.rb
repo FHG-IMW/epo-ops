@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Epo
+module EpoOps
   class RateLimitTest < Minitest::Test
     # #limit_reached
 

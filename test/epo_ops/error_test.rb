@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Epo
+module EpoOps
   class ErrorTest < Minitest::Test
     # .from_response
 

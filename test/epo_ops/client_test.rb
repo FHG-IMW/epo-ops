@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Epo::ClientTest < Minitest::Test
+class EpoOps::ClientTest < Minitest::Test
   # .request
 
   def test_set_the_accept_header_to_json_and_pass_the_request_to_the_token

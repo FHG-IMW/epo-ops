@@ -1,7 +1,6 @@
 require 'epo_ops'
 require 'epo_ops/client'
 require 'epo_ops/util'
-require 'epo_ops/bibliographic_document'
 require 'epo_ops/logger'
 require 'epo_ops/ipc_class_util'
 
@@ -52,9 +51,8 @@ module EpoOps
     # @return [Integer] number of patents with given parameters
     def self.published_patents_counts(ipc_class = nil, date = nil)
       query = SearchQueryBuilder.build(ipc_class, date, 1, 2)
-      minimum_result_set = Register.raw_search(query, true)
-      return 0 if minimum_result_set.empty?
-      minimum_result_set['world_patent_data']['register_search']['total_result_count'].to_i
+      minimum_result_set = Register.raw_search(query)
+      minimum_result_set.count
     end
 
     # Search method returning all unique register references on a given
@@ -64,8 +62,10 @@ module EpoOps
     # @return [Array] Array of {SearchEntry}
     def self.search(ipc_class = nil, date = nil)
       queries = all_queries(ipc_class, date)
-      search_entries = queries.flat_map { |query| raw_search(query) }
-      search_entries.uniq { |se| se.application_reference.epodoc_reference }
+      search_entries = queries.map { |query| raw_search(query) }
+      applications = search_entries.collect(&:patents)
+
+      EpoOps::RegisterSearchResult.new(applications,applications.count)
     end
 
     # @return [Array] Array of Strings containing queries applicable to
@@ -85,66 +85,16 @@ module EpoOps
     # @param raw if `true` the result will be the raw response as a nested
     #   hash. if false(default) the result will be parsed further, returning a
     #   list of [SearchEntry]
-    # @return [Array] containing {SearchEntry}
+    # @return [RegisterSearchResult]
     def self.raw_search(query, raw = false)
-      hash = Client.request(:get, register_api_string + 'search?' + query).parsed
-      return parse_search_results(hash) unless raw
-      hash
+      data = Client.request(
+        :get,
+        '/3.1/rest-services/register/search?' + query
+      ).parsed
+
+      EpoOps::Factories::RegisterSearchResultFactory.build(data)
     rescue EpoOps::Error::NotFound
-      []
-    end
-
-    # @param search_entry [SearchEntry] a search entry which should be
-    #   retrieved.
-    # @return [BibliographicDocument] a parsed document.
-    def self.biblio(search_entry)
-      raw_biblio(search_entry.application_reference.epodoc_reference)
-    end
-
-    # @param reference_id [String] identifier for document. Format similar to
-    #   EP1000000
-    # @param format [String] epodoc is a format defined by the EPO for a
-    #   document id. see their documentation.
-    # @param type [String] may be `application` or `publication` make sure
-    #   that the `reference_id` is matching
-    # @param raw [Boolean] flag if the result should be returned as a raw Hash
-    #   or parsed as {BibliographicDocument}
-    # @return [BibliographicDocument, Hash]
-    def self.raw_biblio(reference_id, type = 'application', format = 'epodoc', raw = false)
-      request = "#{register_api_string}#{type}/#{format}/#{reference_id}/biblio"
-      result = Client.request(:get, request).parsed
-      raw ? result : BibliographicDocument.new(result)
-    end
-
-    Reference = Struct.new(:country, :doc_number, :date) do
-      def epodoc_reference
-        country + doc_number
-      end
-    end
-
-    SearchEntry = Struct.new(:publication_reference, :application_reference, :ipc_classes)
-
-    private
-
-    def self.parse_search_results(result)
-      path = %w(world_patent_data register_search register_documents register_document bibliographic_data)
-
-      list = Util.find_in_data(result, path)
-      list.map do |entry|
-        publication_reference = Reference.new(
-          entry['publication_reference']['document_id']['country'],
-          entry['publication_reference']['document_id']['doc_number'],
-          entry['publication_reference']['document_id']['date'])
-        application_reference = Reference.new(
-          entry['application_reference']['document_id']['country'],
-          entry['application_reference']['document_id']['doc_number'])
-        ipc_classes = entry['classifications_ipcr']['classification_ipcr']['text'].split(';;').map(&:strip)
-        SearchEntry.new(publication_reference, application_reference, ipc_classes)
-      end
-    end
-
-    def self.register_api_string
-      '/3.1/rest-services/register/'
+      raw ? nil : EpoOps::RegisterSearchResult::NullResult.new
     end
   end
 end

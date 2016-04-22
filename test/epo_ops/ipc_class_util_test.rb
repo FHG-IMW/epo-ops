@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Epo
+module EpoOps
   class IpcClassUtilTest < Minitest::Test
     def test_valid
       positives = ['A',

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Epo
+module EpoOps
   class IpcClassHierarchyTest < Minitest::Test
 
     def test_process_file

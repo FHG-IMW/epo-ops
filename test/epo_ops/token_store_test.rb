@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Epo
+module EpoOps
   class TokeStoreTest < Minitest::Test
     def test_token_generates_a_new_one_when_there_is_none
       token = mock

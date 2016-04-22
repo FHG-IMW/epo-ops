@@ -3,31 +3,25 @@ module EpoOps
   class RegisterSearchResult
     include Enumerable
 
-    def initialize(data)
-      @data = data
+    def initialize(patents,count,raw_data = nil)
+      @patents = patents
+      @count = count
+      @raw_data = raw_data
     end
 
     # The number of patents that match the query string. Offsets and API query limits do not apply
     # so that the actual number of patents returned can be much smaller.
     # @see EpoOps::Limits
     # @return [integer] The number of applications matching the query.
-    def count
-      return @count if @count
-      @count = EpoOps::Util.dig(@data, 'world_patent_data', 'register_search', 'total_result_count').to_i
-    end
+    attr_reader :count
+
+    # @return [Array] the patents returned by the search. Patentapplication data is not complete
+    attr_reader :patents
 
     def each
       patents.each do |patent|
         yield(patent)
       end
-    end
-
-    # @return [Array] the patents returned by the search. Patentapplication data is not complete
-    def patents
-      @patents ||= EpoOps::Util.flat_dig(
-        @data,
-        %w(world_patent_data register_search register_documents register_document)
-      ).map {|patent_data| EpoOps::Factories::PatentApplicationFactory.build(patent_data)}
     end
 
     # Represents queries with no results

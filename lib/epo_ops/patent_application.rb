@@ -43,7 +43,7 @@ module EpoOps
           '/3.1/rest-services/register/search?' + cql_query
         ).parsed
 
-        EpoOps::RegisterSearchResult.new(data)
+        EpoOps::Factories::RegisterSearchResultFactory.build(data)
       rescue EpoOps::Error::NotFound
         EpoOps::RegisterSearchResult::NullResult.new
       end
