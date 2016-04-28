@@ -56,7 +56,6 @@ class EpoOps::ClientTest < Minitest::Test
       assert response.is_a?(OAuth2::Response)
       assert_equal 200, response.status
       assert response.parsed.is_a?(Hash)
-      pp response.parsed
     end
   end
 end
