@@ -1,9 +1,8 @@
 require 'test_helper'
 
 class EpoOps::ClientTest < Minitest::Test
-  # .request
 
-  def test_set_the_accept_header_to_json_and_pass_the_request_to_the_token
+  def test_pass_the_request_to_the_token
     request = mock
     request.expects(:status).returns(200)
 
@@ -49,5 +48,15 @@ class EpoOps::ClientTest < Minitest::Test
     EpoOps::Error.stubs(:from_response).with(error_response).returns(EpoOps::Error::AccessTokenExpired.new)
 
     EpoOps::Client.request(:get, '/foo/bar')
+  end
+
+  def test_plain_requests
+    VCR.use_cassette(:plain_requests) do
+      response = EpoOps::Client.send(:do_plain_request, :get, "/3.1/rest-services/register/application/epodoc/EP14795538/biblio")
+      assert response.is_a?(OAuth2::Response)
+      assert_equal 200, response.status
+      assert response.parsed.is_a?(Hash)
+      pp response.parsed
+    end
   end
 end

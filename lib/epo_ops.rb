@@ -10,14 +10,14 @@ require 'epo_ops/factories'
 require 'epo_ops/register_search_result'
 
 module EpoOps
-  # Configure your OAuth credentials to use with this gem.
+  # Configure authentication method and credentials
   # @example
   #   EpoOps.configure do |conf|
   #     conf.consumer_key = "foo"
   #     conf.consumer_secret = "bar"
+  #     conf.token_store = EpoOps::TokenStore::Redis # (defaults to EpoOps::TokenStore)
+  #     conf.authentication :oauth # or :plain (defaults to :oauth)
   #   end
-  # Optional parameter:
-  # conf.token_store (defaults to {EpoOps::TokenStore})
   # @yieldparam [Configuration] configuration that is yielded.
   def self.configure
     yield(config)
@@ -30,12 +30,13 @@ module EpoOps
   end
 
   class Configuration
-    attr_accessor :consumer_key, :consumer_secret, :token_store
+    attr_accessor :consumer_key, :consumer_secret, :token_store, :authentication
 
     def initialize
       @consumer_key = ''
       @consumer_secret = ''
       @token_store = EpoOps::TokenStore.new
+      @authentication = :oauth
 
       OAuth2::Response.register_parser(:xml, ['application/xml']) do |body|
         MultiXml.parse(body)

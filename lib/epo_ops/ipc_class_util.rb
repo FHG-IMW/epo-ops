@@ -34,7 +34,7 @@ module EpoOps
 
     # @param [String] ipc_class an ipc_class
     # @return [Array] List of all ipc classes one level more specific.
-    # @examples
+    # @example
     #   children('A')   #=> ['A01', 'A21', 'A22', 'A23', ...]
     #   children('A62') #=> ['A62B', 'A62C', 'A62D'],
     # @raise [InvalidIpcClassError] if parameter is not a valid ipc class in
