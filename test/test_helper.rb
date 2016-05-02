@@ -13,11 +13,12 @@ require 'mocha/mini_test'
 # configure OAuth credentials
 # make sure not to upload your real credentials, and token. Check your newly created
 # VCR records.
-
 EpoOps.configure do |config|
+  config.authentication = :oauth
   config.consumer_key = 'Foo'
   config.consumer_secret = 'Bar'
 end
+
 # VCR
 VCR.configure do |c|
   c.cassette_library_dir = 'test/vcr_cassettes'

@@ -16,7 +16,7 @@ module EpoOps
   #     conf.consumer_key = "foo"
   #     conf.consumer_secret = "bar"
   #     conf.token_store = EpoOps::TokenStore::Redis # (defaults to EpoOps::TokenStore)
-  #     conf.authentication :oauth # or :plain (defaults to :oauth)
+  #     conf.authentication :oauth # or :plain (defaults to :plain)
   #   end
   # @yieldparam [Configuration] configuration that is yielded.
   def self.configure
@@ -36,7 +36,7 @@ module EpoOps
       @consumer_key = ''
       @consumer_secret = ''
       @token_store = EpoOps::TokenStore.new
-      @authentication = :oauth
+      @authentication = :plain
 
       OAuth2::Response.register_parser(:xml, ['application/xml']) do |body|
         MultiXml.parse(body)

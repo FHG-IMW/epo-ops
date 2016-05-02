@@ -22,10 +22,6 @@ and start querying the API
 ```ruby
 require 'epo/ops'
 
-EpoOps.configure do |conf|
- conf.authorization = :plain
-end
-
 patent_application = EpoOps::PatentApplication.find("EP14795538")
 patent_application.classifications # ["A47B21/04", "A47B23/04", "A47B19/00"]
 ```
@@ -34,7 +30,7 @@ patent_application.classifications # ["A47B21/04", "A47B23/04", "A47B19/00"]
 
 ### OAuth
 
-EPO offers an anonymous developer access to their API with very little quota. To get expandet quotas you can register
+EPO offers an anonymous developer access to their API with very little quota. To get extended quotas you can register
 an account at the [EPO for OAuth](https://developers.epo.org/user/register)
 
 After your account has been approved configure your credentials
@@ -56,7 +52,7 @@ token storage strategy may be changed as shown in `epo/ops/token_store` for redi
 ### Querying and searching patent applications
 
 Currently this gem focuses mostly around patent applications.
-It is possibly to search for specific applications by application number or to search for applications using a
+It is possible to search for specific applications by application number and to search for applications using a
 CQL search query
 
 For example to find all applications in IPC Class _A01_ (and all subclasses) that were changed between 2016-01-01 and 2016-01-02
@@ -64,7 +60,7 @@ For example to find all applications in IPC Class _A01_ (and all subclasses) tha
 ```ruby
 query = EpoOps::SearchQueryBuilder.build("A01",Date.parse("2016-01-01"), Date.parse("2016-01-02"))
 applications = EpoOps::PatentApplication.search(query)
-application.count # 1234
+puts application.count # 1234
 applications.map {|application| puts application.application_nr } # print all application numbers
 applications.map {|application| application.fetch} # fetch complete bibliographic data for each document
 
