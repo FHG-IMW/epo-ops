@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'epo/ops/version'
+require 'epo_ops/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'epo-ops'
-  spec.version       = Epo::Ops::VERSION
+  spec.version       = EpoOps::VERSION
   spec.authors       = ['Max Kießling', 'Robert Terbach', 'Michael Prilop']
 
   spec.summary       = 'Ruby interface to the European Patent Office API (OPS)'
