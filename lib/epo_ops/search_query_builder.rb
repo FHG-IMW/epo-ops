@@ -11,7 +11,7 @@ module EpoOps
     # Build the query with the given parameters. Invalid ranges are fixed
     # automatically and you will be notified about the changes
     # @return [String]
-    def self.build(ipc_class, date, range_start = 1, range_end = nil)
+    def self.build(ipc_class, date, range_start = nil, range_end = nil)
       validated_range = validate_range range_start, range_end
       "q=#{build_params(ipc_class, date)}&Range=#{validated_range[0]}-#{validated_range[1]}"
     end
@@ -41,6 +41,8 @@ module EpoOps
     # @see EpoOps::Limits
     # @return array with two elements: [range_start, range_end]
     def self.validate_range(range_start, range_end)
+      range_start = 1 unless range_start
+      range_end = 10 unless range_end
       if range_start > range_end
         range_start, range_end = range_end, range_start
         Logger.debug('range_start was bigger than range_end, swapped values')

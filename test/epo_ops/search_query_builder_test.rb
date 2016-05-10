@@ -19,6 +19,10 @@ class EpoOps::SearchQueryBuilderTest < Minitest::Test
     assert_equal 'q=pd=20160210 and ic=A&Range=1-2', query
   end
 
+  def test_readme_example
+    EpoOps::SearchQueryBuilder.build("A01", Date.parse("2016-01-01"))
+  end
+
   def test_build_parameters
     query = EpoOps::SearchQueryBuilder.build(nil, Date.new(2016, 2, 10), 1, 100)
     assert_equal 'q=pd=20160210&Range=1-100', query
