@@ -35,7 +35,9 @@ module EpoOps
       # @return [String] Application Number
       # @see EpoOps::PatentApplication#application_nr
       def application_number
-        document_id = EpoOps::Util.dig raw_data, data_path('application_reference', 'document_id')
+        document_id = EpoOps::Util.flat_dig raw_data, data_path('application_reference', 'document_id')
+        document_id = document_id.first if document_id.is_a?(Array)
+
         "#{document_id['country']}#{document_id['doc_number']}"
       end
 

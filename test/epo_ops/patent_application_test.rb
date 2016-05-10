@@ -11,6 +11,14 @@ module EpoOps
       end
     end
 
+    def test_find_patent_application_with_several_ids
+      VCR.use_cassette('patent_application_requests', :record => :new_episodes) do
+        patent = EpoOps::PatentApplication.find('EP14731659')
+        assert patent.is_a? EpoOps::PatentApplication
+        assert_equal 'EP14731659', patent.application_nr
+      end
+    end
+
     def test_search_patent_applications
       VCR.use_cassette('patent_application_requests') do
         search = EpoOps::PatentApplication.search("Range=1-2&q=pd=20160120")

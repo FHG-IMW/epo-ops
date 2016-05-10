@@ -7,7 +7,8 @@ module EpoOps
 
     class << self
 
-      # Finds an application document by application number
+      # Finds an application document by application number. As an application may have several numbers assigned
+      # (for example EP and WO) we pick the first one returned - thus the returned document may have a different number
       # @param application_number [String] identifies the application document at EPO
       # @return [PatentApplication] the application document, nil if it can't be found
       # @note API url: /3.1/rest-services/register/application/epodoc/#{application_number}/biblio
