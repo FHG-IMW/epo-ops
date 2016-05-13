@@ -13,6 +13,7 @@ module EpoOps
     # @option options [Hash] :headers http request headers
     # @raise [EpoOps::Error] API Error if request was not successful
     def self.request(verb, url, options = {})
+      EpoOps::Logger.debug("Sending Request: #{verb} #{url}")
       response = case EpoOps.config.authentication
                   when :oauth then do_oauth_request(verb, url, options)
                   when :plain then do_plain_request(verb,url,options)
