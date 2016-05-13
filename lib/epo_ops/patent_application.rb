@@ -117,6 +117,12 @@ module EpoOps
       @title[lang]
     end
 
+    # Return the applications title in all available languages
+    # @return [Hash] titles in all languagles
+    def titles
+      @title
+    end
+
     # Many fields of the XML the EPO provides have a field
     # `change_gazette_num`.  It is a commercial date (year + week)
     # that describes in which week the element has been
