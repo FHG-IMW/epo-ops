@@ -24,7 +24,7 @@ require 'epo_ops'
 
 patent_application = EpoOps::PatentApplication.find("EP14731659")
 patent_application.title  # "DEVICE AND METHOD FOR INTRODUCING FIBRES INTO AN EXTRUDER"
-patent_application.classifications # ["B29C47/10", "B29C47/68", "B29C47/92", "B29C45/00", "B01D46/24"] 
+patent_application.classifications # ["B29C47/10", "B29C47/68", "B29C47/92", "B29C45/00", "B01D46/24"]
 patent_application.applicants.first.name # "Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V."
 ```
 
@@ -60,9 +60,9 @@ CQL search query
 For example to find all applications in IPC Class _A01_ (and all subclasses) that were updated on 2016-01-01
 
 ```ruby
-query = EpoOps::SearchQueryBuilder.build("A01", Date.parse("2016-01-02"))
+query = EpoOps::SearchQueryBuilder.build("A01", Date.parse("2016-01-06"))
 applications = EpoOps::PatentApplication.search(query)
-puts applications.count # 1234
+applications.count #=> 66
 applications.map {|application| puts application.application_nr } # print all application numbers
 applications.map {|application| application.fetch} # fetch complete bibliographic data for each document
 
@@ -89,8 +89,8 @@ EpoOps::Register.search(nil, Date.new(2016,2 ,3))
 You can now retrieve the bibliographic entries of all these:
 
 ```ruby
-references = EpoOps::Register.search(nil, Date.new(2016,2 ,3))
-references.map { |ref| EpoOps::Register.biblio(ref) }
+patent_applications = EpoOps::Register.search(nil, Date.new(2016,2 ,3))
+patent_applications.count == patent_applications.patents.count #=> true
 ```
 
 **Note: Both operations take a considerable amount of time. Also you may not
