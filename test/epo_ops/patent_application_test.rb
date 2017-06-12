@@ -49,7 +49,7 @@ module EpoOps
 
       assert_equal titles['en'], application.title
       assert_equal titles['de'], application.title('de')
-      assert_equal nil, application.title('sv')
+      assert_nil application.title('sv')
     end
 
     def test_last_update_should_find_the_latest_date_in_the_change_gazette_num_fields
@@ -60,7 +60,7 @@ module EpoOps
 
     def test_url_generation
       application = EpoOps::PatentApplication.new("EP123",{})
-      assert_equal 'https://ops.epo.org/3.1/rest-services/register/application/epodoc/EP123', application.url
+      assert_equal "https://ops.epo.org/#{EpoOps::API_VERSION}/rest-services/register/application/epodoc/EP123", application.url
     end
 
     def test_fetching_data

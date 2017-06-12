@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://Foo:Bar@ops.epo.org/3.1/auth/accesstoken
+    uri: https://Foo:Bar@ops.epo.org/3.2/auth/accesstoken
     body:
       encoding: UTF-8
       string: grant_type=client_credentials
@@ -14,7 +14,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
   response:
     status:
       code: 200
@@ -25,7 +25,7 @@ http_interactions:
       Access-Control-Allow-Methods:
       - POST
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Content-Type:
       - application/json
       Date:
@@ -56,7 +56,7 @@ http_interactions:
   recorded_at: Thu, 10 Mar 2016 11:21:11 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160120
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-2&q=pd=20160120
     body:
       encoding: US-ASCII
       string: ''
@@ -68,7 +68,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
   response:
     status:
       code: 200
@@ -79,7 +79,7 @@ http_interactions:
       Access-Control-Allow-Methods:
       - POST
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Cache-Control:
       - no-cache
       Content-Type:
@@ -99,7 +99,7 @@ http_interactions:
       X-Epo-Client-Ip:
       - 153.96.27.10
       X-Epo-Forwarded:
-      - '[153.96.27.10]'
+      - "[153.96.27.10]"
       X-Individualquotaperhour-Used:
       - '17008274'
       X-Registeredquotaperweek-Used:
@@ -190,7 +190,7 @@ http_interactions:
   recorded_at: Thu, 10 Mar 2016 11:21:12 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160121
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-2&q=pd=20160121
     body:
       encoding: US-ASCII
       string: ''
@@ -202,7 +202,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
   response:
     status:
       code: 404
@@ -213,7 +213,7 @@ http_interactions:
       Access-Control-Allow-Methods:
       - POST
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Cache-Control:
       - no-cache
       Content-Type:
@@ -233,7 +233,7 @@ http_interactions:
       X-Epo-Client-Ip:
       - 153.96.27.10
       X-Epo-Forwarded:
-      - '[153.96.27.10]'
+      - "[153.96.27.10]"
       X-Individualquotaperhour-Used:
       - '17008274'
       X-Registeredquotaperweek-Used:
@@ -252,7 +252,7 @@ http_interactions:
   recorded_at: Thu, 10 Mar 2016 11:21:12 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/application/epodoc/EP99203729/biblio
+    uri: https://ops.epo.org/3.2/rest-services/register/application/epodoc/EP99203729/biblio
     body:
       encoding: US-ASCII
       string: ''
@@ -264,7 +264,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
   response:
     status:
       code: 200
@@ -275,7 +275,7 @@ http_interactions:
       Access-Control-Allow-Methods:
       - POST
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Cache-Control:
       - no-cache
       Content-Type:
@@ -295,7 +295,7 @@ http_interactions:
       X-Epo-Client-Ip:
       - 153.96.27.10
       X-Epo-Forwarded:
-      - '[153.96.27.10]'
+      - "[153.96.27.10]"
       X-Individualquotaperhour-Used:
       - '158628'
       X-Registeredquotaperweek-Used:
@@ -1206,7 +1206,7 @@ http_interactions:
   recorded_at: Wed, 17 Feb 2016 14:33:05 GMT
 - request:
     method: post
-    uri: https://Foo:Bar@ops.epo.org/3.1/auth/accesstoken
+    uri: https://Foo:Bar@ops.epo.org/3.2/auth/accesstoken
     body:
       encoding: UTF-8
       string: grant_type=client_credentials
@@ -1218,7 +1218,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
   response:
     status:
       code: 200
@@ -1229,7 +1229,7 @@ http_interactions:
       Access-Control-Allow-Methods:
       - POST
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Content-Type:
       - application/json
       Date:
@@ -1261,7 +1261,7 @@ http_interactions:
   recorded_at: Tue, 10 May 2016 14:21:03 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/application/epodoc/EP14731659/biblio
+    uri: https://ops.epo.org/3.2/rest-services/register/application/epodoc/EP14731659/biblio
     body:
       encoding: US-ASCII
       string: ''
@@ -1273,7 +1273,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
   response:
     status:
       code: 200
@@ -1284,7 +1284,7 @@ http_interactions:
       Access-Control-Allow-Methods:
       - POST
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Cache-Control:
       - no-cache
       Content-Type:
@@ -1304,7 +1304,7 @@ http_interactions:
       X-Epo-Client-Ip:
       - 192.44.4.129
       X-Epo-Forwarded:
-      - '[192.44.4.129]'
+      - "[192.44.4.129]"
       X-Individualquotaperhour-Used:
       - '86260'
       X-Registeredquotaperweek-Used:
@@ -1571,7 +1571,7 @@ http_interactions:
   recorded_at: Tue, 10 May 2016 14:21:03 GMT
 - request:
     method: post
-    uri: https://Bar:Bar@ops.epo.org/3.1/auth/accesstoken
+    uri: https://Bar:Bar@ops.epo.org/3.2/auth/accesstoken
     body:
       encoding: UTF-8
       string: grant_type=client_credentials
@@ -1583,7 +1583,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
   response:
     status:
       code: 401
@@ -1594,7 +1594,7 @@ http_interactions:
       Access-Control-Allow-Methods:
       - POST
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Content-Type:
       - application/xml
       Date:
@@ -1612,4 +1612,60 @@ http_interactions:
       string: "<error><code>401</code><message>ClientId is Invalid</message>\n\t\t\t</error>\n\t\t"
     http_version: 
   recorded_at: Tue, 10 May 2016 14:25:20 GMT
-recorded_with: VCR 3.0.1
+- request:
+    method: post
+    uri: https://ops.epo.org/3.2/auth/accesstoken
+    body:
+      encoding: UTF-8
+      string: client_id=emA8Hms5RiQXd7uNMsgtstbpoGKJkh9Y&client_secret=LBVAuXM1Cvr4ZUb7&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 07 Apr 2017 16:07:19 GMT
+      Server:
+      - Apigee Router
+      Content-Length:
+      - '492'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "refresh_token_expires_in" : "0",
+          "api_product_list" : "[ops31-prod]",
+          "organization_name" : "epo",
+          "developer.email" : "max.kiessling@moez.fraunhofer.de",
+          "token_type" : "BearerToken",
+          "issued_at" : "1491581239266",
+          "client_id" : "emA8Hms5RiQXd7uNMsgtstbpoGKJkh9Y",
+          "access_token" : "0aK1fTv8kX9Ql8iZDB5xSX7iasKS",
+          "application_name" : "b432991c-3697-434b-b0ff-724da0827e50",
+          "scope" : "core",
+          "expires_in" : "1199",
+          "refresh_count" : "0",
+          "status" : "approved"
+        }
+    http_version: 
+  recorded_at: Fri, 07 Apr 2017 16:09:08 GMT
+recorded_with: VCR 2.9.3

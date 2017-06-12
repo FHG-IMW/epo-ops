@@ -11,11 +11,11 @@ module EpoOps
       # (for example EP and WO) we pick the first one returned - thus the returned document may have a different number
       # @param application_number [String] identifies the application document at EPO
       # @return [PatentApplication] the application document, nil if it can't be found
-      # @note API url: /3.1/rest-services/register/application/epodoc/#{application_number}/biblio
+      # @note API url: /3.2/rest-services/register/application/epodoc/#{application_number}/biblio
       def find(application_number)
         raw_data = EpoOps::Client.request(
           :get,
-          "/3.1/rest-services/register/application/epodoc/#{application_number}/biblio"
+          "/#{EpoOps::API_VERSION}/rest-services/register/application/epodoc/#{application_number}/biblio"
         ).parsed
 
         data = EpoOps::Util.flat_dig(
@@ -41,7 +41,7 @@ module EpoOps
       def search(cql_query)
         data = Client.request(
           :get,
-          '/3.1/rest-services/register/search?' + cql_query
+          "/#{EpoOps::API_VERSION}/rest-services/register/search?" + cql_query
         ).parsed
 
         EpoOps::Factories::RegisterSearchResultFactory.build(data)
@@ -137,7 +137,7 @@ module EpoOps
 
     # @return [String] The URL at which you can query the original document.
     def url
-      @url ||= "https://ops.epo.org/3.1/rest-services/register/application/epodoc/#{application_nr}"
+      @url ||= "https://ops.epo.org/#{EpoOps::API_VERSION}/rest-services/register/application/epodoc/#{application_nr}"
     end
 
     # Fetches the same document from the register populating all available fields

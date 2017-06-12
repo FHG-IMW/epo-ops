@@ -23,7 +23,7 @@ module EpoOps
         EpoOps.config.consumer_key,
         EpoOps.config.consumer_secret,
         site: 'https://ops.epo.org/',
-        token_url: '/3.1/auth/accesstoken',
+        token_url: "/#{EpoOps::API_VERSION}/auth/accesstoken",
         raise_errors: false
       )
 

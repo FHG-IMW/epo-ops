@@ -5,7 +5,7 @@ require 'epo_ops/logger'
 require 'epo_ops/ipc_class_util'
 
 module EpoOps
-  # Access to the {http://ops.epo.org/3.1/rest-services/register register}
+  # Access to the {http://ops.epo.org/#{EpoOps::API_VERSION}/rest-services/register register}
   # endpoint of the EPO OPS API.
   #
   # By now you can search and retrieve patents by using the type `application`
@@ -89,7 +89,7 @@ module EpoOps
     def self.raw_search(query, raw = false)
       data = Client.request(
         :get,
-        '/3.1/rest-services/register/search?' + query
+        "/#{EpoOps::API_VERSION}/rest-services/register/search?" + query
       ).parsed
 
       EpoOps::Factories::RegisterSearchResultFactory.build(data)

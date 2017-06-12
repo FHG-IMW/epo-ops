@@ -32,12 +32,9 @@ module EpoOps
                   :country_code,
                   :cdsid
 
-
       def initialize(raw_data)
         @raw_data = raw_data
-
-        @name         = raw_data['name']
-
+        @name = raw_data['name']
         if raw_data['address'].is_a? Hash
           @address_1    = raw_data['address']['address_1']
           @address_2    = raw_data['address']['address_2']
@@ -46,8 +43,7 @@ module EpoOps
           @address_5    = raw_data['address']['address_5']
           @country_code = raw_data['address']['country']
         end
-
-        @cdsid        = raw_data['cdsid']
+        @cdsid = raw_data['cdsid']
       end
     end
   end
