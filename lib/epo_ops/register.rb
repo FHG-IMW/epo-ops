@@ -1,9 +1,3 @@
-require 'epo_ops'
-require 'epo_ops/client'
-require 'epo_ops/util'
-require 'epo_ops/logger'
-require 'epo_ops/ipc_class_util'
-
 module EpoOps
   # Access to the {http://ops.epo.org/#{EpoOps::API_VERSION}/rest-services/register register}
   # endpoint of the EPO OPS API.

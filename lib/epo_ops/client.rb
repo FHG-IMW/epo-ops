@@ -1,6 +1,3 @@
-require 'epo_ops/token_store'
-require 'epo_ops/error'
-
 module EpoOps
 
   # This is a wrapper for OAuth

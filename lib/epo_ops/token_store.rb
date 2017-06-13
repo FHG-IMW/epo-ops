@@ -1,13 +1,10 @@
-require 'oauth2'
-require 'epo_ops'
-
 module EpoOps
   # This class saves the token in memory, you may want to subclass this and
   # overwrite #token if you want to store it somewhere else.
   #
   class TokenStore
     def token
-      @token = generate_token if !@token || @token.expired?
+      @token = generate_token if @token.nil? || @token.expired?
 
       @token
     end

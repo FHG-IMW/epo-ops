@@ -4,8 +4,6 @@ SimpleCov.start
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'epo_ops'
 
-require 'webmock/minitest'
-require 'minitest/unit'
 require 'minitest/autorun'
 require 'vcr'
 require 'mocha/mini_test'

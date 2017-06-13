@@ -1,6 +1,3 @@
-require 'httparty'
-require 'epo_ops/ipc_class_util'
-
 module EpoOps
   # Usually this should only used internally.
   # Loads the Hierarchy from the WIPO.
@@ -33,7 +30,7 @@ module EpoOps
       # Process every line (There is a line for every class entry, name and description are separated by a \t)
       file.each_line.inject(Hash.new { |h, k| h[k] = [] }) do |mem, line|
         next if line.to_s.strip.empty?
-        ipc_class_generic, description = line.split("\t")
+        ipc_class_generic, _description = line.split("\t")
 
         # Some entries in the files have the same ipc class, the first line is
         # just some kind of headline, the second is the description we want.

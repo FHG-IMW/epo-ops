@@ -1,5 +1,3 @@
-require 'epo_ops/ipc_class_hierarchy'
-
 module EpoOps
   # Utility functions to work on Strings representing ipc classes.
   class IpcClassUtil
