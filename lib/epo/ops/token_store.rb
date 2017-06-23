@@ -19,7 +19,7 @@ module Epo
           Epo::Ops.config.consumer_key,
           Epo::Ops.config.consumer_secret,
           site: 'https://ops.epo.org/',
-          token_url: '/3.1/auth/accesstoken',
+          token_url: "/#{Epo::Ops::API_VERSION}/auth/accesstoken",
           raise_errors: false
         )
         @token = client.client_credentials.get_token

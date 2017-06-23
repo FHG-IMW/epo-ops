@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20140115
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-2&q=pd=20140115
     body:
       encoding: US-ASCII
       string: ''
@@ -30,11 +30,11 @@ http_interactions:
       encoding: UTF-8
       string: "<error><code>403</code><message>This request has been rejected due
         to the violation of Fair Use policy</message><moreInfo>http://www.epo.org/searching/free/espacenet/fair-use.html</moreInfo>\n\t\t\t\t</error>\n\t\t\t"
-    http_version: 
+    http_version:
   recorded_at: Tue, 18 Nov 2014 12:40:44 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-100&q=pd=20140115%20and%20pr=EP%20and%20pn=EP
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-100&q=pd=20140115%20and%20pr=EP%20and%20pn=EP
     body:
       encoding: US-ASCII
       string: ''
@@ -66,7 +66,7 @@ http_interactions:
   recorded_at: Tue, 18 Nov 2014 12:40:44 GMT
 - request:
     method: post
-    uri: https://Foo:Bar@ops.epo.org/3.1/auth/accesstoken
+    uri: https://Foo:Bar@ops.epo.org/3.2/auth/accesstoken
     body:
       encoding: UTF-8
       string: grant_type=client_credentials

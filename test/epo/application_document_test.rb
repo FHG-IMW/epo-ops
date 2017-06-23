@@ -11,7 +11,7 @@ module Epo
         two_agents_raw = YAML.load File.read('test/test_data/epo_two_agent.yaml')
         agent_5_address_raw = YAML.load File.read('test/test_data/epo_agent_with_5_address_fields.yaml')
         application_nr = Epo::Ops::Util.find_in_data(single_classification_raw, %w(world_patent_data register_search query __content__)).first.partition('=').last
-        url = "https://ops.epo.org/3.1/rest-services/register/application/epodoc/#{application_nr}"
+        url = "https://ops.epo.org/#{Epo::Ops::API_VERSION}/rest-services/register/application/epodoc/#{application_nr}"
         @single_class = Epo::Ops::BibliographicDocument.new(url: url, raw: single_classification_raw)
         @multi_class = Epo::Ops::BibliographicDocument.new(url: url, raw: multi_classification_raw)
         @no_agent = Epo::Ops::BibliographicDocument.new(url: url, raw: no_agent_raw)
@@ -96,7 +96,7 @@ module Epo
       end
 
       def test_url
-        assert_equal 'https://ops.epo.org/3.1/rest-services/register/application/epodoc/EP14154144', @single_class.url
+        assert_equal "https://ops.epo.org/#{Epo::Ops::API_VERSION}/rest-services/register/application/epodoc/EP14154144", @single_class.url
       end
     end
   end

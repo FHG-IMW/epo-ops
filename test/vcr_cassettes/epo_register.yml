@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://Foo:Bar@ops.epo.org/3.1/auth/accesstoken
+    uri: https://Foo:Bar@ops.epo.org/3.2/auth/accesstoken
     body:
       encoding: UTF-8
       string: grant_type=client_credentials
@@ -58,7 +58,7 @@ http_interactions:
   recorded_at: Wed, 10 Feb 2016 14:33:41 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-100&q=pd=20160203
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-100&q=pd=20160203
     body:
       encoding: US-ASCII
       string: ''
@@ -97,7 +97,7 @@ http_interactions:
       Vary:
       - Accept
       X-Api:
-      - ops-v3.1
+      - ops-v3.2
       X-Epo-Client-Ip:
       - 153.96.27.10
       X-Epo-Forwarded:
@@ -961,7 +961,7 @@ http_interactions:
   recorded_at: Wed, 10 Feb 2016 14:33:42 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/publication/epodoc/EP1000000/biblio
+    uri: https://ops.epo.org/3.2/rest-services/register/publication/epodoc/EP1000000/biblio
     body:
       encoding: US-ASCII
       string: ''
@@ -1000,7 +1000,7 @@ http_interactions:
       Vary:
       - Accept
       X-Api:
-      - ops-v3.1
+      - ops-v3.2
       X-Epo-Client-Ip:
       - 153.96.27.10
       X-Epo-Forwarded:
@@ -1914,7 +1914,7 @@ http_interactions:
   recorded_at: Wed, 17 Feb 2016 14:33:04 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/application/epodoc/EP99203729/biblio
+    uri: https://ops.epo.org/3.2/rest-services/register/application/epodoc/EP99203729/biblio
     body:
       encoding: US-ASCII
       string: ''
@@ -1953,7 +1953,7 @@ http_interactions:
       Vary:
       - Accept
       X-Api:
-      - ops-v3.1
+      - ops-v3.2
       X-Epo-Client-Ip:
       - 153.96.27.10
       X-Epo-Forwarded:
@@ -2868,7 +2868,7 @@ http_interactions:
   recorded_at: Wed, 17 Feb 2016 14:33:05 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160203
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-2&q=pd=20160203
     body:
       encoding: US-ASCII
       string: ''
@@ -2907,7 +2907,7 @@ http_interactions:
       Vary:
       - Accept
       X-Api:
-      - ops-v3.1
+      - ops-v3.2
       X-Epo-Client-Ip:
       - 153.96.27.10
       X-Epo-Forwarded:
@@ -3002,7 +3002,7 @@ http_interactions:
   recorded_at: Thu, 18 Feb 2016 12:00:40 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160203%20and%20ic=A
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-2&q=pd=20160203%20and%20ic=A
     body:
       encoding: US-ASCII
       string: ''
@@ -3041,7 +3041,7 @@ http_interactions:
       Vary:
       - Accept
       X-Api:
-      - ops-v3.1
+      - ops-v3.2
       X-Epo-Client-Ip:
       - 153.96.27.10
       X-Epo-Forwarded:
@@ -3136,7 +3136,7 @@ http_interactions:
   recorded_at: Thu, 18 Feb 2016 12:00:41 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160203%20and%20ic=B
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-2&q=pd=20160203%20and%20ic=B
     body:
       encoding: US-ASCII
       string: ''
@@ -3175,7 +3175,7 @@ http_interactions:
       Vary:
       - Accept
       X-Api:
-      - ops-v3.1
+      - ops-v3.2
       X-Epo-Client-Ip:
       - 153.96.27.10
       X-Epo-Forwarded:
@@ -3270,7 +3270,7 @@ http_interactions:
   recorded_at: Thu, 18 Feb 2016 12:00:41 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160203%20and%20ic=C
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-2&q=pd=20160203%20and%20ic=C
     body:
       encoding: US-ASCII
       string: ''
@@ -3309,7 +3309,7 @@ http_interactions:
       Vary:
       - Accept
       X-Api:
-      - ops-v3.1
+      - ops-v3.2
       X-Epo-Client-Ip:
       - 153.96.27.10
       X-Epo-Forwarded:
@@ -3404,7 +3404,7 @@ http_interactions:
   recorded_at: Thu, 18 Feb 2016 12:00:41 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160203%20and%20ic=D
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-2&q=pd=20160203%20and%20ic=D
     body:
       encoding: US-ASCII
       string: ''
@@ -3443,7 +3443,7 @@ http_interactions:
       Vary:
       - Accept
       X-Api:
-      - ops-v3.1
+      - ops-v3.2
       X-Epo-Client-Ip:
       - 153.96.27.10
       X-Epo-Forwarded:
@@ -3538,7 +3538,7 @@ http_interactions:
   recorded_at: Thu, 18 Feb 2016 12:00:41 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160203%20and%20ic=E
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-2&q=pd=20160203%20and%20ic=E
     body:
       encoding: US-ASCII
       string: ''
@@ -3577,7 +3577,7 @@ http_interactions:
       Vary:
       - Accept
       X-Api:
-      - ops-v3.1
+      - ops-v3.2
       X-Epo-Client-Ip:
       - 153.96.27.10
       X-Epo-Forwarded:
@@ -3672,7 +3672,7 @@ http_interactions:
   recorded_at: Thu, 18 Feb 2016 12:00:42 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160203%20and%20ic=F
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-2&q=pd=20160203%20and%20ic=F
     body:
       encoding: US-ASCII
       string: ''
@@ -3711,7 +3711,7 @@ http_interactions:
       Vary:
       - Accept
       X-Api:
-      - ops-v3.1
+      - ops-v3.2
       X-Epo-Client-Ip:
       - 153.96.27.10
       X-Epo-Forwarded:
@@ -3806,7 +3806,7 @@ http_interactions:
   recorded_at: Thu, 18 Feb 2016 12:00:42 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160203%20and%20ic=G
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-2&q=pd=20160203%20and%20ic=G
     body:
       encoding: US-ASCII
       string: ''
@@ -3845,7 +3845,7 @@ http_interactions:
       Vary:
       - Accept
       X-Api:
-      - ops-v3.1
+      - ops-v3.2
       X-Epo-Client-Ip:
       - 153.96.27.10
       X-Epo-Forwarded:
@@ -3940,7 +3940,7 @@ http_interactions:
   recorded_at: Thu, 18 Feb 2016 12:00:42 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=pd=20160203%20and%20ic=H
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-2&q=pd=20160203%20and%20ic=H
     body:
       encoding: US-ASCII
       string: ''
@@ -3979,7 +3979,7 @@ http_interactions:
       Vary:
       - Accept
       X-Api:
-      - ops-v3.1
+      - ops-v3.2
       X-Epo-Client-Ip:
       - 153.96.27.10
       X-Epo-Forwarded:
@@ -4072,4 +4072,270 @@ http_interactions:
         </ops:world-patent-data>
     http_version:
   recorded_at: Thu, 18 Feb 2016 12:00:43 GMT
+- request:
+    method: post
+    uri: https://ops.epo.org/3.2/auth/accesstoken
+    body:
+      encoding: UTF-8
+      string: client_id=Foo&client_secret=Bar&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/xml
+      Date:
+      - Fri, 23 Jun 2017 13:21:10 GMT
+      Server:
+      - Apigee Router
+      Www-Authenticate:
+      - Basic
+      Content-Length:
+      - '76'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<error><code>401</code><message>ClientId is Invalid</message>\n\t\t\t</error>\n\t\t"
+    http_version:
+  recorded_at: Fri, 23 Jun 2017 13:21:10 GMT
+- request:
+    method: post
+    uri: https://ops.epo.org/3.2/auth/accesstoken
+    body:
+      encoding: UTF-8
+      string: client_id=Foo&client_secret=Bar&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/xml
+      Date:
+      - Fri, 23 Jun 2017 13:21:20 GMT
+      Server:
+      - Apigee Router
+      Www-Authenticate:
+      - Basic
+      Content-Length:
+      - '76'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<error><code>401</code><message>ClientId is Invalid</message>\n\t\t\t</error>\n\t\t"
+    http_version:
+  recorded_at: Fri, 23 Jun 2017 13:21:20 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-2&q=pd=20160203
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Authorization:
+      - Bearer
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/xml
+      Date:
+      - Fri, 23 Jun 2017 13:21:21 GMT
+      Server:
+      - Apigee Router
+      Www-Authenticate:
+      - 'Bearer realm="null",error="invalid_token",error_description="oauth.v2.InvalidAccessToken:
+        Invalid access token"'
+      Content-Length:
+      - '129'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<error><code>400</code><message>invalid_access_token</message><description>Access
+        token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
+    http_version:
+  recorded_at: Fri, 23 Jun 2017 13:21:21 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.2/rest-services/register/application/epodoc/EP99203729/biblio
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Authorization:
+      - Bearer
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/xml
+      Date:
+      - Fri, 23 Jun 2017 13:21:21 GMT
+      Server:
+      - Apigee Router
+      Www-Authenticate:
+      - 'Bearer realm="null",error="invalid_token",error_description="oauth.v2.InvalidAccessToken:
+        Invalid access token"'
+      Content-Length:
+      - '129'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<error><code>400</code><message>invalid_access_token</message><description>Access
+        token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
+    http_version:
+  recorded_at: Fri, 23 Jun 2017 13:21:21 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.2/rest-services/register/publication/epodoc/EP1000000/biblio
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Authorization:
+      - Bearer
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/xml
+      Date:
+      - Fri, 23 Jun 2017 13:21:21 GMT
+      Server:
+      - Apigee Router
+      Www-Authenticate:
+      - 'Bearer realm="null",error="invalid_token",error_description="oauth.v2.InvalidAccessToken:
+        Invalid access token"'
+      Content-Length:
+      - '129'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<error><code>400</code><message>invalid_access_token</message><description>Access
+        token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
+    http_version:
+  recorded_at: Fri, 23 Jun 2017 13:21:21 GMT
+- request:
+    method: get
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-100&q=pd=20160203
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Authorization:
+      - Bearer
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/xml
+      Date:
+      - Fri, 23 Jun 2017 13:21:21 GMT
+      Server:
+      - Apigee Router
+      Www-Authenticate:
+      - 'Bearer realm="null",error="invalid_token",error_description="oauth.v2.InvalidAccessToken:
+        Invalid access token"'
+      Content-Length:
+      - '129'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<error><code>400</code><message>invalid_access_token</message><description>Access
+        token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
+    http_version:
+  recorded_at: Fri, 23 Jun 2017 13:21:21 GMT
 recorded_with: VCR 2.9.3
