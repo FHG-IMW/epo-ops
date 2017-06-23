@@ -29,7 +29,7 @@ module EpoOps
     # @return [OAuth2::Response]
     def self.do_oauth_request(verb, url, options = {})
       token = EpoOps.config.token_store.token
-      token.request(verb, URI.encode(url), options)
+      token.request(verb, url, options)
     end
 
     # Make an anonymous request to the EPO API
