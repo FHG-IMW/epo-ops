@@ -46,7 +46,7 @@ module EpoOps
     def self.parse_change_gazette_num(num)
       res = /^(?<year>\d{4})\/(?<week>\d{2})$/.match(num)
       return nil if res.nil?
-      Date.commercial(Integer(res[:year], 10), week = Integer(res[:week], 10))
+      Date.commercial(Integer(res[:year], 10), Integer(res[:week], 10))
     end
   end
 end

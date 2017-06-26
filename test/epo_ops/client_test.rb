@@ -52,7 +52,7 @@ class EpoOps::ClientTest < Minitest::Test
 
   def test_plain_requests
     VCR.use_cassette(:plain_requests) do
-      response = EpoOps::Client.send(:do_plain_request, :get, "/3.1/rest-services/register/application/epodoc/EP14795538/biblio")
+      response = EpoOps::Client.send(:do_plain_request, :get, "/#{EpoOps::API_VERSION}/rest-services/register/application/epodoc/EP14795538/biblio")
       assert response.is_a?(OAuth2::Response)
       assert_equal 200, response.status
       assert response.parsed.is_a?(Hash)

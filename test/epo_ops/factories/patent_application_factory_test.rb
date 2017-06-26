@@ -50,7 +50,7 @@ module EpoOps
         data = load_patent_application_data :epo_two_agent
         factory = EpoOps::Factories::PatentApplicationFactory.new(data)
 
-        EpoOps::Factories::NameAndAddressFactory.expects(:build).with {|data| data.instance_of?(Hash)}.twice.returns(1,2)
+        EpoOps::Factories::NameAndAddressFactory.expects(:build).with {|d| d.instance_of?(Hash)}.twice.returns(1,2)
 
         agents = factory.agents
         assert 2, agents.count

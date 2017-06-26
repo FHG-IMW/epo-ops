@@ -28,6 +28,9 @@ patent_application.classifications # ["B29C47/10", "B29C47/68", "B29C47/92", "B2
 patent_application.applicants.first.name # "Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V."
 ```
 
+## Supported Ruby Versions
+For supported versions see _.travis.yml_. We try to keep it updated to officially supported Ruby versions.
+
 ## Advanced Usage
 
 ### OAuth

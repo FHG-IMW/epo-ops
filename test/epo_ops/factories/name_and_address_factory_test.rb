@@ -46,9 +46,9 @@ module EpoOps
         assert_equal 'Akzo Nobel Chemicals International B.V.', factory.name
         assert_equal 'Stationsstraat 77', factory.address_1
         assert_equal '3811 MH  Amersfoort', factory.address_2
-        assert_equal nil, factory.address_3
-        assert_equal nil, factory.address_4
-        assert_equal nil, factory.address_5
+        assert_nil factory.address_3
+        assert_nil factory.address_4
+        assert_nil factory.address_5
       end
 
       def test_all_5_address_fields_should_be_readable

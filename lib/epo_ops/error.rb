@@ -1,5 +1,3 @@
-require 'epo_ops/rate_limit'
-
 module EpoOps
   class Error < StandardError
     # @return [Integer]

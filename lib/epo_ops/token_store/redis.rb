@@ -1,6 +1,3 @@
-require 'redis'
-require 'connection_pool'
-
 module EpoOps
   class TokenStore
     class Redis < TokenStore

@@ -4,8 +4,6 @@ SimpleCov.start
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'epo_ops'
 
-require 'webmock/minitest'
-require 'minitest/unit'
 require 'minitest/autorun'
 require 'vcr'
 require 'mocha/mini_test'
@@ -23,6 +21,7 @@ end
 VCR.configure do |c|
   c.cassette_library_dir = 'test/vcr_cassettes'
   c.hook_into :webmock
+  c.default_cassette_options = {allow_playback_repeats: true}
 end
 
 

@@ -57,8 +57,8 @@ module EpoOps
         EpoOps::Register.raw_search(query)
       rescue EpoOps::Error::TooManyRequests => error
         rate_limit = error.rate_limit
-        assert_equal :hourly_quota, rate_limit.rejection_reason
       end
+      assert_equal :hourly_quota, rate_limit.rejection_reason
       VCR.eject_cassette
     end
   end

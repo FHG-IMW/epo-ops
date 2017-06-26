@@ -107,10 +107,9 @@ module EpoOps
       end
 
       private
-        def data_path(*path)
-          %w(bibliographic_data) + path
-        end
-
+      def data_path(*path)
+        %w[bibliographic_data] + path
+      end
     end
   end
 end

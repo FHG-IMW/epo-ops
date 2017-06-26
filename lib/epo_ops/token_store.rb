@@ -1,13 +1,10 @@
-require 'oauth2'
-require 'epo_ops'
-
 module EpoOps
   # This class saves the token in memory, you may want to subclass this and
   # overwrite #token if you want to store it somewhere else.
   #
   class TokenStore
     def token
-      @token = generate_token if !@token || @token.expired?
+      @token = generate_token if @token.nil? || @token.expired?
 
       @token
     end
@@ -23,7 +20,7 @@ module EpoOps
         EpoOps.config.consumer_key,
         EpoOps.config.consumer_secret,
         site: 'https://ops.epo.org/',
-        token_url: '/3.1/auth/accesstoken',
+        token_url: "/#{EpoOps::API_VERSION}/auth/accesstoken",
         raise_errors: false
       )
 

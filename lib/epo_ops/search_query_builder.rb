@@ -1,6 +1,3 @@
-require 'epo_ops/limits'
-require 'epo_ops/logger'
-
 module EpoOps
   # This Builder helps creating a search query using
   # {https://www.loc.gov/standards/sru/cql/ CQL} (Common Query Language or

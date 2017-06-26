@@ -34,7 +34,7 @@ module EpoOps
       def patents
         EpoOps::Util.flat_dig(
           @raw_data,
-          %w(world_patent_data register_search register_documents register_document)
+          %w[world_patent_data register_search register_documents register_document]
         ).map {|patent_data| EpoOps::Factories::PatentApplicationFactory.build(patent_data)}
       end
     end

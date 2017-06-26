@@ -33,7 +33,7 @@ module EpoOps
 
     def test_return_nil_if_the_hourly_quota_isnt_set
       limit = EpoOps::RateLimit.new({})
-      assert_equal nil, limit.hourly_quota
+      assert_nil limit.hourly_quota
     end
 
     # #weekly_quota
@@ -45,7 +45,7 @@ module EpoOps
 
     def test_return_nil_if_the_weekly_quota_isnt_set
       limit = EpoOps::RateLimit.new({})
-      assert_equal nil, limit.weekly_quota
+      assert_nil limit.weekly_quota
     end
 
     # #reset_at
