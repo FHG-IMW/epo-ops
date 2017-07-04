@@ -54,7 +54,7 @@ http_interactions:
           "refresh_token_expires_in" : "0",
           "refresh_count" : "0"
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 10 Feb 2016 14:33:41 GMT
 - request:
     method: get
@@ -957,7 +957,7 @@ http_interactions:
         aWMtZGF0YT4KICAgICAgICAgICAgPC9yZWc6cmVnaXN0ZXItZG9jdW1lbnQ+
         CiAgICAgICAgPC9yZWc6cmVnaXN0ZXItZG9jdW1lbnRzPgogICAgPC9vcHM6
         cmVnaXN0ZXItc2VhcmNoPgo8L29wczp3b3JsZC1wYXRlbnQtZGF0YT4K
-    http_version: 
+    http_version:
   recorded_at: Wed, 10 Feb 2016 14:33:42 GMT
 - request:
     method: get
@@ -1910,7 +1910,7 @@ http_interactions:
         YXBoaWMtZGF0YT4KICAgICAgICAgICAgPC9yZWc6cmVnaXN0ZXItZG9jdW1l
         bnQ+CiAgICAgICAgPC9yZWc6cmVnaXN0ZXItZG9jdW1lbnRzPgogICAgPC9v
         cHM6cmVnaXN0ZXItc2VhcmNoPgo8L29wczp3b3JsZC1wYXRlbnQtZGF0YT4K
-    http_version: 
+    http_version:
   recorded_at: Wed, 17 Feb 2016 14:33:04 GMT
 - request:
     method: get
@@ -2864,7 +2864,7 @@ http_interactions:
         ZW50PgogICAgICAgIDwvcmVnOnJlZ2lzdGVyLWRvY3VtZW50cz4KICAgIDwv
         b3BzOnJlZ2lzdGVyLXNlYXJjaD4KPC9vcHM6d29ybGQtcGF0ZW50LWRhdGE+
         Cg==
-    http_version: 
+    http_version:
   recorded_at: Wed, 17 Feb 2016 14:33:05 GMT
 - request:
     method: get
@@ -2998,7 +2998,7 @@ http_interactions:
                 </reg:register-documents>
             </ops:register-search>
         </ops:world-patent-data>
-    http_version: 
+    http_version:
   recorded_at: Thu, 18 Feb 2016 12:00:40 GMT
 - request:
     method: get
@@ -3132,7 +3132,7 @@ http_interactions:
                 </reg:register-documents>
             </ops:register-search>
         </ops:world-patent-data>
-    http_version: 
+    http_version:
   recorded_at: Thu, 18 Feb 2016 12:00:41 GMT
 - request:
     method: get
@@ -3266,7 +3266,7 @@ http_interactions:
                 </reg:register-documents>
             </ops:register-search>
         </ops:world-patent-data>
-    http_version: 
+    http_version:
   recorded_at: Thu, 18 Feb 2016 12:00:41 GMT
 - request:
     method: get
@@ -3400,7 +3400,7 @@ http_interactions:
                 </reg:register-documents>
             </ops:register-search>
         </ops:world-patent-data>
-    http_version: 
+    http_version:
   recorded_at: Thu, 18 Feb 2016 12:00:41 GMT
 - request:
     method: get
@@ -3534,7 +3534,7 @@ http_interactions:
                 </reg:register-documents>
             </ops:register-search>
         </ops:world-patent-data>
-    http_version: 
+    http_version:
   recorded_at: Thu, 18 Feb 2016 12:00:41 GMT
 - request:
     method: get
@@ -3668,7 +3668,7 @@ http_interactions:
                 </reg:register-documents>
             </ops:register-search>
         </ops:world-patent-data>
-    http_version: 
+    http_version:
   recorded_at: Thu, 18 Feb 2016 12:00:42 GMT
 - request:
     method: get
@@ -3802,7 +3802,7 @@ http_interactions:
                 </reg:register-documents>
             </ops:register-search>
         </ops:world-patent-data>
-    http_version: 
+    http_version:
   recorded_at: Thu, 18 Feb 2016 12:00:42 GMT
 - request:
     method: get
@@ -3936,7 +3936,7 @@ http_interactions:
                 </reg:register-documents>
             </ops:register-search>
         </ops:world-patent-data>
-    http_version: 
+    http_version:
   recorded_at: Thu, 18 Feb 2016 12:00:42 GMT
 - request:
     method: get
@@ -4070,7 +4070,7 @@ http_interactions:
                 </reg:register-documents>
             </ops:register-search>
         </ops:world-patent-data>
-    http_version: 
+    http_version:
   recorded_at: Thu, 18 Feb 2016 12:00:43 GMT
 - request:
     method: post
@@ -4113,7 +4113,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "<error><code>401</code><message>ClientId is Invalid</message>\n\t\t\t</error>\n\t\t"
-    http_version: 
+    http_version:
   recorded_at: Fri, 23 Jun 2017 13:21:10 GMT
 - request:
     method: post
@@ -4156,7 +4156,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "<error><code>401</code><message>ClientId is Invalid</message>\n\t\t\t</error>\n\t\t"
-    http_version: 
+    http_version:
   recorded_at: Fri, 23 Jun 2017 13:21:20 GMT
 - request:
     method: get
@@ -4201,7 +4201,7 @@ http_interactions:
       encoding: UTF-8
       string: "<error><code>400</code><message>invalid_access_token</message><description>Access
         token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
-    http_version: 
+    http_version:
   recorded_at: Fri, 23 Jun 2017 13:21:21 GMT
 - request:
     method: get
@@ -4246,7 +4246,7 @@ http_interactions:
       encoding: UTF-8
       string: "<error><code>400</code><message>invalid_access_token</message><description>Access
         token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
-    http_version: 
+    http_version:
   recorded_at: Fri, 23 Jun 2017 13:21:21 GMT
 - request:
     method: get
@@ -4291,7 +4291,7 @@ http_interactions:
       encoding: UTF-8
       string: "<error><code>400</code><message>invalid_access_token</message><description>Access
         token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
-    http_version: 
+    http_version:
   recorded_at: Fri, 23 Jun 2017 13:21:21 GMT
 - request:
     method: get
@@ -4336,11 +4336,11 @@ http_interactions:
       encoding: UTF-8
       string: "<error><code>400</code><message>invalid_access_token</message><description>Access
         token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
-    http_version: 
+    http_version:
   recorded_at: Fri, 23 Jun 2017 13:21:21 GMT
 - request:
     method: post
-    uri: https://ops.epo.org/3.1/auth/accesstoken
+    uri: https://ops.epo.org/3.2/auth/accesstoken
     body:
       encoding: UTF-8
       string: client_id=Foo&client_secret=Bar&grant_type=client_credentials
@@ -4379,11 +4379,11 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "<error><code>401</code><message>ClientId is Invalid</message>\n\t\t\t</error>\n\t\t"
-    http_version: 
+    http_version:
   recorded_at: Tue, 04 Jul 2017 14:38:29 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/application/epodoc/EP1000000/biblio
+    uri: https://ops.epo.org/3.2/rest-services/register/application/epodoc/EP1000000/biblio
     body:
       encoding: US-ASCII
       string: ''
@@ -4424,11 +4424,11 @@ http_interactions:
       encoding: UTF-8
       string: "<error><code>400</code><message>invalid_access_token</message><description>Access
         token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
-    http_version: 
+    http_version:
   recorded_at: Tue, 04 Jul 2017 14:38:29 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/publication/epodoc/EP1000000/biblio
+    uri: https://ops.epo.org/3.2/rest-services/register/publication/epodoc/EP1000000/biblio
     body:
       encoding: US-ASCII
       string: ''
@@ -4469,11 +4469,11 @@ http_interactions:
       encoding: UTF-8
       string: "<error><code>400</code><message>invalid_access_token</message><description>Access
         token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
-    http_version: 
+    http_version:
   recorded_at: Tue, 04 Jul 2017 14:40:03 GMT
 - request:
     method: get
-    uri: https://ops.epo.org/3.1/rest-services/register/search?Range=1-2&q=ic=q=pd=20160203
+    uri: https://ops.epo.org/3.2/rest-services/register/search?Range=1-2&q=ic=q=pd=20160203
     body:
       encoding: US-ASCII
       string: ''
@@ -4514,6 +4514,6 @@ http_interactions:
       encoding: UTF-8
       string: "<error><code>400</code><message>invalid_access_token</message><description>Access
         token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
-    http_version: 
+    http_version:
   recorded_at: Tue, 04 Jul 2017 14:45:42 GMT
 recorded_with: VCR 2.9.3

@@ -27,7 +27,7 @@ module Epo
 
       # @return [String] The URL at which you can query the original document.
       def url
-        @url ||= "https://ops.epo.org/3.1/rest-services/register/application/epodoc/#{application_nr}"
+        @url ||= "https://ops.epo.org/#{Epo::Ops::API_VERSION}/rest-services/register/application/epodoc/#{application_nr}"
       end
 
       # @return [String] the english title of the patent @note Titles are

@@ -7,7 +7,7 @@ require 'epo/ops/ipc_class_util'
 
 module Epo
   module Ops
-    # Access to the {http://ops.epo.org/3.1/rest-services/register register}
+    # Access to the {http://ops.epo.org/3.2/rest-services/register register}
     # endpoint of the EPO OPS API.
     #
     # By now you can search and retrieve patents by using the type `application`
@@ -145,7 +145,7 @@ module Epo
       end
 
       def self.register_api_string
-        '/3.1/rest-services/register/'
+        "/#{Epo::Ops::API_VERSION}/rest-services/register/"
       end
     end
   end
