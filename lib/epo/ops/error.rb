@@ -32,6 +32,8 @@ module Epo
       ServiceUnavailable = Class.new(ServerError)
       # Raised when EPO returns the HTTP status code 504
       GatewayTimeout = Class.new(ServerError)
+      # AccessToken has expired
+      AccessTokenExpired = Class.new(ClientError)
 
       ERRORS = {
         400 => Epo::Ops::Error::BadRequest,
@@ -59,6 +61,8 @@ module Epo
 
           if code == 403 && FORBIDDEN_MESSAGES[message]
             FORBIDDEN_MESSAGES[message].new(message, response.headers, code)
+          elsif code == 400 && response.headers['www-authenticate'] && response.headers['www-authenticate'].include?('Access Token expired')
+            Error::AccessTokenExpired.new('Access Token expired', response.headers, code)
           else
             ERRORS[code].new(message, response.headers, code)
           end

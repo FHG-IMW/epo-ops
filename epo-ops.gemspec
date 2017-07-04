@@ -21,9 +21,14 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.3'
   spec.add_development_dependency 'rake', '~> 10.5'
   spec.add_development_dependency 'minitest', '~> 5.8'
+  spec.add_development_dependency 'mocha'
   spec.add_development_dependency 'vcr', '~> 2.9'
   spec.add_development_dependency 'webmock', '~> 1.22'
   spec.add_development_dependency 'simplecov'
 
+  spec.add_development_dependency 'redis'
+  spec.add_development_dependency 'connection_pool'
+
   spec.add_dependency 'oauth2', '~> 1.1'
+  spec.add_dependency 'httparty', '~> 0.13'
 end

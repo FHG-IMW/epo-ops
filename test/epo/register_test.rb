@@ -12,7 +12,7 @@ module Epo
     end
 
     def test_search_works
-      query = Epo::Ops::SearchQueryBuilder.new.publication_date(2016, 2, 3).build
+      query = Epo::Ops::SearchQueryBuilder.build(nil, Date.new(2016, 2, 3), 1, 100)
       response = Epo::Ops::Register.search(query)
       assert response
       assert_instance_of Array, response
@@ -22,8 +22,8 @@ module Epo
     end
 
     def test_retrieving_of_bibliographic_entries_works
-      assert Epo::Ops::Register.biblio('EP1000000', type = 'publication')
-      assert Epo::Ops::Register.biblio('EP99203729')
+      assert Epo::Ops::Register.raw_biblio('EP1000000', type = 'publication')
+      assert Epo::Ops::Register.raw_biblio('EP99203729')
     end
 
     def test_biblio_returns_parsed_document
